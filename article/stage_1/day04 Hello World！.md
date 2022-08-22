@@ -15,12 +15,25 @@ Javascript(接下來統稱JS) 帶給我的困擾是 我無法確定她傳進來�
 TypeScript(接下來統稱TS)主要就是為了解決這些弱點來提升JS開發體驗而存在的，
 上面講的可能有點模糊，我們做個簡單的例子來體會差別：
 
+
+```typescript
+function sayHello(name: string) {
+    return 'Hello, ' + name;
+}
+
+const who = 'World';
+console.log(sayHello(who));
 ```
-const hollo
 
+```Javascript
+function sayHello(name) {
+    return 'Hello, ' + name;
+}
 
-
-
+const who = 'World';
+console.log(sayHello(who));
+```
+[參考](https://willh.gitbook.io/typescript-tutorial/introduction/hello-typescript)
 
 試想上面的例子，
 如果龐大個10倍?20倍?

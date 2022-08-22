@@ -3,30 +3,30 @@
 # 摘要
 > 身為一個在網頁世界打滾多年的全端碼農，
 > 輾轉於花園與動物園，外星與冥界的世界中，
-> ，渾渾噩噩是合理(大誤)，年過30，一回首...
+> ，渾渾噩噩~~也是合理~~，年過30，一回首...
 > 連燈火闌珊處也沒有存在...
 > 於是開始準備做點東西，整理這幾年用到的東西，
 > 加上一些新的技術，自己做個部落格，
 > 讓多年後的自己，回首起碼能看見一些難看的草XD。
 
 > 然後一踏進Vite，直接拐到TypeScript跌死，
-> 打算努力的爬出來!!
+> 正在努力的爬出來!!
 
 
 # 目錄
 
 1. ## 事前準備
 > ### day01： [前言](https://tw.alphacamp.co/blog/most-in-demand-programming-language(參考))
-> ### day02： 工作環境：VS code 與相關外掛 && node npm yarn vite
-> ### day03： TypeScript? 你要確定捏? (https://jackthenomad.com/why-typescript-is-the-best-way-to-write-front-end-in-2019-feb855f9b164)
+> ### day02： TypeScript? 你要確定捏? (https://jackthenomad.com/why-typescript-is-the-best-way-to-write-front-end-in-2019-feb855f9b164)
+> ### day03： 工作環境：VS code 與相關外掛 && node npm yarn vite
 > ### day04： TypeScript：Hello World！ 一般Script 與 type Script(https://www.runoob.com/typescript/ts-tutorial.html)
 > ### day05： 所以說那個Type呢? Type Inference & Annotation 型別推論 X 註記
 
-1. ## TypeScript 初探
-> ### day06： [前言](https://tw.alphacamp.co/blog/most-in-demand-programming-language(參考))
-> ### day07： 工作環境：VS code 與相關外掛
-> ### day08： TypeScript? 你要確定捏?
-> ### day09： 所以說那個Type呢?
+2. ## TypeScript 初探
+> ### day06： Type百變怪 - any
+> ### day07： AI - 型別推論
+> ### day08： 雙面人? 不 多面人 - 聯合型別
+> ### day09： 拼圖 - Interfaces
 > ### day10： TypeScript：Hello World！ 一般Script 與 type Script
 > > https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
 
