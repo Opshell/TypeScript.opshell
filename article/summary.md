@@ -28,6 +28,7 @@
 > ### day08： TypeScript? 你要確定捏?
 > ### day09： 所以說那個Type呢?
 > ### day10： TypeScript：Hello World！ 一般Script 與 type Script
+> > https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
 
 1. ## TypeScript 深入
 > ### day11： [前言](https://tw.alphacamp.co/blog/most-in-demand-programming-language(參考))
