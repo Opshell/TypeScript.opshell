@@ -13,6 +13,7 @@
 ## 目標:達成全都要
 ---
 https://ithelp.ithome.com.tw/articles/10222470?sc=rss.iron
+https://hackmd.io/@Heidi-Liu/typescript#%E8%A4%87%E7%BF%92%EF%BC%9AJavaScript-%E5%9E%8B%E5%88%A5
 ## 過程：
    > TS 有個型別叫複合型別，他有兩種使用方式↓↓↓
    > `聯合型別(Union Type)` && `交集型別(Intersection Type)`
