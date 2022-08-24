@@ -1,13 +1,13 @@
 ![alt](https://)
 
 # 環境甚麼的 最討厭了
-> 每次開始學習新的語言或框架，
-> 最麻煩的不是要學習他有哪些語法、規則
-> 是安裝它的環境...
-> ─────────────────────── By Opshell
-
+> *每次開始學習新的語言或框架，*
+> *最麻煩的不是要學習他有哪些語法、規則*
+> *是安裝它的環境...*
+> *───────────────────────── By Opshell*
+---
 ## 目標：要使用TypeScript 我需要有?
-
+---
 ## 過程：(安裝請點擊藍字)
 - #### 系統：[Window 11](https://www.microsoft.com/zh-tw/software-download/windows11)
 - #### 編輯器：[VS Code](https://code.visualstudio.com/)
@@ -31,31 +31,14 @@
     ```
     nvm list
     ```
-    > 安裝 Node.js 16.17.0 版本↓↓↓
-    ```
-    nvm install 16.17.0
-    ```
-    > 切換到16.17.0版的Node↓↓↓
-    ```
-    nvm use 16.17.0
-    ```
-- #### ~~閃電俠：[yarn](https://ithelp.ithome.com.tw/articles/10191745)~~
-    > 身為...
-    > 全域安裝 yarn↓↓↓
-    ```
-    npm install -g yarn
-    ```
-    > 確認yarn 版本↓↓↓
-    ```
-    yarn -v
-    ```
-
-## 結果：
+---
+## 小結：
    > 如果你沒有遇到任何問題
    > 那你應該會和下面這張圖有一樣得結果↓↓↓
 
    ![alt](https://)
 
+---
 ## 坑：
 1. ### VS code看不懂英文介面，你可以安裝[中文化](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hant)
 2. ### 你的nvm指令老是無法成功，或者出現了亂碼↓↓↓

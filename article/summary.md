@@ -16,15 +16,15 @@
 # 目錄
 
 ## 1. 事前準備
-> ### day01： [前言](https://tw.alphacamp.co/blog/most-in-demand-programming-language(參考))
-> ### day02： [TypeScript? 你要確定捏?](https://jackthenomad.com/why-typescript-is-the-best-way-to-write-front-end-in-2019-feb855f9b164)
+> ### day01： [前言](https://tw.alphacamp.co/blog/most-in-demand-programming-language(參考)) - 開水第一天
+> ### day02： [TypeScript? 你要確定捏?](https://jackthenomad.com/why-typescript-is-the-best-way-to-write-front-end-in-2019-feb855f9b164) - 為什麼要選擇TypeScript
 > ### day03： 工作環境：VS code 與相關外掛 && node npm yarn vite
 > ### day04： TypeScript：Hello World！ [一般Script 與 type Script](https://www.runoob.com/typescript/ts-tutorial.html)
-> ### day05： 所以說那個Type呢? Type Inference & Annotation 型別推論 X 註記
+> ### day05： 所以說那個Type呢? - 三種宣告型別的方式
 
 ## 2. TypeScript 初探
-> ### day06： Type百變怪 - any
-> ### day07： AI - 型別推論 雙面人? 不 多面人 - 聯合型別
+> ### day06： 小孩子才做選擇，我全都要 - 複合型別
+> ### day07： 我怎麼知道誰是誰? - 型別檢測
 > ### day08： 拼圖 - Interfaces(物件) && 陣列 - 泛型?
 > ### day09： 親兒子 - Function(注意不要搞混 => )
 > ### day10： 型別斷言

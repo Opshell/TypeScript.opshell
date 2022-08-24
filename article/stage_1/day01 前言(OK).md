@@ -34,9 +34,12 @@
 ### 6. TS- 禪：實現一些我覺得複雜麻煩的功能&後記。
 ---
 ## 三、看Opshell筆記的小訣竅
-   > **▲**： 踩到坑
-   > **※**： 注意小細節
-
+   ```JavaScript
+   > const JS = 'JavaScript';
+   > const TS = 'TypeScript';
+   > const ▲ = '踩到坑!';
+   > const ※ = '注意小細節!';
+   ```
 ---
 
 # 目錄
