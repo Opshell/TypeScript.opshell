@@ -1,29 +1,56 @@
 ![alt](https://)
 
 # TypeScript? 你要確定捏?
-    > 基本上你要學習一個語言，
-    > 要不是因為要混口飯吃，
-    > 就是因為他能解決你一些痛點。
-    > ~~不然你應該是錢多閒得發慌~~
-    >                     - By Opshell
+   > *基本上你要學習一個語言，*
+   > *要不是因為要混口飯吃，*
+   > *就是因為他能解決你一些痛點。*
+   > ~~不然你應該是錢多閒得發慌~~
+   > *----------------------------- By Opshell*
 
 ## 目標：搞懂為什麼要學TypeScript
 
 ## 過程：
+- ### TypeScript 是甚麼?
+> 1. #### 超集
+> 2. #### 鋼彈駕駛概念? => 型別推論
 
-### TypeScript 是甚麼?
-1. 超集
-2. 鋼彈駕駛概念? => 型別推論
+- ### TypeScript 優點：
+> 1. #### 你只要會Javascript 就會了一大部分的TypeScript
+> 2. #### 居然有Interface可以用了?!!
 
-### TypeScript 優點：
+- ### TypeScript 缺點：
+> 1. #### 很囉唆!跟媽媽一樣， 只是他從關心你吃了沒，變成你型態不對。
 
-### TypeScript 缺點：
+- ### 例子：
+   > ```JavaScript
+   > const plus = num => num + 30;
+   > console.log(plus(123));   // 153
+   > console.log(plus('123')); // 12330
+   > console.log(plus(Number('123'))); // 153
+   > ```
+   > ##### 做一個簡單的函式 希望他幫我把丟進來的東西都+30，
+   > ##### 但在一些奇怪的情況下會出現都進來的參數不是數字的情況，
+   > ##### 這時我們就會需要使用方法三，幫她做型別的轉換，
+   > ##### 在邏輯複雜起來的情況，可就會遇到Number(a) + Number(b)...
+   > ##### 程式碼變得又臭又長的情況，很不優雅，
+   > ##### 更何況遇到了parseInt('2srth')這種情況...?
+   > ##### 這時候只能唱[心裡有針](https://www.youtube.com/watch?v=gqpGr_QlUR0)了...簡直一言難盡。
 
-## 結果
-### 與Javascript比較表格：
+   > ##### 到了TypeScript，世界都不一樣了!↓↓↓
+   > ##### ts老媽子開始提醒你不要瞎搞
+   > ##### 再也不需要，兜兜轉轉好幾圈後做型別轉換來修Bug了
+   > ![alt](https://)
 
+## 結果：
+- ### 與Javascript比較表格：
 
-
+Title|TypeScript|JavaScript|區別
+------------- | ------------- | ------------- | -------------
+型別型態|靜態型別|動態型別|會不會變來變去
+型別強弱|強型別|弱型別|囉不囉嗦
+撰寫自由度|低| - **高** - |多隨便就可以動
+可靠性| - **高** - |低|牆頭草程度
+效率|中| - **高** - |coding速度
 
 ## 參考資料：
 1. ### [Why TypeScript is the best way to write Front-end in 2019–2020+](https://jackthenomad.com/why-typescript-is-the-best-way-to-write-front-end-in-2019-feb855f9b164)

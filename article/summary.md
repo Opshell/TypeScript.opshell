@@ -15,47 +15,45 @@
 
 # 目錄
 
-1. ## 事前準備
+## 1. 事前準備
 > ### day01： [前言](https://tw.alphacamp.co/blog/most-in-demand-programming-language(參考))
-> ### day02： TypeScript? 你要確定捏? (https://jackthenomad.com/why-typescript-is-the-best-way-to-write-front-end-in-2019-feb855f9b164)
+> ### day02： [TypeScript? 你要確定捏?](https://jackthenomad.com/why-typescript-is-the-best-way-to-write-front-end-in-2019-feb855f9b164)
 > ### day03： 工作環境：VS code 與相關外掛 && node npm yarn vite
-> ### day04： TypeScript：Hello World！ 一般Script 與 type Script(https://www.runoob.com/typescript/ts-tutorial.html)
+> ### day04： TypeScript：Hello World！ [一般Script 與 type Script](https://www.runoob.com/typescript/ts-tutorial.html)
 > ### day05： 所以說那個Type呢? Type Inference & Annotation 型別推論 X 註記
 
-2. ## TypeScript 初探
+## 2. TypeScript 初探
 > ### day06： Type百變怪 - any
-> ### day07： AI - 型別推論
-> ### day08： 雙面人? 不 多面人 - 聯合型別
-> ### day09： 拼圖 - Interfaces
-> ### day10： TypeScript：Hello World！ 一般Script 與 type Script
+> ### day07： AI - 型別推論 雙面人? 不 多面人 - 聯合型別
+> ### day08： 拼圖 - Interfaces(物件) && 陣列 - 泛型?
+> ### day09： 親兒子 - Function(注意不要搞混 => )
+> ### day10： 型別斷言
 > > https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
 
-1. ## TypeScript 深入
-> ### day11： [前言](https://tw.alphacamp.co/blog/most-in-demand-programming-language(參考))
-> ### day12： 工作環境：VS code 與相關外掛
-> ### day13： TypeScript? 你要確定捏?
-> ### day14： 所以說那個Type呢?
-> ### day15： TypeScript：Hello World！ 一般Script 與 type Script
+## 3. TypeScript 深入
+> ### day11： 宣告檔案 part 1
+> ### day12： 宣告檔案 part 2
+> ### day13： 宣告檔案 part 3
+> ### day14： 內建物件
+> ### day15： 類別(Class)
 
-1. ## TypeScript 巧計
-> ### day16： [前言](https://tw.alphacamp.co/blog/most-in-demand-programming-language(參考))
-> ### day17： 工作環境：VS code 與相關外掛
-> ### day18： TypeScript? 你要確定捏?
-> ### day19： 所以說那個Type呢?
-> ### day20： TypeScript：Hello World！ 一般Script 與 type Script
+## 4. TypeScript 巧計
+> ### day16： 型別別名、字串字面量型別、元組
+> ### day17： 列舉
+> ### day18： 類別(Class)
+> ### day19： 類別與介面
+> ### day20： 宣告合併
 
-1. ## TypeScript 淺出
-> ### day21： [前言](https://tw.alphacamp.co/blog/most-in-demand-programming-language(參考))
-> ### day22： 工作環境：VS code 與相關外掛
-> ### day23： TypeScript? 你要確定捏?
-> ### day24： 所以說那個Type呢?
-> ### day25： TypeScript：Hello World！ 一般Script 與 type Script
+## 5. TypeScript 淺出
+> ### day21： [工作環境：Vue? Vite 安裝 config](https://juejin.cn/post/7051565418460217375)
+> ### day22： Vue Router + Vuex + Axios 沒事 我預設進來看得都會寫Vue
+> ### day23： 環境整合
+> ### day24： getData 改寫
+> ### day25： login
 
-1. ## TypeScript 禪
-> ### day26： [前言](https://tw.alphacamp.co/blog/most-in-demand-programming-language(參考))
-> ### day27： 工作環境：VS code 與相關外掛
-> ### day28： TypeScript? 你要確定捏?
-> ### day29： 所以說那個Type呢?
-> ### day30： TypeScript：Hello World！ 一般Script 與 type Script
-
-
+## 6. TypeScript 禪
+> ### day26： 無限層選單 改寫 Part 1
+> ### day27： 無限層選單 改寫 Part 2
+> ### day28： SectionList 改寫
+> ### day29： 略施巧技 - 復盤&重構
+> ### day30： 後記 - [未完](https://willh.gitbook.io/typescript-tutorial/advanced/further-reading)
