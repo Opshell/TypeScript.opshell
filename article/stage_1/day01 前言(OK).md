@@ -39,6 +39,8 @@
    > const TS = 'TypeScript';
    > const ▲ = '踩到坑!';
    > const ※ = '注意小細節!';
+   > // 範例Function 都會在後面做console.log
+   > // 可以tsc 編譯後直接貼到網頁的F12控制台做驗證喔
    ```
 ---
 

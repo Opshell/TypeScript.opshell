@@ -15,13 +15,37 @@ class Team {
         this.members = members;
     }
 }
-function getName(cls) {
-    return (cls instanceof Member) ? cls.name : cls.title;
+function isMember(cls) {
+    return 'name' in cls;
 }
-const how = new Member('Opshell', 30, 'man');
-const zoo = new Team('Maya', [how]);
-console.log(getName(how));
-console.log(getName(zoo));
+const Opshell = new Member('Opshell', 30, 'man');
+console.log(isMember(Opshell));
+// type Man = 'xy';
+// type Woman = 'xx';
+// function isMan(gender: Man | Woman): gender is Man {
+//     return (gender as Man) === 'xy';
+// }
+// const Opshell = {
+//     gender: (<Man>'xy'),
+//     year: 30
+// };
+// console.log(isMan(Opshell.gender));
+// // 建立Member Class 設定 名稱、年紀、性別為建構子
+// class Member {
+//     constructor(public name: string, public year: number, public gender: string) { }
+// }
+// // 建立Team Class 團隊名稱、團隊成員 性別為建構子
+// // 這邊可以看出 members建構子的型別是 Member Class
+// class Team {
+//     constructor(public title: string, public members: Member[]) { }
+// }
+// function getName(cls: Member | Team) {
+//     return (cls instanceof Member) ? cls.name : cls.title;
+// }
+// const how = new Member('Opshell', 30, 'man');
+// const zoo = new Team('Maya', [how]);
+// console.log(getName(how)); // Opshell
+// console.log(getName(zoo)); // 因為Team 不在 Member的原型鏈上面 所以印出 Maya
 // getName(new Member('Opshell', 30, 'man')); //  'Opshell'
 // let immortal = function forever(year: number) {
 //     while (true) {
