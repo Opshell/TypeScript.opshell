@@ -1,3 +1,31 @@
+enum FE_GENDER {
+    MALE = 'man',
+    FEMALE = 'woman'
+};
+enum BE_GENDER {
+    MALE = 'man',
+    FEMALE = 'woman'
+};
+
+const createEnumMapper = <T>(mapping: T) => (value: keyof T | null): T[keyof T] | undefined => {
+    return value === null ? undefined : mapping[value];
+}
+
+const mapper = {
+    [BE_GENDER.MALE]: FE_GENDER.MALE,
+    [BE_GENDER.FEMALE]: FE_GENDER.FEMALE,
+};
+
+const foo = () => {
+    const gender = FE_GENDER.MALE;
+    const data = { gender: BE_GENDER.MALE };
+
+    const getGenderEnumMapper = createEnumMapper(mapper);
+    const transformedGender = getGenderEnumMapper(data.gender);
+
+    return transformedGender === gender;
+}
+
 // // 建立Member Class 設定 名稱、年紀、性別為建構子
 // class Member {
 //     constructor(public name: string, public year: number, public gender: string) { }
@@ -18,19 +46,19 @@
 // console.log(isMember(Opshell)); // true
 // console.log(isMember(Zoo)); // false
 
-type Man = 'xy';
-type Woman = 'xx';
+// type Man = 'xy';
+// type Woman = 'xx';
 
-function isMan(gender: Man | Woman): gender is Man {
-    return (gender as Man) === 'xy';
-}
+// function isMan(gender: Man | Woman): gender is Man {
+//     return (gender as Man) === 'xy';
+// }
 
-const Opshell = {
-    gender: (<Man>'xy'),
-    year: 30
-};
+// const Opshell = {
+//     gender: (<Man>'xy'),
+//     year: 30
+// };
 
-console.log(isMan(Opshell.gender));
+// console.log(isMan(Opshell.gender));
 
 
 // // 建立Member Class 設定 名稱、年紀、性別為建構子

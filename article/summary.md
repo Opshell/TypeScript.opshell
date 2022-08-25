@@ -16,44 +16,43 @@
 # 目錄
 
 ## 1. 事前準備
-> ### day01： [前言](https://tw.alphacamp.co/blog/most-in-demand-programming-language(參考)) - 開水第一天
-> ### day02： [TypeScript? 你要確定捏?](https://jackthenomad.com/why-typescript-is-the-best-way-to-write-front-end-in-2019-feb855f9b164) - 為什麼要選擇TypeScript
-> ### day03： 工作環境：VS code 與相關外掛 && node npm yarn vite
-> ### day04： TypeScript：Hello World！ [一般Script 與 type Script](https://www.runoob.com/typescript/ts-tutorial.html)
-> ### day05： 所以說那個Type呢? - 三種宣告型別的方式
+> ##### day01： [前言](https://tw.alphacamp.co/blog/most-in-demand-programming-language(參考)) - 開水第一天
+> ##### day02： [TypeScript? 你要確定捏?](https://jackthenomad.com/why-typescript-is-the-best-way-to-write-front-end-in-2019-feb855f9b164) - 為什麼要選擇TypeScript
+> ##### day03： 工作環境：VS code 與相關外掛 && node npm yarn vite
+> ##### day04： TypeScript：Hello World！ [一般Script 與 type Script](https://www.runoob.com/typescript/ts-tutorial.html)
+> ##### day05： 所以說那個Type呢? - 三種宣告型別的方式
 
 ## 2. TypeScript 初探
-> ### day06： 小孩子才做選擇，我全都要 - 複合型別
-> ### day07： 我怎麼知道誰是誰? - 型別檢測
-> ### day08： 拼圖 - Interfaces(物件) && 陣列 - 泛型?
-> ### day09： 親兒子 - Function(注意不要搞混 => )
-> ### day10： 型別斷言
-> > https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
+> ##### day06： 小孩子才做選擇，我全都要 - 複合型別
+> ##### day07： 我怎麼知道誰是誰? - 型別檢測
+> ##### day08： 拼圖 - Interfaces(物件) && 陣列 - 泛型?
+> ##### day09： 親兒子 - Function(注意不要搞混 => )
+> ##### day10： 型別斷言
 
 ## 3. TypeScript 深入
-> ### day11： 宣告檔案 part 1
-> ### day12： 宣告檔案 part 2
-> ### day13： 宣告檔案 part 3
-> ### day14： 內建物件
-> ### day15： 類別(Class)
+> ##### day11： 型別別名、字串字面量型別、元組
+> ##### day12： 列舉
+> ##### day13： 類別(Class)
+> ##### day14： 類別與介面
+> ##### day15： 宣告合併
 
-## 4. TypeScript 巧計
-> ### day16： 型別別名、字串字面量型別、元組
-> ### day17： 列舉
-> ### day18： 類別(Class)
-> ### day19： 類別與介面
-> ### day20： 宣告合併
+## 4. TypeScript 淺出
+> ##### day21： [工作環境：Vue? Vite 安裝 config](https://juejin.cn/post/7051565418460217375)
+> ##### day22： Vue Router + Vuex + Axios 沒事 我預設進來看得都會寫Vue
+> ##### day23： 環境整合
+> ##### day24： getData 改寫
+> ##### day25： login
 
-## 5. TypeScript 淺出
-> ### day21： [工作環境：Vue? Vite 安裝 config](https://juejin.cn/post/7051565418460217375)
-> ### day22： Vue Router + Vuex + Axios 沒事 我預設進來看得都會寫Vue
-> ### day23： 環境整合
-> ### day24： getData 改寫
-> ### day25： login
+## 5. TypeScript 巧計
+> ##### day16： 宣告檔案 part 1
+> ##### day17： 宣告檔案 part 2
+> ##### day18： 宣告檔案 part 3
+> ##### day19： 內建物件
+> ##### day20： 類別(Class)
 
 ## 6. TypeScript 禪
-> ### day26： 無限層選單 改寫 Part 1
-> ### day27： 無限層選單 改寫 Part 2
-> ### day28： SectionList 改寫
-> ### day29： 略施巧技 - 復盤&重構
-> ### day30： 後記 - [未完](https://willh.gitbook.io/typescript-tutorial/advanced/further-reading)
+> ##### day26： 無限層選單 改寫 Part 1
+> ##### day27： 無限層選單 改寫 Part 2
+> ##### day28： SectionList 改寫
+> ##### day29： 略施巧技 - 復盤&重構
+> ##### day30： 後記 - [未完](https://willh.gitbook.io/typescript-tutorial/advanced/further-reading)
