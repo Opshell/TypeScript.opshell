@@ -1,20 +1,55 @@
-function consoleYear(year: string & number) {
-    console.log(year);
+// 建立Member Class 設定 名稱、年紀、性別為建構子
+class Member {
+    constructor(public name: string, public year: number, public gender: string) { }
+}
+// 建立Team Class 團隊名稱、團隊成員 性別為建構子
+// 這邊可以看出 members建構子的型別是 Member Class
+class Team {
+    constructor(public title: string, public members: Member[]) { }
 }
 
-consoleYear(1);
-consoleYear('1');
-consoleYear(<any>1);
-consoleYear(<never>1);
+function getName(cls: Member | Team) {
+    return (cls instanceof Member) ? cls.name : cls.title;
+}
+const how = new Member('Opshell', 30, 'man');
+const zoo = new Team('Maya', [how]);
+
+console.log(getName(how)); // Opshell
+console.log(getName(zoo)); // 因為Team 不在 Member的原型鏈上面 所以印出 Maya
+
+// getName(new Member('Opshell', 30, 'man')); //  'Opshell'
+
+// let immortal = function forever(year: number) {
+//     while (true) {
+//         year++;
+//     }
+
+//     // return 'life end';
+// }
+
+// function consoleYear(year: string & number) {
+//     console.log(year);
+// }
+
+// consoleYear(1);
+// consoleYear('1');
+// consoleYear(<any>1);
+// consoleYear(<never>1);
+// consoleYear(<void>1);
 
 
 // function getYearLength(year: string | number): number {
 //     let result = 0;
-//     if ((<string>year).length) {
-//         result = (<string>year).length;
+//     if (typeof year === 'string') {
+//         result = year.length;
 //     } else {
 //         result = year.toString().length;
 //     }
+//     // if ((<string>year).length) {
+//     //     result = (<string>year).length;
+//     // } else {
+//     //     result = year.toString().length;
+//     // }
 
 //     return result;
 // }
