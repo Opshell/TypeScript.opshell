@@ -1,3 +1,9 @@
+function consoleYear(year: unknown): void {
+    let name: string = 'Opshell';
+    name = year; // Error
+}
+
+
 enum FE_GENDER {
     MALE = 'man',
     FEMALE = 'woman'

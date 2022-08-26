@@ -21,6 +21,7 @@
    ### 2. 認識一點TS裡的新朋友
    > - 特殊型別
    >    * void (空值)
+   >    * unknown (不曉得)
    >    * any (任意型別) (全世界都是我的 的可怕型別)
    >    * never (全世界都不是我的 的型別)
    ### 3. JS大家都這麼熟了，我們來介紹一下TS的新朋友
@@ -47,6 +48,17 @@
    ```
    > ※　不要濫用any型別，這樣跟沒用TypeScript一樣
    > 　　甚至更赤裸了...
+---
+   #### 任意 unknown: 不檢查型別(畢竟我誰都是)
+   ```typescript
+    // unknown 和 any 一樣可以接受任何型別賦值，
+    // 但 any 可以賦值給任何型別，
+    // unknown 只能賦值給 any 和自己。
+    function consoleYear(year: unknown): void {
+        let name: string = 'Opshell';
+        name = year; // Error：類型 string 不可指派給 unknown
+    }
+   ```
 ---
    #### 絕不 never: 永遠不存在值的型別
    ```typescript
