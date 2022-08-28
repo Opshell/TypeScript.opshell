@@ -34,6 +34,13 @@
 ### 6. TS- 禪：實現一些我覺得複雜麻煩的功能&後記。
 ---
 ## 三、看Opshell筆記的小訣竅
+   > #### 1. 需要有一定的JavaScript 基礎：
+   > > 筆記中默認各位讀者都有一定的JavaScript基礎，
+   > > 畢竟Opshell菜菜的，不會用啥高深的技術 ~~(所以各位大大都可以看懂)~~
+   > #### 2. 預期讀者有一部份的Vue3 基礎：
+   > > 後面章節會開始是把Vue專案轉成TypeScript
+   > > 畢竟就是在Vite + TypeScript跌倒的
+   > #### 3. 文中的縮寫或符號意義：
    ```JavaScript
    > const JS = 'JavaScript';
    > const TS = 'TypeScript';
