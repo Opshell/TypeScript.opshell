@@ -14,7 +14,7 @@
 ---
 ## 過程：
    > TS 有個型別叫複合型別，他有兩種使用方式↓↓↓
-   > `聯合型別(Union Type)` && `交集型別(Intersection Type)`
+   > `聯集型別(Union Type)` && `交集型別(Intersection Type)`
    > 可以將值宣告為多種類型。
    1. ### 用"聯合型別"做個範例：
     ```typescript
