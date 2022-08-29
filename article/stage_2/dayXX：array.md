@@ -24,7 +24,17 @@
    > 語法：`變數 = []`(像一般JS般的宣告)
    > 讓 TypeScript 自動"推論"(Type Inference)，
    ```typescript
-    // TS 推斷 team 為 string[] 型別。
+    // TS "推論" team 為 string[] 型別。
+	// 語法：`變數 = []`(像一般JS般的宣告)
+    const team = [ 'Opshell', 'Bear', 'Egg', 'Patty' ];
+
+	// TS "註記" string[] 表示此陣列型別只允許字串
+	// 語法：`變數: 型別[] = []`
+	const team: string = [ 'Opshell', 'Bear', 'Egg', 'Patty' ];
+
+	// TS "斷言"(這個方法也叫`陣列泛型`)
+	// 我們可以使用陣列泛型(Array Generic) Array 來表示陣列：
+	// 語法：`變數: Array<型別> = []`
     const team = [ 'Opshell', 'Bear', 'Egg', 'Patty' ];
    ```
 ---
@@ -32,7 +42,7 @@
    > 語法：`變數: 型別[] = []`
    ```typescript
     // string[] 表示此陣列型別只允許字串
-    const team = [ 'Opshell', 'Bear', 'Egg', 'Patty' ];
+    const team: string = [ 'Opshell', 'Bear', 'Egg', 'Patty' ];
    ```
 ---
    #### 3. 陣列泛型(Array Generic)
