@@ -1,12 +1,22 @@
-type stringArray = string | null;
+type tFullName = (firstname: string, lastname: string) => string;
 
-    function teamUp(team: stringArray[], ...members: stringArray[]) {
-      members.forEach((member) => {
-         team.push(member);
-      });
-    }
+    const combinName: tFullName = (firstname, lastname) => {
+      firstname = firstname.charAt(0).toUpperCase() + firstname.slice(1);
+      lastname = lastname.charAt(0).toUpperCase() + lastname.slice(1);
 
-    let Maya: stringArray[] = [];
-    teamUp(Maya, 'Opshell', 'Bear');
+      return `Hello ${lastname} ${firstname}, Welcome to typeScript.`;
+    };
 
-    console.log(Maya);
+console.log(combinName('Liu', 'opshell'));
+
+// interface iFaceStrChk {
+//   (paragraph: string, keyword: string): boolean;
+// }
+
+// const checkKeyword: iFaceStrChk = (paragraph, keyword) => {
+//   return paragraph.search(keyword) !== -1;
+// }
+
+// console.log(checkKeyword('Hello world !', 123));
+// console.log(checkKeyword('Hello world !', 'llo'));
+// console.log(checkKeyword('Hello world !', 'lle'));

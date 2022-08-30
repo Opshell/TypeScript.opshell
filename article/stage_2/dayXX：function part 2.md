@@ -21,100 +21,72 @@
 [interfaces2](https://pjchender.dev/typescript/ts-functions/)
 
 ## 過程：
-   ### 1. 基本函示Type法
-   ```javascript
-    function add(num1, num2) {
-      return num1 + num2;
-    }
-   ```
-   > 有經驗的大大看到這個funciton第一個想法是，
-   > 到底是數字相加呢? 還是字串相加呢?
-   > 沒錯TypeScript 也一樣，
-   > 那會怎樣? 沒錯TypeScript會直接把萬惡的`any`拿出來用。
-   > 所以說，一般的funciton 都會積極`Annotation(註記)` 輸入和輸出。
-   > 像這樣：
-
+   ### 1. Type Alias 定義函式型別
    ```typescript
-    function add(num1: number, num2: number): number {
-      // 是不是就能明顯看出這個function在做甚麼了呢?
-      return num1 + num2;
-    }
-   ```
-   > ※ 但是`Annotation(註記)`是沒辦法多輸入或少輸入參數的，
-   >    有需求可以使使用`optional parameter(可選參數)`
-   >    語法：`參數?:型別`(沒錯，就是加個? 就是這麼形象)
-   ```typescript
-    function add(num1: number, num2?: number): number {
-      num2 = num2 || 0;
-      return num1 + num2;
-    }
-   ```
-   > ※ `optional parameter(可選參數)`是不能放在`required parameter(必填)`的前面。
+    type tFullName = (firstname: string, lastname: string) => string;
 
-   > 在`ES6`後，終於允許我們給函式參數新增預設值了，
-   > 而在TypeScript中會自動把有預設值的參數視為`optional parameter(可選參數)`，
-   ```typescript
-    function add(num1: number, num2: number = 0): number {
-      return num1 + num2;
-    }
+    const combinName: tFullName = (firstname, lastname) => {
+      // 字首轉大寫
+      firstname = firstname.charAt(0).toUpperCase() + firstname.slice(1);
+      lastname = lastname.charAt(0).toUpperCase() + lastname.slice(1);
 
-    console.log(add(1)); // 1
+      return `Hello ${lastname} ${firstname}, Welcome to typeScript.`;
+    };
+
+    console.log(combinName('Liu', 'opshell')); // Hello Opshell Liu, Welcome to typeScript.
    ```
-   > ※ 帶預設值的`optional parameter(可選參數)`可以放在`required parameter(必填)`的前面，
-   >    放最前面又不填的情況下，要給 `undefined`。
 
 ---
-   ### 2. 匿名函式Type法
+   ### 2. Interface 定義函式型別
    ```typescript
-    const add = function(num1: number, num2: number): number {
-      return num1 + num2;
+    interface iFaceStrChk {
+      (paragraph: string, keyword: string): boolean;
     }
-   ```
-   > ※ 其實上面的Type法是透過等好ˋ賦值`Inference(推論)`出add的型別，
-   >    完整`Annotation(註記)`的寫法是：
-   ```typescript
-    const add: (num1: number, num2: number) => number = function(num1: number, num2: number): number {
-      return num1 + num2;
+
+    const checkKeyword: iFaceStrChk = (paragraph, keyword) => {
+      return paragraph.search(keyword) !== -1;
     }
+
+    console.log(checkKeyword('Hello world !', 123)); // 報錯 類型number 無法指定給 string
+    console.log(checkKeyword('Hello world !', 'llo')); // true
+    console.log(checkKeyword('Hello world !', 'lle')); // false
    ```
-   > ~~超級繞~~
-   > ※ 要稍微區分一下，上面的=> 不是 `Arrow Funciton(箭頭函式)` 的箭頭喔!。
-   >    只要後面等號賦值有帶型別，`Inference(推論)`都不太會出事，
-   >    所以很少有人會用這麼繞口的做法= 口=
-   > ~~Opshell超愛箭頭函式的，這是我學ES6最大的動力。~~
+
+   > 花式
 
 ---
-   ### 3. rest (剩餘引數)【ES6】
-   > ES6 中，可以使用 ...rest 的方式獲取函式中的`Rest parameter(剩餘參數)`
-   > 或稱`其餘運算子` [參考](https://ithelp.ithome.com.tw/articles/10214394)
-   ```javascript
-    // JavaScript Code
-    function teamUp(team, ...members) {
-      members.forEach(function(member) {
-         team.push(member);
-      });
-    }
-
-    let Maya = [];
-    teamUp(Maya, 'Opshell', 'Bear');
-
-    console.log(Maya); // ['Opshell', 'Bear']
-   ```
-   > `其餘運算子`的原理是將剩餘的參數塞進一個陣列，所以我們可以用陣列的型別來定義它：
+   ### 3. Function Overload (函式超載)
+   > `Overload(超載)`允許一個函式接受不同數量或型別的引數時，作出不同的處理。
+   > 比如，我們需要實現一個函式 reverse，輸入數字 123 的時候，輸出反轉的數字 321，輸入字串 'hello' 的時候，輸出反轉的字串 'olleh'。
+   > 利用聯合型別，我們可以這麼實現：
    ```typescript
-    type stringArray = string | null;
-
-    function teamUp(team: stringArray[], ...members: stringArray[]) {
-      members.forEach((member) => {
-         team.push(member);
-      });
+    function reverse(x: number | string): number | string {
+      if (typeof x === 'number') {
+         return Number(x.toString().split('').reverse().join(''));
+      } else if (typeof x === 'string') {
+         return x.split('').reverse().join('');
+      }
     }
-
-    let Maya: stringArray[] = [];
-    teamUp(Maya, 'Opshell', 'Bear');
-
-    console.log(Maya); // ['Opshell', 'Bear']
    ```
+   > 然而這樣有一個缺點，就是不能夠精確的表達，輸入為數字的時候，輸出也應該為數字，輸入為字串的時候，輸出也應該為字串。
+   > Function Overload 會包含兩個部分：
+   > - overload signatures：也就是 type definition 的部分
+   > - function implementation：實際上執行的 function，它的型別需要滿足所有的 overload signatures
+   > 這時，我們可以使用過載定義多個 reverse 的函式型別：
+   ```typescript
+    function reverse(x: number): number;
+    function reverse(x: string): string;
+    function reverse(x: number | string): number | string {
+      if (typeof x === 'number') {
+         return Number(x.toString().split('').reverse().join(''));
+      } else if (typeof x === 'string') {
+         return x.split('').reverse().join('');
+      }
+    }
+   ```
+   > 上例中，我們重複定義了多次函式 reverse，前幾次都是函式定義，最後一次是函式實現。在編輯器的程式碼提示中，可以正確的看到前兩個提示。
+   > 成功使用 function overload 之後，VSCode 的 parameter hints 會跳出提示來說明可用的 function signatures：
+   > ※ 注意，TypeScript 會優先從最前面的函式定義開始匹配，所以多個函式定義如果有包含關係，需要優先把精確的定義寫在前面。
 
 ---
 ## 小結：
