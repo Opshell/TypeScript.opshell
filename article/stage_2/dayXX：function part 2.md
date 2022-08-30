@@ -1,49 +1,52 @@
 ![alt](https://)
 
-# 這豈不是無敵了??
+# 沒想到還可以超載起來
 > *當ES6 裝上了TypeScript，*
 > *這豈不是無敵了?!。*
 > *───────────────────────── By Opshell*
-![alt](https://)
-
----，。
-## 目標: 學會Function 的Type法
-   > 作為JavaScript 中常用到的的部分，
-   > 在 ES6 終於普及後有了更多花式的玩法，
-   > `Arrow Funciton`、參數預設值、`...rest (其餘運算子)`，
-   > 簡直就是天堂!!
-   > 在 TypeScript 中 當然有許多裝備可以配合這些花式玩法，
-   > 就讓我們一起看下去。
 
 ---
+## 目標: 學會 Function 的 Type法 Part2
+   > 今天來把剩下常用的function type 法來學完，
+   > `Alias(別名)` 、`Interface(介面)`和很酷的`Overload(超載)`，
+   > 而且透過這些有趣的東西來稍微複習、熟悉我們前面學習的。
 
-[interfaces & 過載](https://willh.gitbook.io/typescript-tutorial/basics/type-of-function)
-[interfaces2](https://pjchender.dev/typescript/ts-functions/)
-
+---
 ## 過程：
-   ### 1. Type Alias 定義函式型別
+   ### 1. Alias(別名)
+   > 語法：`type 類型名稱 = (參數: 型別) => 型別`;
    ```typescript
     type tFullName = (firstname: string, lastname: string) => string;
 
-    const combinName: tFullName = (firstname, lastname) => {
-      // 字首轉大寫
-      firstname = firstname.charAt(0).toUpperCase() + firstname.slice(1);
-      lastname = lastname.charAt(0).toUpperCase() + lastname.slice(1);
+    // 字首轉大寫
+    const upWord = (word: string): string => word.charAt(0).toUpperCase() + word.slice(1);
 
-      return `Hello ${lastname} ${firstname}, Welcome to typeScript.`;
+    const combinName: tFullName = (firstname, lastname) => {
+      return `Hello ${upWord(lastname)} ${upWord(firstname)}, Welcome to typeScript.`;
     };
 
     console.log(combinName('Liu', 'opshell')); // Hello Opshell Liu, Welcome to typeScript.
    ```
+   > 除了`Alias(別名)` 的範例以外，
+   > 順便複習了 箭頭函式 + 函式`Inference(推論)`，
+   > 可以在 ts 中確認兩個函式的的型別，會有更多的了解和熟悉度。
+![alt](https://)
 
 ---
-   ### 2. Interface 定義函式型別
+   ### 2. Interface(介面)
+   > 和前面的`Alias(別名)`
+   > 非常的接近，在前一篇 funciton part 1 提到的，
+   > 等號賦值 + `Inference(推論)` 的特性，
+   > 可以在上面`Alias(別名)`的例子和下面這個，
+   > 都可以很明顯看出這個特性，
+   > 不需要使用完整的型別陳述：
    ```typescript
     interface iFaceStrChk {
       (paragraph: string, keyword: string): boolean;
     }
 
     const checkKeyword: iFaceStrChk = (paragraph, keyword) => {
+      // 如果再 Ts 中 查看paragraph 或 keyword 都會告訴你是string
       return paragraph.search(keyword) !== -1;
     }
 
@@ -51,47 +54,58 @@
     console.log(checkKeyword('Hello world !', 'llo')); // true
     console.log(checkKeyword('Hello world !', 'lle')); // false
    ```
-
-   > 花式
+![alt](https://)
 
 ---
-   ### 3. Function Overload (函式超載)
+   ### 3. Overload (超載)
    > `Overload(超載)`允許一個函式接受不同數量或型別的引數時，作出不同的處理。
-   > 比如，我們需要實現一個函式 reverse，輸入數字 123 的時候，輸出反轉的數字 321，輸入字串 'hello' 的時候，輸出反轉的字串 'olleh'。
-   > 利用聯合型別，我們可以這麼實現：
+   > 我們有一個反轉輸入的需求，做成一個函式 reverse，
+   > 輸入數字 123 的時候，輸出反轉的數字 321，輸入字串 'hello' 的時候，輸出反轉的字串 'olleh'。
+   > 我們會想到利用`Union(聯集)`型別：
    ```typescript
-    function reverse(x: number | string): number | string {
-      if (typeof x === 'number') {
-         return Number(x.toString().split('').reverse().join(''));
-      } else if (typeof x === 'string') {
-         return x.split('').reverse().join('');
+    function reverse(word: number | string): number | string {
+      if (typeof word === 'number') {
+         return Number(word.toString().split('').reverse().join(''));
+      } else if (typeof word === 'string') {
+         return word.split('').reverse().join('');
       }
     }
    ```
-   > 然而這樣有一個缺點，就是不能夠精確的表達，輸入為數字的時候，輸出也應該為數字，輸入為字串的時候，輸出也應該為字串。
-   > Function Overload 會包含兩個部分：
-   > - overload signatures：也就是 type definition 的部分
-   > - function implementation：實際上執行的 function，它的型別需要滿足所有的 overload signatures
-   > 這時，我們可以使用過載定義多個 reverse 的函式型別：
+   > 但`Union(聯集)`輸入與輸出同時使用時有個問題，沒辦法精確的表達輸入與輸出的對應關係，
+   > reverse 在輸入數字的時候，輸出也應該是數字，輸入字串的時候，輸出也應該是字串。
+   > 這時候就可以使用 `Overload(超載)`技巧。
+   > `Overload(超載)`會包含兩個部分：
+   > - `overload signatures`：也就是函式輸入輸出對應的部分
+   > - `function implementation`：實際上執行的 function，它的型別需要滿足所有的 `overload signatures`
+
    ```typescript
-    function reverse(x: number): number;
-    function reverse(x: string): string;
-    function reverse(x: number | string): number | string {
-      if (typeof x === 'number') {
-         return Number(x.toString().split('').reverse().join(''));
-      } else if (typeof x === 'string') {
-         return x.split('').reverse().join('');
+    // overload signatures => `type definition`(型別定義)`
+    function nsReverse(word: number): number; // 數字
+    function nsReverse(word: string): string; // 字串
+
+    // 可以隔開也沒關係
+    // function implementation 實現 funciton 功能
+    function nsReverse(word: number | string): number | string {
+      if (typeof word === 'number') {
+         return Number(word.toString().split('').reverse().join(''));
+      } else {
+         return word.split('').reverse().join('');
       }
     }
+
+    console.log(nsReverse('aerg')); // grea
    ```
-   > 上例中，我們重複定義了多次函式 reverse，前幾次都是函式定義，最後一次是函式實現。在編輯器的程式碼提示中，可以正確的看到前兩個提示。
-   > 成功使用 function overload 之後，VSCode 的 parameter hints 會跳出提示來說明可用的 function signatures：
+   > 例子中重複定義了多次函式 reverse，前幾次都是函式對照定義，最後一次是函式實現。
+   > 成功使用函式`Overload(超載)` 之後，VSCode 的  會跳出提示來說明可用的 `function signatures`
+   > ※ VSCode 的`parameter hints(鑲嵌提示)`功能，可以這樣啟用它：在settings.json中添加：
+   >   "javascript.inlayHints.parameterNames.enabled": "all",
+![alt](https://)
    > ※ 注意，TypeScript 會優先從最前面的函式定義開始匹配，所以多個函式定義如果有包含關係，需要優先把精確的定義寫在前面。
 
 ---
 ## 小結：
-   > 今天會了Funciton的Type法
-   > 而且更了解了 ES6 的`其餘預算子`
-   > 對於型別的Type法也更熟練了
-   > 明天繼續學習 Funciton的 Types法，
-   > ~~這麼有料的東西怎麼可以一天水完?~~
+   > 終於把Function Type法學完啦，
+   > 沒想到常用的 JS funciton 會有這麼多種花樣的Type 方式，
+   > ~~居然讓我水了兩天~~
+   > 明天就要進入Object的世界啦~
+   > 大家期不期待呢?

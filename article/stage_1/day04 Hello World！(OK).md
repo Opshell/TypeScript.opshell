@@ -17,17 +17,6 @@
    > #### 上面講的可能有點模糊，我們做個簡單的例子來體會TypeScript的優勢：
 ---
 ## 過程：
-- ### 安裝TypeScript(全域)
-    > ```
-    > npm install -g typescript
-    > ```
-    確認目前安裝的環境↓↓↓
-    > ```
-    > npm list -g --depath=0
-    > ```
-    > #### 如果安裝順利 結果會如下↓↓↓
-    ![alt](https://)
-
 - ### TypeScript Say Hello
     #### 1. 新增ts 資料夾
     #### 2. 新增一支檔案在ts資料夾裡：Hello.ts(內容如下)

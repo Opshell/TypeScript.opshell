@@ -1,10 +1,10 @@
 "use strict";
+// 字首轉大寫
+const upWord = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 const combinName = (firstname, lastname) => {
-    firstname = firstname.charAt(0).toUpperCase() + firstname.slice(1);
-    lastname = lastname.charAt(0).toUpperCase() + lastname.slice(1);
-    return `Hello ${lastname} ${firstname}, Welcome to typeScript.`;
+    return `Hello ${upWord(lastname)} ${upWord(firstname)}, Welcome to typeScript.`;
 };
-console.log(combinName('Liu', 'opshell'));
+console.log(combinName('Liu', 'opshell')); // Hello Opshell Liu, Welcome to typeScript.
 // interface iFaceStrChk {
 //   (paragraph: string, keyword: string): boolean;
 // }
