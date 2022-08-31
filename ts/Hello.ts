@@ -15,6 +15,12 @@ function nsReverse(word: number | string): number | string {
 console.log(nsReverse('aerg')); // grea
 
 
+const plus30 = (num: number): number => num + 30;
+
+console.log(plus30(123));   // 153
+console.log(plus30('123')); //
+console.log(plus30(Number('123'))); // 153
+
 
 // type tFullName = (firstname: string, lastname: string) => string;
 

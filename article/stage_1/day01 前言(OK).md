@@ -79,6 +79,37 @@
    > - 2021年工程師使用最多的語言第五名
    > 這麼多大佬前仆後繼的上了，還在等什麼?
 
+   - ### 4. 例子：
+   > 做一個簡單的函式 希望他幫我把丟進來的東西都+30，
+   ```JavaScript
+    // javascript Code
+    const plusThirty = num => num + 30;
+
+    console.log(plusThirty(123));   // 153
+    console.log(plusThirty('123')); // 12330
+    console.log(plusThirty(Number('123'))); // 153
+   ```
+   > 但在一些奇怪的情況下會出現都進來的參數不是數字的情況，
+   > 這時我們就會需要使用方法三，幫她做型別的轉換，
+   > 在邏輯複雜起來的情況，找了一堆錯誤後，
+   > 使用Number(a) + Number(b)來修正，
+   > 程式碼變得又臭又長的情況，很不優雅，
+   > 更何況遇到了parseInt('2srth')這種情況...?
+   > 簡直一言難盡...。
+
+   > 到了TypeScript，世界都不一樣了!↓↓↓
+   ```typescript
+    const plusThirty = (num: number): number => num + 30;
+
+    console.log(plusThirty(123));   // 153
+    console.log(plusThirty('123')); //
+    console.log(plusThirty(Number('123'))); // 153
+   ```
+   > ts老媽子開始提醒你不要瞎搞
+   > 再也不需要，兜兜轉轉好幾圈後做型別轉換來修Bug了
+
+![alt](https://)
+
 ---
 ## 五、 他到底有多好用的參考資料：
    > 不管是成長速度、討論度都持續創高 ~~(要是我買的股票也這樣就好了)~~
@@ -96,5 +127,3 @@
    > 開局暖身也差不多結束了，
    > ~~明天準備卯起來水~~
    > 各位大大加油!
-
-

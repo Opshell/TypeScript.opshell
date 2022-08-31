@@ -32,28 +32,7 @@
 > #### 3. 要裝環境 TypeScript 的編譯環境...
 
 ---
-- ### 例子：
-   > 做一個簡單的函式 希望他幫我把丟進來的東西都+30，
-   ```JavaScript
-    // javascript Code
-    const plus = num => num + 30;
 
-    console.log(plus(123));   // 153
-    console.log(plus('123')); // 12330
-    console.log(plus(Number('123'))); // 153
-   ```
-   > 但在一些奇怪的情況下會出現都進來的參數不是數字的情況，
-   > 這時我們就會需要使用方法三，幫她做型別的轉換，
-   > 在邏輯複雜起來的情況，找了一堆錯誤後，
-   > 使用Number(a) + Number(b)來修正，
-   > 程式碼變得又臭又長的情況，很不優雅，
-   > 更何況遇到了parseInt('2srth')這種情況...?
-   > 這時候只能唱[心裡有針](https://www.youtube.com/watch?v=gqpGr_QlUR0)了...簡直一言難盡。
-
-   > 到了TypeScript，世界都不一樣了!↓↓↓
-   > ts老媽子開始提醒你不要瞎搞
-   > 再也不需要，兜兜轉轉好幾圈後做型別轉換來修Bug了
-![alt](https://)
 
 ---
 ## 小結：
