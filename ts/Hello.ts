@@ -1,25 +1,44 @@
-// overload signatures => `type definition`(型別定義)`
-function nsReverse(word: number): number; // 數字
-function nsReverse(word: string): string; // 字串
+// interface IMember {
+//   name: string,
+//   age: number,
+//   gender: string,
+//   car?: null,
+//   house?: undefined,
+//   summary(): `${IMember.name}：${IMember.age} years old, is a ${gender}.`;
+// };
 
-// 可以隔開也沒關係
-// function implementation 實現 funciton 功能
-function nsReverse(word: number | string): number | string {
-  if (typeof word === 'number') {
-    return Number(word.toString().split('').reverse().join(''));
-  } else {
-    return word.split('').reverse().join('');
-  }
+
+type SLGender = 'man' | 'woman' | 'other';
+function consoleMemberGender(name: String, gender: SLGender): void {
+  console.log(`name is a ${gender}.`);
 }
 
-console.log(nsReverse('aerg')); // grea
+consoleMemberGender('Opshell', 'handsome guy');
+consoleMemberGender('Opshell', 'man');
 
 
-const plus30 = (num: number): number => num + 30;
+// overload signatures => type definition`(型別定義)
+// function nsReverse(word: number): number; // 數字
+// function nsReverse(word: string): string; // 字串
 
-console.log(plus30(123));   // 153
-console.log(plus30('123')); //
-console.log(plus30(Number('123'))); // 153
+// // 可以隔開也沒關係
+// // function implementation 實現 funciton 功能
+// function nsReverse(word: number | string): number | string {
+//   if (typeof word === 'number') {
+//     return Number(word.toString().split('').reverse().join(''));
+//   } else {
+//     return word.split('').reverse().join('');
+//   }
+// }
+
+// console.log(nsReverse('aerg')); // grea
+
+
+// const plus30 = (num: number): number => num + 30;
+
+// console.log(plus30(123));   // 153
+// console.log(plus30('123')); //
+// console.log(plus30(Number('123'))); // 153
 
 
 // type tFullName = (firstname: string, lastname: string) => string;

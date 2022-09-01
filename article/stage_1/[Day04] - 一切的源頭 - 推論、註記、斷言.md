@@ -11,19 +11,30 @@
 ---
 ## 過程：
 - ### 三種主要的模式
-   Title|型別註記|型別推論|型別斷言
+   Title|型別推論|型別註記|型別斷言
    -------------|-------------|-------------|-------------
-   英文|Annotation|Inference|Assertion
-   模式|主動|被動|主動
-   內容|大多使用在初始化階段，例如宣告變數或函式參數等|自動推論資料型別的機制|手動指定一個值的型別
-   後續內容會說|`Annotation(註記)`|`Inference(推論)`|`Assertion(斷言)`
+   英文|Inference|Annotation|Assertion
+   模式|被動|主動|主動
+   內容|自動推論資料型別|大多使用在初始化階段，例如宣告變數或函式參數等|手動指定、選擇一個值的型別
+   後續內容會說|`Inference(推論)`|`Annotation(註記)`|`Assertion(斷言)`
 
-   > 並且會總稱他們為Type法(TypeScript化的方式)
+   > 後面文章會總稱他們為Type法(TypeScript化的方式)
 
 ---
 - ### 看一下他們大概的使用方式 (你告訴TS你要什麼)
-   #### 1. `Annotation(註記)`
-   > 像註解一樣，只是註解的方式變成冒號↓↓↓
+   #### 1. `Inference(推論)` (TS猜你要什麼)
+   ```JavaScript
+    let year = 'Thirty';
+    year = 30;
+   ```
+   > 這段程式在JavaScript完全不會有問題，
+   > 但是在TS就會叫了
+![alt](https://)
+   > 在你宣告時，他會根據的預設的值猜你變數的型別。
+
+---
+   #### 2. `Annotation(註記)`
+   > 像註解一樣，只是註解的方式變成冒號
    ```typescript
     // JavaScript code
     const plusThirty = function(num) {return num + 30;}
@@ -35,16 +46,6 @@
    >    (當然還是會編譯成Js檔)
    >    有效預防錯誤、統一規格、提高可讀性，方便多人協作。
 
----
-   #### 2. `Inference(推論)` (TS猜你要什麼)
-   ```JavaScript
-    let year = 'Thirty';
-    year = 30;
-   ```
-   > 這段程式在JavaScript完全不會有問題
-   > 但是在TS就會叫了，像這樣↓↓↓
-![alt](https://)
-   > 在你宣告時，他會根據的預設的值猜你變數的型別。
 
 ---
    #### 3. `Assertion(斷言)` (我說我要什麼)
@@ -80,7 +81,7 @@
    ```
    > ops 的型別推論是沒有任何屬性的物件，
    > 因此，不能在屬性上添加 year 或 gender，
-   > 這時候透過型別斷言可以避免這個問題↓↓↓
+   > 這時候透過型別斷言可以避免這個問題
 
    ``` typescript
     // 先利用 interface 建立一個類別
@@ -101,7 +102,7 @@
     ops.gender = 'man';
    ```
 
-   > 這時候也許就會想了，那interface 能不能當作"型別註解"的型別呢?
+   > 這時候也許就會想了，那interface 能不能當作`Annotation(註記)`的型別呢?
    > 測試了一下發現他是會報錯的
 
    ``` typescript
@@ -112,7 +113,7 @@
     const ops: Human = {};
    ```
 ![alt](https://)
-   > 使用"型別註解"的方式宣告，需要完整的宣告完他的參數。↓↓↓
+   > 使用"型別註解"的方式宣告，需要完整的宣告完他的參數。
    ``` typescript
     interface Human {
       year: number;
@@ -127,9 +128,8 @@
 ---
 ## 小結：
    > 今天的小例子，應該對TypeScript的型別使用方式有一定的了解，
-   > ~~也對她使用上出現的麻煩有了感受~~
    > 大概有三種主要的方式與特性來宣告型別。
-   > `Annotation(註記)`、`Inference(推論)`、`Assertion(斷言)`
+   > `Inference(推論)`、`Annotation(註記)`、`Assertion(斷言)`
    > 我覺得，這三種沒有誰比較好，在合理運用的情況下，他們可以相輔相成，
    > 有良好的coding體驗的情況下又不會增加太多負擔。
    > 在後面的筆記中，會越來越熟悉如何互相配合。

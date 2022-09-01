@@ -5,43 +5,26 @@
 	> *這豈不是無敵了?!。*
 	> *───────────────────────── By Opshell*
 
+
+https://pjchender.dev/ironman-2021/ironman-2021-day12/
+
 ---
-## 目標: 學會Object 的Type法，理解什麼是 `Interfaces(介面)`
-   > 物件導向的語言中，`Interfaces(介面)`是一個很重要的概念，
-   > 它是對行為的一種抽象，如何運作則由`classes(類別)`去`implement(實現)`。
-
-   > 而在TypeScript 中的`Interfaces(介面)`是一個非常靈活的概念，
-   > 除了可用於對`classes(類別)`的一部分行為進行抽象以外，
-   > 也很常用描述`object(物件)`的`Shape(形狀)`。
-
-https://magiclen.org/typescript-object/
-https://ithelp.ithome.com.tw/articles/10269828
-https://willh.gitbook.io/typescript-tutorial/basics/type-of-object-interfaces
-https://ithelp.ithome.com.tw/articles/10214840
+## 目標: 學會Function 的Type法
+   > 作為JavaScript 中常用到的的部分，
+   > 在 ES6 終於普及後有了更多花式的玩法，
+   > `Arrow Funciton`、參數預設值、`...rest (其餘運算子)`，
+   > 簡直就是天堂!!
+   > 在 TypeScript 中 當然有許多裝備可以配合這些花式玩法，
+   > 就讓我們一起看下去。
 
 ---
 ## 過程：
-   - ### 1. 大括號 {} 物件
-   > 語法：`物件名稱: {} = {}`
+   - ### 1. 基本函示Type法
    ```javascript
-    // JavaScript Code
-    let o = {
-        name: "David",
-        age: 18,
-        toString: function () {
-            return `${this.age}: ${this.name}`;
-        },
-    };
-
-    console.log(o.toString());
+    function add(num1, num2) {
+      return num1 + num2;
+    }
    ```
-
-   ```typescript
-
-   ```
-
-
-
    > 有經驗的大大看到這個funciton第一個想法是，
    > 到底是數字相加呢? 還是字串相加呢?
    > 沒錯TypeScript 也一樣，

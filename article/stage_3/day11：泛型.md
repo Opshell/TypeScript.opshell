@@ -6,7 +6,11 @@
 > *───────────────────────── By Kent Beck*
 ![alt](https://)
 
----，。
+---
+
+https://pjchender.dev/ironman-2021/ironman-2021-day06/
+https://pjchender.dev/ironman-2021/ironman-2021-day02/
+
 
 ## 目標: [泛型](https://medium.com/onedegree-tech-blog/typescript-%E4%B8%80%E4%BA%9B%E4%BB%A4%E4%BA%BA%E5%8F%88%E6%84%9B%E5%8F%88%E6%81%A8%E7%9A%84%E5%85%A7%E5%AE%B9-type-guard-narrowing-1655a9ae2a4d)
    > 首先我們可以先想想如何讓型別轉換這件事被複用，

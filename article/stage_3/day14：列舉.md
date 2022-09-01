@@ -110,6 +110,7 @@
    > 　　原理是使用 IIFE 產生 Object 將 key 和 value 綁定到 Object，
    >    造成一些效能上的耗損，也會增加內存，
    >    Enum數量一多，效能會變差。
+
    > ※　要解決上面這個問題，在不需要key value互相對應的情況下
    >    可以像這樣：
    ```typescript
