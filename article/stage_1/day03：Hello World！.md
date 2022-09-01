@@ -1,9 +1,9 @@
 ![alt](https://)
 
 # 牙牙學語的第一步
-> *如果不知道怎麼開始，*
-> *就來個Hello Wrold吧。*
-> *───────────────────────── By Opshell*
+   > *如果不知道怎麼開始，*
+   > *就來個Hello Wrold吧。*
+   > *───────────────────────── By Opshell*
 
 ---
 ## 目標：使用TypeScript 做個Hello Wrold

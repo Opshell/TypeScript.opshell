@@ -1,9 +1,9 @@
 ![alt](https://)
 
 # 沒想到還可以超載起來
-> *當ES6 裝上了TypeScript，*
-> *這豈不是無敵了?!。*
-> *───────────────────────── By Opshell*
+   > *當ES6 裝上了TypeScript，*
+   > *這豈不是無敵了?!。*
+   > *───────────────────────── By Opshell*
 
 ---
 ## 目標: 學會 Function 的 Type法 Part2
@@ -13,7 +13,7 @@
 
 ---
 ## 過程：
-   ### 1. Alias(別名)
+   - ### 1. Alias(別名)
    > 語法：`type 類型名稱 = (參數: 型別) => 型別`;
    ```typescript
     type tFullName = (firstname: string, lastname: string) => string;
@@ -33,7 +33,7 @@
 ![alt](https://)
 
 ---
-   ### 2. Interface(介面)
+   - ### 2. Interface(介面)
    > 和前面的`Alias(別名)`
    > 非常的接近，在前一篇 funciton part 1 提到的，
    > 等號賦值 + `Inference(推論)` 的特性，
@@ -57,7 +57,7 @@
 ![alt](https://)
 
 ---
-   ### 3. Overload (超載)
+   - ### 3. Overload (超載)
    > `Overload(超載)`允許一個函式接受不同數量或型別的引數時，作出不同的處理。
    > 我們有一個反轉輸入的需求，做成一個函式 reverse，
    > 輸入數字 123 的時候，輸出反轉的數字 321，輸入字串 'hello' 的時候，輸出反轉的字串 'olleh'。
@@ -105,7 +105,7 @@
 ---
 ## 小結：
    > 終於把Function Type法學完啦，
-   > 沒想到常用的 JS funciton 會有這麼多種花樣的Type 方式，
+   > 沒想到常用的 JS funciton 會有這麼多種花樣的 Type 方式，
    > ~~居然讓我水了兩天~~
    > 明天就要進入Object的世界啦~
    > 大家期不期待呢?

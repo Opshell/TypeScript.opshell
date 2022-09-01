@@ -11,9 +11,9 @@
 ## 目標: [泛型](https://medium.com/onedegree-tech-blog/typescript-%E4%B8%80%E4%BA%9B%E4%BB%A4%E4%BA%BA%E5%8F%88%E6%84%9B%E5%8F%88%E6%81%A8%E7%9A%84%E5%85%A7%E5%AE%B9-type-guard-narrowing-1655a9ae2a4d)
    > 首先我們可以先想想如何讓型別轉換這件事被複用，
    > 我們不妨把想法簡單化，就是建立一個 function 把 A 型態轉換成 B 型態，
-   > 而這時候就必須要利用 TypeScript 中的 `Generics 泛型`這個技巧了。
+   > 而這時候就必須要利用 TypeScript 中的 `Generics(泛型)`這個技巧了。
 
-   > 泛型（Generics）是指在定義function、interfaces或class的時候，
+   > `Generics(泛型)`是指在定義 `function`、`interfaces` 或 `class` 的時候，
    > 不預先指定具體的型別而在使用的時候再指定型別的一種特性。
 ---
 
