@@ -94,11 +94,11 @@
 ![object-2](https://)
 
 ---
-   - ### 3. 課堂小知識`String Literal(字串字面)`
+   - ### 3. 筆記小知識`String Literal(字串字面)`
    > ※  這邊會注意到我的gender的型別變成了 'man' | 'woman' | 'other',
    >     其實這是一種叫做`String Literal(字串字面)`的型別，
    >     聽起來複雜，其實原理很簡單，就是約束值，
-   >     只能在有宣告的值中選擇。
+   >     只能從有宣告的值中選擇。
    ```typescript
     type SLGender = 'man' | 'woman' | 'other';
     function consoleMemberGender(name: String, gender: SLGender): void {
