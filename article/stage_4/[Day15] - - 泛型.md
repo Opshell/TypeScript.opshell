@@ -11,20 +11,32 @@
 https://pjchender.dev/ironman-2021/ironman-2021-day06/
 https://pjchender.dev/ironman-2021/ironman-2021-day02/
 
-
-## 目標: [泛型](https://medium.com/onedegree-tech-blog/typescript-%E4%B8%80%E4%BA%9B%E4%BB%A4%E4%BA%BA%E5%8F%88%E6%84%9B%E5%8F%88%E6%81%A8%E7%9A%84%E5%85%A7%E5%AE%B9-type-guard-narrowing-1655a9ae2a4d)
-   > 首先我們可以先想想如何讓型別轉換這件事被複用，
-   > 我們不妨把想法簡單化，就是建立一個 function 把 A 型態轉換成 B 型態，
-   > 而這時候就必須要利用 TypeScript 中的 `Generics(泛型)`這個技巧了。
-
+## 目標: `Generics(泛型)`
+   > 在前面的例子中，會發現型別都會事先定義好，
+   > 想使用不同的型別的參數就會需要使用很多技巧，
+   > 除了前面介紹的`Union(聯集)`、`Overload(超載)`等方式，
    > `Generics(泛型)`是指在定義 `function`、`interfaces` 或 `class` 的時候，
-   > 不預先指定具體的型別而在使用的時候再指定型別的一種特性。
+   > 不指定具體的型別，讓型別抽象化，使用的時候再指定型別的一種特性。
+   > 簡單來說就是讓型別，也變成一個變數。
 ---
 
 ## 過程：
+   ### 1. `Generics(泛型)`的使用
+   >
    ```typescript
-    const createEnumMapper = <T>(mapping: T) => (value: keyof T | null): T[keyof T] | undefined => {
-        return value === null ? undefined : mapping[value];
+    function spit0utFirstNumber(array: number[]): number {
+      const [firstEl] = array;
+      return firstEl;
+    }
+
+    function spit0utFirstString(array: string[]): string {
+      const [firstEl] = array;
+      return firstEl;
+    }
+
+    function spitOutFirst<T>(array: T[]): T {
+      const [firstEl] = array;
+      return firstEl;
     }
    ```
    > 這個 createEnumMapper 的 function 是一個 currying function，

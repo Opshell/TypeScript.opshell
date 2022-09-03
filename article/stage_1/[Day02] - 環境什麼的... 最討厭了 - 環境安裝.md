@@ -74,17 +74,16 @@
    ```
     npm install -g typescript
    ```
-   > 如果你沒有遇到任何問題，應該會長這樣，
    > 確認目前安裝的環境：
    ```
     npm list -g --depath=0
    ```
-   > 會長這樣：
+   > 如果你沒有遇到任何問題，應該會長這樣：
 
    ![總共安裝的東西](https://ithelp.ithome.com.tw/upload/images/20220902/20109918wYus9cIckN.png)
 
    > 可能會有讀者對於Ops的終端樣式感到困惑，
-   > 不過樣是不影響程式碼效果，如果有興趣，
+   > 不過樣式不影響程式碼效果，如果有興趣，
    > 請參考[Will保哥 大大 - 如何打造一個華麗又實用的 PowerShell 命令輸入環境](https://blog.miniasp.com/post/2021/11/24/PowerShell-prompt-with-Oh-My-Posh-and-Windows-Terminal)
 
 ---

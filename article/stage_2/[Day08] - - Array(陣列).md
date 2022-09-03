@@ -7,13 +7,11 @@
 
 ---
 ## 目標: [Array](https://ithelp.ithome.com.tw/articles/10270427)
+   > 在 TypeScript 中， 大約有四種方式可以來定義陣列型別
 
 ---
 ## 過程：
-   - ### - Array
-   > 在 TypeScript 中， 有四種方式可以來定義陣列型別
-
-   #### 1. Array Inference(推論)
+   - ### 1. Array Inference(推論)
    > 當你宣告陣列，內容為同型別的元素時，
    > TypeScript會自動`Inference(推論)`，
    > 將他們當 `T[]` 來推論。
@@ -30,7 +28,7 @@
    > ※ 這時候TS會聰明的成 `Union Type(聯型別集)` (string | number)[] 喔。
 
 ---
-   #### 2. Array Annotation(註記)
+   - ### 2. Array Annotation(註記)
    > 語法：`變數: 型別[] = []`
    ```typescript
     // string[] 表示此陣列型別只允許字串
@@ -48,15 +46,16 @@
    >    所以一般況還是會使用`Annotation(註記)`法。
 
 ---
-   #### 3. Array Generic(泛型陣列)
+   - ### 3. Array Generic(泛型陣列)
    > 語法：`變數: Array<型別> = []`
    ```typescript
     const team: Array<string> = [ 'Opshell', 'Bear', 'Egg', 'Patty' ];
    ```
 
    > ※ `Generic(泛型)`是個比較龐大的主題，今天就先混個臉熟。
+
 ---
-   #### 4. interface (介面)
+   - ### 4. interface (介面)
    > 使用 `interface(介面)` 來描述陣列的形狀，
    ```typescript
     // iFaceStringArray 表示：

@@ -139,3 +139,28 @@
 ### 參考資料
 [【Day 14】TypeScript 資料型別 - 複合型別（Union & Intersection) & 型別檢測(Type Guard)](https://ithelp.ithome.com.tw/articles/10222470?sc=rss.iron)
 [Typescript 一些令人又愛又恨的內容 — Type Guard、Narrowing -> 延伸到泛型](https://medium.com/onedegree-tech-blog/typescript-%E4%B8%80%E4%BA%9B%E4%BB%A4%E4%BA%BA%E5%8F%88%E6%84%9B%E5%8F%88%E6%81%A8%E7%9A%84%E5%85%A7%E5%AE%B9-type-guard-narrowing-1655a9ae2a4d)
+
+
+
+
+ // 參考
+interface Foo {
+  (a: number): number;
+}
+
+// 由於 foo 這個函式最終可能沒有回傳值
+// ❌ 修改 interface：因此在宣告 Foo 時，回傳值要是 `number | undefined`
+const foo: Foo = (a) => {
+  if (a > 5) {
+    return 3;
+  }
+};
+
+// ⭕️ 修改函式：或者在函式最後拋出錯誤（never），這時候因為 `number | never` 等同於 `number`
+// 因此將符合 interface 的定義
+const bar: Foo = (a) => {
+  if (a > 5) {
+    return 3;
+  }
+  throw new Error('a is not over 5');
+};
