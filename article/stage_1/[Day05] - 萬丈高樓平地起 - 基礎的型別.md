@@ -42,15 +42,15 @@
    ```
    > 在 TypeScript 的 `Inference(推論)` 中 ，
    > 上面的宣告會被視為 註解的 Type，是賦予Type的一種方法，
-   > ※ 1. `null` 和 `undefined` 被稱為  Nullable Types
-   > 　　　在未指名的情況下，Nullable Types會被`Inference(推論)`成`any`
+   > ※ 1. `null` 和 `undefined` 被稱為  `Nullable Types`
+   > 　　　 在未指名的情況下，`Nullable Types`會被`Inference(推論)`成`any`
 
    > ※ 2. 在TS 中，any 是非常難掌控的類型，畢竟他突破了TS 被創造出來的目的，
-   > 　　　簡直就是混世大魔王，能不用，就不用，
-   > 　　　如果用多了，還不如乾脆回頭寫JS就好，
+   > 　　　 簡直就是混世大魔王，能不用，就不用，
+   > 　　　 如果用多了，還不如乾脆回頭寫JS就好，
 
    > ※ 3. 也會注意到如果你一開始不和TS說內容是什麼也不`Annotation(註記)`他的類型，
-   > 　　　TS 就會當他是any, 原理是：在JS宣告時沒帶值就等於帶入`undefined`。
+   > 　　　 TS 就會當他是`any`, 原理是：在JS宣告時沒帶值就等於帶入`undefined`。
 
    > 為了盡量不使用`any`，上面的宣告會使用`Annotation(註記)`變成這樣：
    ```typescript

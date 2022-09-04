@@ -1,24 +1,45 @@
 "use strict";
-// 接受 memberConfig 做為參數，回傳 {summary: string; weight: number | null}
-const createCube = (config) => {
-    let cube = {
-        title: 'cube',
-        volume: 1000,
-        weight: null
-    };
-    if (config.title) {
-        cube.title = config.title;
+class Member {
+    // constructor(建構子)
+    constructor(title, age = 0) {
+        // Property(屬性)
+        this.title = 'nobody';
+        this.skill = ['種草', '嘴砲'];
+        if (title) {
+            this.title = title;
+        }
+        this.age = age;
     }
-    if (config.weight) {
-        cube.weight = config.weight;
-    } // 上面沒註記 這邊會出事 number 不能塞進null
-    if (config.long && config.width && config.height) {
-        cube.volume = config.long * config.width * config.height;
+    // Property(屬性)
+    summary() {
+        return `${this.title} is ${this.age} years old.`;
     }
-    return cube;
-};
-const Opshell = createCube({ title: 'bigCube', long: 20, width: 20, height: 20 });
-console.log(Opshell.title); // Opshell is 30 years old.
-console.log(Opshell.volume); // 60
-console.log(Opshell.weight); // 60
+}
+class SuperMember extends Member {
+    constructor(title, age, weight = 100) {
+        // 在這裡執行的 super 等同於執行父類別的 constructor(建構子)
+        super(title, age);
+        this.weight = weight;
+        this.skill = this.skill.concat([
+            '散步投罐罐',
+            '熊熊掛保證'
+        ]);
+    }
+    DrinkCola() {
+        return this.weight;
+    }
+    superSkill() {
+        return this.skill.concat([
+            '散步投罐罐',
+            '熊熊掛保證'
+        ]);
+    }
+}
+SuperMember.skill = [];
+const Bear = new SuperMember('Bear', 40, 110);
+console.log(Bear.summary()); // Bear is 40 years old.
+console.log(Bear.weight); // 'weight' 是私有屬性，只能從類別 'SuperMember' 中存取
+console.log(Bear.DrinkCola()); // 100
+console.log(SuperMember.skill); // undefined
+console.log(Bear.superSkill()); // ['種草', '嘴砲', '散步投罐罐', '熊熊掛保證', '散步投罐罐', '熊熊掛保證']
 //# sourceMappingURL=Hello.js.map
