@@ -8,6 +8,7 @@
 
 ---
 
+https://jkchao.github.io/typescript-book-chinese/typings/generices.html#%E5%8A%A8%E6%9C%BA%E5%92%8C%E7%A4%BA%E4%BE%8B
 https://pjchender.dev/ironman-2021/ironman-2021-day06/
 https://pjchender.dev/ironman-2021/ironman-2021-day02/
 
@@ -15,53 +16,50 @@ https://pjchender.dev/ironman-2021/ironman-2021-day02/
    > 在前面的例子中，會發現型別都會事先定義好，
    > 想使用不同的型別的參數就會需要使用很多技巧，
    > 除了前面介紹的`Union(聯集)`、`Overload(超載)`等方式，
-   > `Generics(泛型)`是指在定義 `function`、`interfaces` 或 `class` 的時候，
+   > `Generics(泛型)`是指在定義 `function`、`Interfaces(介面)` 或 `Class(類別)` 的時候，
    > 不指定具體的型別，讓型別抽象化，使用的時候再指定型別的一種特性。
    > 簡單來說就是讓型別，也變成一個變數。
 ---
 
 ## 過程：
-   ### 1. `Generics(泛型)`的使用
-   >
+   ### 1. `Generics(泛型)` 基本使用
+   > 做一個可以新增、剔除成員的 Class
    ```typescript
-    function spit0utFirstNumber(array: number[]): number {
-      const [firstEl] = array;
-      return firstEl;
+    class Team {
+      private list: string[] = [];
+
+      push = (item: string) => this.list.push(item);
+      pop = (): string | undefined => this.list.shift();
     }
 
-    function spit0utFirstString(array: string[]): string {
-      const [firstEl] = array;
-      return firstEl;
+    const Maya = new Team();
+
+    Maya.push('Opshell');
+    Maya.push(0); // WARN：類型 number 不能指派給 string 的參數
+
+   ```
+   > 那我今天要用ID 做相同的功能
+   > 不就要在另外寫一個不同型別，但功能都一樣的class?
+   > 想想就傻爆了...
+   > 這時候就可以用`Generics(泛型)`來處理了：
+   ```typescript
+    class AryInOut<T> {
+      private list: T[] = [];
+
+      push = (item: T) => this.list.push(item);
+      pop = (): T | undefined => this.list.shift();
     }
 
-    function spitOutFirst<T>(array: T[]): T {
-      const [firstEl] = array;
-      return firstEl;
-    }
+    const MayaTeam = new AryInOut<string>();
+    const TeamIDList = new AryInOut<number>();
+
+    MayaTeam.push('Opshell');
+    TeamIDList.push(1);
    ```
-   > 這個 createEnumMapper 的 function 是一個 currying function，
-   > 第一個變數傳入的是 enum 本身，這時候 TypeScript 的 Generics 就會知道我的 T 就是跟 enum 本身有關。
-   > 為了讓這個 Generics 可以正確的把兩個 enum mapping 起來，
-   >　我們必須要先建立一個 object 把兩個 enum 的 key value 配對像下面這樣：
-   ```typescript
-    const mapper = {
-        [BE_GENDER.MALE]: FE_GENDER.MALE,
-        [BE_GENDER.FEMALE]: FE_GENDER.FEMALE,
-    };
-   ```
-   > 由於我們上面的 mapper 是把 enum 的 value 當成 key，
-   > 所以我們只要帶入 data 的值就可以直接轉換了，像下面這樣：
-   ```typescript
-    const foo = () {
-        const gender = FE_GENDER.MALE;
-        const data = f gender: BE_GENDER.MALE ];
-        const getGenderEnumMapper = createMapper(mapper)
-        const transformedGender = getGenderEnumMapper(data.gender);
-        const t
-        undefined const transformedGender: FE GENDER |
-        return transformedGender gender;
-    }
-   ```
+   > 改成這樣之後
+
+
+
 
 ---
 ## 小結：
