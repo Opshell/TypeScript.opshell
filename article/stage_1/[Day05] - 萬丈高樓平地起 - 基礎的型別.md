@@ -1,4 +1,4 @@
-![alt](https://)
+![Day 05](https://ithelp.ithome.com.tw/upload/images/20220905/20109918sHpZpZJ8qP.jpg)
 
 # 所以說那個Type呢?
    > *既然要學習TypeScript*
@@ -6,18 +6,17 @@
    > *───────────────────────── By Opshell*
 
 ---
-## 昨日重點複習：
-   > ### 三種主要的設定type方式
+## 昨日重點複習：三種主要設定Type的方式
 
-   Title|型別推論|型別註記|型別斷言
-   -------------|-------------|-------------|-------------
-   英文|Inference|Annotation|Assertion
-   模式|被動|主動|主動
-   內容|自動推論資料型別的機制|大多使用在初始化階段，例如宣告變數或函式參數等|通常用於接收外部參數，需明確指定資料型別
-   後續內容會說|`Inference(推論)`|`Annotation(註記)`|`Assertion(斷言)`
+Title|型別推論|型別註記|型別斷言
+-------------|-------------|-------------|-------------
+英文|Inference|Annotation|Assertion
+模式|被動|主動|主動
+內容|自動推論資料型別的機制|大多使用在初始化階段，例如宣告變數或函式參數等|通常用於接收外部參數，需明確指定資料型別
+後續內容會說|`Inference(推論)`|`Annotation(註記)`|`Assertion(斷言)`
 
 ---
-## 今日目標：學會基本型的type宣告，避開一些坑。
+## 今日目標：學會基本型的Type宣告，避開一些坑。
 
 ---
 ## 過程：
@@ -40,14 +39,13 @@
     let car = undefined; // any
     let house = null; // any
    ```
-   > 在 TypeScript 的 `Inference(推論)` 中 ，
-   > 上面的宣告會被視為 註解的 Type，是賦予Type的一種方法，
+   > 在 TypeScript 的 `Inference(推論)` 中：
    > ※ 1. `null` 和 `undefined` 被稱為  `Nullable Types`
    > 　　　 在未指名的情況下，`Nullable Types`會被`Inference(推論)`成`any`
 
-   > ※ 2. 在TS 中，any 是非常難掌控的類型，畢竟他突破了TS 被創造出來的目的，
+   > ※ 2. 在TS 中，`any` 是非常難掌控的類型，畢竟他突破了TS 被創造出來的目的，
    > 　　　 簡直就是混世大魔王，能不用，就不用，
-   > 　　　 如果用多了，還不如乾脆回頭寫JS就好，
+   > 　　　 如果用多了，還不如乾脆回頭寫JS就好。
 
    > ※ 3. 也會注意到如果你一開始不和TS說內容是什麼也不`Annotation(註記)`他的類型，
    > 　　　 TS 就會當他是`any`, 原理是：在JS宣告時沒帶值就等於帶入`undefined`。
@@ -68,11 +66,12 @@
 
     car = 'skoda fabia 2022';
    ```
-![alt](https://)
+   ![提醒](https://ithelp.ithome.com.tw/upload/images/20220905/201099180RoTi6oSqJ.png)
+
    > 你就會發現出現了一個TS的警告，
    > 會告訴你型別是不一樣的，
    > 這時候該怎麼辦呢?
-   > 這時候就會有個新技巧`Union (聯合)`
+   > 這時候就會有個新技巧`Union (聯集)`
    ```typescript
     // TypeScript code
     let car: undefined | string = undefined; // 讓car可以是undefined 或 string
@@ -92,7 +91,7 @@
 # 章節小結：
    > 第一章結的內容就到這邊
    > 相信大家對TypeScript是什麼、有什麼用、為什麼要用、該怎麼用
-   > 都有了一定的認知，
+   > 都有了基礎的認知，
    > 也有可能會覺得好像真的不是很難，
    > 但事情不是我們想的這麼簡單，一坑還有一坑坑，
    > 在後續的幾天，會用例子和大家一起學習，
