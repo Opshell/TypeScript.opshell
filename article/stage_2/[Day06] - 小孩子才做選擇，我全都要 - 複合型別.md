@@ -8,7 +8,7 @@
 ![alt](https://)
 
 ---
-## 目標:想要用那些型別想要用那些型別，就用那些型別。
+## 目標:想要用哪些型別，就用那些型別。
 
 ---
 ## 過程：
@@ -18,21 +18,21 @@
    - ### 1. `聯集型別(Union Type)`
    ```typescript
     // 宣告一個function 讓他可以設定中文 也可以設定數字當年齡
-    function consoleYear(year: string | number) {
-        console.log(year);
+    function consoleAge(age: string | number) {
+        console.log(age);
     }
 
-    consoleYear('三十');
-    consoleYear(30);
+    consoleAge('三十');
+    consoleAge(30);
    ```
+   > 想知道是幾位數年紀了就會改寫成這樣
    ```typescript
-    // 想知道是幾位數年紀了就會改寫成這樣
-    function getYearLength(year: string | number): number {
+    function getAgeLength(age: string | number): number {
         let result = 0;
-        if (year.length) {
-            result = year.length;
+        if (age.length) {
+            result = age.length;
         } else {
-            result = year.toString().length;
+            result = age.toString().length;
         }
 
         return result;
@@ -40,29 +40,29 @@
    ```
    > ▲ 然後就踩到坑了。
 ![alt](https://)
-   > 參數year是字串或數字的其中一種，但length不是字串和數字的的共同属性，所以會報錯。
+   > 參數age是字串或數字的其中一種，但`length`不是字串和數字的的共同属性，所以會報錯。
    > 這時候就可以利用`Assertion(斷言)`來處理這個情況，
    > 在多種可能的參數型態中指定一個。
    ```typescript
     // 想知道是幾位數年紀了就會改寫成這樣
-    function getYearLength(year: string | number): number {
+    function getAgeLength(age: string | number): number {
         let result = 0;
-        if ((<string>year).length) {
-            result = (<string>year).length;
+        if ((<string>age).length) {
+            result = (<string>age).length;
         } else {
-            result = year.toString().length;
+            result = age.toString().length;
         }
 
         return result;
     }
    ```
-   > ※ 在這個例子中可以注意到，要斷言型別，需要加()，否則會報錯喔。
+   > ※ 在這個例子中可以注意到，要`Assertion(斷言)`型別，需要加()，否則會報錯喔。
 ![alt](https://)
 
 ---
    - ### 2. `交集型別(Intersection Type)`
-   > 可以注意到`聯集型別(Union Type)`是用|來連結型別，
-   > 有|當然就會有&啦，
+   > 可以注意到`聯集型別(Union Type)`是用`|`來連結型別，
+   > 有`|`當然就會有`&`啦，
    > 就像if條件中的意思一樣，需要同時符合兩邊才會成立的感覺：
    ```typescript
     type a = 1|2|3; // 建立一個a型別 他可以是 1 或2 或3
@@ -89,13 +89,13 @@
    > 就會是 (1|2|3) & 所有數字 = 1|2|3
 
 ---
-   - ### 4. 按照這個概念，如果把上面consoleYear改成這樣
+   - ### 4. 按照這個概念，如果把上面consoleAge改成這樣
    ```typescript
-    function consoleYear(year: string & number) {
-      console.log(year);
+    function consoleAge(age: string & number) {
+      console.log(age);
     }
    ```
-   > 參數 year 他就會變成一個誰都不接受的`<never>`型別了，
+   > 參數 age 他就會變成一個誰都不接受的`<never>`型別了，
    > 畢竟沒有人同時在 字串 和 數字 的型別裡面
 ![alt](https://)
 

@@ -27,9 +27,9 @@
     const Bear:IMember = { title: 'Bear', age: 40, weight: 110 }; // 提醒：型別 IMember 不存在 weight 屬性。
    ```
    > ※ 可以看出來 `Interface(介面)` 不管是當`Shape(形狀)`還是`Type(型別)`使用
-   >    使用方式都差不多，值得注意的是，一旦你宣告了`interface(介面)`後，使用上不能自動添加或減少屬性。
+   >    使用方式都差不多，值得注意的是，一旦你宣告了`Interface(介面)`後，使用上不能自動添加或減少屬性。
 
-   > ※ `interface(介面)` 重複定義的時候，他們會被merge起來：
+   > ※ `Interface(介面)` 重複定義的時候，他們會被merge起來：
    >    也就是說IMember 也等於：
    ```typescript
     interface IMember {
@@ -42,7 +42,7 @@
 
 ---
    - ### 2. Object Literal face
-   > `interface(介面)`也可以當作參數的型別，
+   > `Interface(介面)`也可以當作參數的型別，
    > 可以讓typescript 幫你檢查參數格式對不對：
    ```typescript
     interface IMember {

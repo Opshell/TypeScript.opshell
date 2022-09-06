@@ -12,7 +12,7 @@ Title|型別推論|型別註記|型別斷言
 -------------|-------------|-------------|-------------
 英文|Inference|Annotation|Assertion
 模式|被動|主動|主動
-內容|自動推論資料型別的機制|大多使用在初始化階段，例如宣告變數或函式參數等|通常用於接收外部參數，需明確指定資料型別
+內容|自動推論資料型別|大多使用在初始化階段，例如宣告變數、函式參數等|手動指定、選擇一個值的型別
 後續內容會說|`Inference(推論)`|`Annotation(註記)`|`Assertion(斷言)`
 
 ---
@@ -33,22 +33,23 @@ Title|型別推論|型別註記|型別斷言
    ```typescript
     // TypeScript code
     let TS; // any
-    let name = 'Opshell'; // string
-    let year = 30; // number
+    let title = 'Opshell'; // string
+    let age = 30; // number
     let hasPet = false; // boolean
     let car = undefined; // any
     let house = null; // any
    ```
    > 在 TypeScript 的 `Inference(推論)` 中：
    > ※ 1. `null` 和 `undefined` 被稱為  `Nullable Types`
-   > 　　　 在未指名的情況下，`Nullable Types`會被`Inference(推論)`成`any`
+   > 　　在未指名的情況下，`Nullable Types`會被`Inference(推論)`成`any`
 
    > ※ 2. 在TS 中，`any` 是非常難掌控的類型，畢竟他突破了TS 被創造出來的目的，
-   > 　　　 簡直就是混世大魔王，能不用，就不用，
-   > 　　　 如果用多了，還不如乾脆回頭寫JS就好。
+   > 　　簡直就是混世大魔王，能不用，就不用，
+   > 　　如果用多了，還不如乾脆回頭寫JS就好。
 
-   > ※ 3. 也會注意到如果你一開始不和TS說內容是什麼也不`Annotation(註記)`他的類型，
-   > 　　　 TS 就會當他是`any`, 原理是：在JS宣告時沒帶值就等於帶入`undefined`。
+   > ※ 3. 也會注意到如果你一開始不和TS說內容是什麼，
+   > 　　也不`Annotation(註記)`他的類型，TS 就會當他是`any`，
+   > 　　原理是：在JS宣告時沒帶值就等於帶入`undefined`。
 
    > 為了盡量不使用`any`，上面的宣告會使用`Annotation(註記)`變成這樣：
    ```typescript

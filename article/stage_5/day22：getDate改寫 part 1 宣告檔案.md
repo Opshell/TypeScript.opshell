@@ -11,6 +11,8 @@
    > 安裝完成使用TypeScript需要的環境，
    > 然後開始祈禱過程不要出現奇怪的問題。
 
+## 參考：https://jkchao.github.io/typescript-book-chinese/typings/generices.html#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E6%96%B9%E4%BE%BF%E9%80%9A%E7%94%A8
+
 ---
 ## 過程：(安裝請點擊藍字)
 - ### 1. 系統：[Window 11](https://www.microsoft.com/zh-tw/software-download/windows11)

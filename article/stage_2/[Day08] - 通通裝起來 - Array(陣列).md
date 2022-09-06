@@ -85,7 +85,7 @@
 
 ---
    - ### 4. interface (介面)
-   > 使用 `interface(介面)` 來描述陣列的形狀，
+   > 使用 `Interface(介面)` 來描述陣列的形狀，
    ```typescript
     // iFaceStringArray 表示：
     // 只要索引的型別是字串時，
@@ -95,11 +95,11 @@
     }
     const team: iFaceStringArray = ['Opshell', 'Bear', 'Patty', 'Egg' ];
    ```
-   ※　雖然 `interface(介面)` 也可以用來描述陣列，
+   ※　雖然 `Interface(介面)` 也可以用來描述陣列，
       但是我們一般不會這麼做，因為這種方式比前面的方式麻煩。
       不過有一種情況例外，用它來表示類別陣列。
 
-   ※  `interface(介面)` 也是個複雜的主題，混個臉熟、混個臉熟。
+   ※  `Interface(介面)` 也是個複雜的主題，混個臉熟、混個臉熟。
 
 ---
 ## 小結：

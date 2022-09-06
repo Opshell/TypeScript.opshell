@@ -7,10 +7,14 @@
 ![alt](https://)
 
 ---
-## 目標:`Interface(介面)`
-   > 昨天提到，在 TypeScript 中的`Interface(介面)`是一個非常靈活的概念，
-   > 今天我們就來看一些其他的使用方式，
-   > 了解它到底有多靈活。
+## 目標:`Interface(介面)` & `Class(類別)` 的組合技
+   > 昨天提到，`Interface(介面)` 另一個主要的功能是：
+   > 對`Class(類別)`的功能做抽象，抽象幹嘛?
+   > 這樣其他人就可以重複使用他：
+
+
+
+
 ---
 
 ## 過程：
@@ -27,11 +31,11 @@
     const Bear:IMember = { title: 'Bear', age: 40, weight: 110 }; // 提醒：型別 IMember 不存在 weight 屬性。
    ```
    > ※ 可以看出來 `Interface(介面)` 不管是當`Shape(形狀)`還是`Type(型別)`使用
-   >    使用方式都差不多，值得注意的是，一旦你宣告了`interface(介面)`後，使用上不能自動添加或減少屬性。
+   >    使用方式都差不多，值得注意的是，一旦你宣告了`Interface(介面)`後，使用上不能自動添加或減少屬性。
 
 ---
    - ### 2. Object Literal face
-   > `interface(介面)`也可以當作參數的型別，
+   > `Interface(介面)`也可以當作參數的型別，
    > 可以讓typescript 幫你檢查參數格式對不對：
    ```typescript
     interface IMember {

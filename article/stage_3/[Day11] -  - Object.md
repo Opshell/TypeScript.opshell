@@ -113,7 +113,7 @@
 ## 小結：
    > 看完今天的Object的宣告，
    > 會開始覺得TypeScript怎麼這麼麻煩，
-   > 但之後的`Interface(介面)`、`classes(類別)`、`Generics(泛型)`等，
+   > 但之後的`Interface(介面)`、`Class(類別)`、`Generics(泛型)`等，
    > 會讓Object的使用變得更為容易，
    > 甚至會有一種拼圖接上的感覺，
    > 然後還學了`String Literal(字串字面)`，

@@ -24,7 +24,7 @@
    -------------|-------------|-------------|-------------
    英文|Inference|Annotation|Assertion
    模式|被動|主動|主動
-   內容|自動推論資料型別|大多使用在初始化階段，例如宣告變數或函式參數等|手動指定、選擇一個值的型別
+   內容|自動推論資料型別|大多使用在初始化階段，例如宣告變數、函式參數等|手動指定、選擇一個值的型別
    後續內容會說|`Inference(推論)`|`Annotation(註記)`|`Assertion(斷言)`
 
    > ※ 後面文章會總稱他們為Type法(Type化的方式)
@@ -91,8 +91,8 @@
    > 這時候透過`Assertion(斷言)`可以避免這個問題
 
    ``` typescript
-    // 先建立一個 interface(介面)
-    // interface(介面) 是個原先JavaScript沒有的概念，
+    // 先建立一個 Interface(介面)
+    // Interface(介面) 是個原先JavaScript沒有的概念，
     // 對我來說 他有點像個模型，現在先有個印象就可以了，
     // 後面會詳細介紹。
     interface IMember {
@@ -108,7 +108,7 @@
     ops.year = 30;
     ops.gender = 'man';
    ```
-   > 這時候也許就會想了，那`interface(介面)`能不能當作`Annotation(註記)`的型別呢?
+   > 這時候也許就會想了，那`Interface(介面)`能不能當作`Annotation(註記)`的型別呢?
    > 測試了一下發現他是會報錯的
 
    ``` typescript

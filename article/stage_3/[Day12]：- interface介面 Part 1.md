@@ -9,17 +9,17 @@
 ---
 ## 目標:`Interface(介面)`
    > 物件導向的語言中，`Interface(介面)`(也稱接口)是一個很重要的概念，
-   > 它是對行為的一種抽象，如何運作則由`classes(類別)`去`implement(實現)`。
+   > 它是對行為的一種抽象，如何運作則由`Class(類別)`去`implement(實現)`。
 
    > 而在TypeScript 中的`Interface(介面)`是一個非常靈活的概念，
-   > 除了可用於對`classes(類別)`的一部分行為進行抽象以外，
+   > 除了可用於對`Class(類別)`的一部分行為進行抽象以外，
    > 也很常用描述`object(物件)`的`Shape(形狀)`。
 ---
 
 ## 過程：
    - ### 1. Object face
    > 上一節中筆記了各種object的type法，
-   > 其實更常使用得方式是透過`interface(介面)`來定義：
+   > 其實更常使用得方式是透過`Interface(介面)`來定義：
    ```typescript
     interface IMember {
       name: string;
@@ -40,7 +40,7 @@
     console.log(member.summary()); // Opshell：30 years old, is a man.
    ```
    > ※ 在使用上，一般習慣在前面加上大寫的I，並使用Bl case命名法。
-   >    用`interface(介面)`描述物件的`Shape(形狀)`，有甚麼好處呢?
+   >    用`Interface(介面)`描述物件的`Shape(形狀)`，有甚麼好處呢?
    >    這樣我們就可以反覆使用，例如我今天要多一個成員：
    ```typescript
     let Bear: IMember = {
@@ -108,7 +108,7 @@
    ```
    > 會發現從前面的篇章到這邊，
    > Ops一直在偷渡`type alias(別名)`的使用方式，
-   > 其實是因為`type alias(別名)`的使用上和`interface(介面)`極度接近，
+   > 其實是因為`type alias(別名)`的使用上和`Interface(介面)`極度接近，
    > 先讓各位熟悉一下，之後在比較的時候，就會更容易搞懂。
 
 ---
@@ -156,5 +156,5 @@
    > 尤其是混合模式，實在是很容易搞混阿，
    > 不過如果把javascript裡的一切都 是物件的概念帶進來，
    > 就會清楚很多，就先寫到這邊，
-   > 明天再把剩下的`interface(介面)`寫完。
+   > 明天再把剩下的`Interface(介面)`寫完。
    > 大家明天見~
