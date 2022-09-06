@@ -1,11 +1,12 @@
-![alt](https://)
+![Day06 Banner](https://ithelp.ithome.com.tw/upload/images/20220906/20109918bi1OGChyZT.jpg)
 
 # 小孩子才做選擇，我全都要
    > *我想要他是number*
    > *但是有時候想當string用*
    > *怎麼辦? 我全都要*
-   > *───────────────────────── By 京師六扇門第一捕頭雷豹（花名「豹子頭」）*
-![alt](https://)
+   > *─────────────── By 京師六扇門第一捕頭雷豹（花名「豹子頭」）*
+
+![豹子頭](https://ithelp.ithome.com.tw/upload/images/20220906/20109918MYncgrG6bw.jpg)
 
 ---
 ## 目標:想要用哪些型別，就用那些型別。
@@ -16,8 +17,8 @@
    > `Union Type(聯集型別)` && `Intersection Type(交集型別)`
    > 可以將值宣告為多種類型。
    - ### 1. `聯集型別(Union Type)`
+   > 宣告一個function 讓他可以設定中文 也可以設定數字當年齡
    ```typescript
-    // 宣告一個function 讓他可以設定中文 也可以設定數字當年齡
     function consoleAge(age: string | number) {
         console.log(age);
     }
@@ -39,12 +40,13 @@
     }
    ```
    > ▲ 然後就踩到坑了。
-![alt](https://)
-   > 參數age是字串或數字的其中一種，但`length`不是字串和數字的的共同属性，所以會報錯。
+
+![型別錯誤](https://ithelp.ithome.com.tw/upload/images/20220906/20109918nVzVuAqiWo.png)
+
+   > 參數age是字串或數字的其中一種，但`length`不是字串和數字的的共同属性，
    > 這時候就可以利用`Assertion(斷言)`來處理這個情況，
    > 在多種可能的參數型態中指定一個。
    ```typescript
-    // 想知道是幾位數年紀了就會改寫成這樣
     function getAgeLength(age: string | number): number {
         let result = 0;
         if ((<string>age).length) {
@@ -57,7 +59,8 @@
     }
    ```
    > ※ 在這個例子中可以注意到，要`Assertion(斷言)`型別，需要加()，否則會報錯喔。
-![alt](https://)
+
+![斷言 + 括號](https://ithelp.ithome.com.tw/upload/images/20220906/20109918Uf5zI7ItVI.png)
 
 ---
    - ### 2. `交集型別(Intersection Type)`
@@ -97,7 +100,8 @@
    ```
    > 參數 age 他就會變成一個誰都不接受的`<never>`型別了，
    > 畢竟沒有人同時在 字串 和 數字 的型別裡面
-![alt](https://)
+
+![never](https://ithelp.ithome.com.tw/upload/images/20220906/20109918rrjAnzFsxY.png)
 
 ---
 # 小結：
