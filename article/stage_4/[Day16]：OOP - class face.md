@@ -10,161 +10,140 @@
 ## 目標:`Interface(介面)` & `Class(類別)` 的組合技
    > 昨天提到，`Interface(介面)` 另一個主要的功能是：
    > 對`Class(類別)`的功能做抽象，抽象幹嘛?
-   > 這樣其他人就可以重複使用他：
-
-
-
+   > 這樣其他人就可以重複使用他，
+   > 這是`OOP(物件導向)`的一大特性。
 
 ---
-
 ## 過程：
-   - ### 1. Type face
-   > 昨天的例子中，`Interface(介面)` 都是當作物件的形狀做使用，
-   > 當然他也可以當作是一種型別：
+- ### `implements(實現)`
+   > 一般來說`Class(類別)` 只會繼承另一個`Class(類別)`，
+   > 但是有些時候，不同產線上的`Class(類別)`會有相同的需求，
+   > 這時候就會利用`Interface(介面)`把那個功能抽象化。
    ```typescript
-    interface IMember {
-      title: string;
-      age: number;
+    interface ISummary {
+      getSummary(): string;
     }
 
-    const Opshell:IMember = { title: 'Opshell' }; // 提醒：型別 IMember 但缺少屬性 age。
-    const Bear:IMember = { title: 'Bear', age: 40, weight: 110 }; // 提醒：型別 IMember 不存在 weight 屬性。
+    class Member {
+      title: string ;
+      age: number;
+
+      constructor(title: string = 'nobody', age: number = 0) {
+         this.title = title;
+         this.age = age;
+      }
+    }
+
+    class SuperMember extends Member implements ISummary{
+      private weight: number;
+
+      constructor(title: string, age: number, weight: number = 100) {
+         super(title, age);
+         this.weight = weight;
+      }
+    }
    ```
-   > ※ 可以看出來 `Interface(介面)` 不管是當`Shape(形狀)`還是`Type(型別)`使用
-   >    使用方式都差不多，值得注意的是，一旦你宣告了`Interface(介面)`後，使用上不能自動添加或減少屬性。
+   > 沒錯，就是這麼簡單明瞭，在你的`Class(類別)`後面，
+   > 告訴他你要`Implements(實現)`什麼功能就可以了，
+   > 但是可不能光說不練，你說了你想做什麼，你就需要真的做才可以。
+   > 上面這個範例TS是會警告的他會告訴你：沒有實做getSummary。
+   ```typescript
+    getSummary = () => {
+      return `${this.title} is ${this.age} years old.`;
+    }
+   ```
+   > 需要把上面這個function實做出來才可以喔~
+   > 當然 就像`extends(繼承)`一樣 `implements(實現)`也可以實現多個，
+   > 用,隔開就可以了：
+   ```typescript
+    class SuperMember extends Member implements ISummary, IAge{
+   ```
 
 ---
-   - ### 2. Object Literal face
-   > `Interface(介面)`也可以當作參數的型別，
-   > 可以讓typescript 幫你檢查參數格式對不對：
+- ### `Interface extends(介面繼承)`
+   > ㄟㄟ? 怎麼回頭講`Interface(介面)`了?
+   > 沒錯 之前還沒有講過 `Interface extends(介面繼承)`
+   > 現在剛好補充起來：
    ```typescript
-    interface IMember {
-      title: string;
-      age: number;
+    interface IAge {
+      convertAge(): string;
     }
 
-    function getSummary(member: IMember) {
-      return `${member.title} is ${member.age} years old.`;
-    }
-
-    console.log(getSummary({ title: 'Opshell', age: 30, gender: 'man' })); // 提醒：不可指派IMember不存在屬性。
-   ```
-   > 為什麼會這樣呢?
-   > 原來因為如果沒有宣告起來直接輸入，
-   > 會觸發`excess property checking(額外檢查)`，
-   > `Shape(形狀)`需要完全相同才可以，
-   > 在與`Interface(介面)`很相似的`Type Alias(別名)`也是一樣的情況喔~
-   > 有三種方式來避免`excess property checking(額外檢查)`的情況：
-
-   #### 2-1. `Assertion(斷言)`
-   ```typescript
-    console.log(getSummary(<IMember>{ title: 'Opshell', age: 30, gender: 'man' }));
-   ```
-
-   #### 2-2. 將物件先宣告起來
-   ```typescript
-    const Opshell = {
-      title: 'Opshell',
-      age: 30,
-      gender: 'man'
-    }
-    console.log(getSummary(Opshell)); // Opshell is 30 years old.
-   ```
-
-   #### 2-3. `index signature(索引簽名)`
-   > 在 IMember宣告時 讓他可以接受任意屬性
-   > 會變成這樣：
-   ```typescript
-    interface IMember {
-      title: string;
-      age: number;
-      [propName: string]: any
+    interface ISummary extends IAge{
+      getSummary(): string;
     }
    ```
-   > 當然以此類推，
-   > 我們也可以在`Interface(介面)`的key裡面加? 讓他變成可選參數：
-   ```typescript
-    interface IMember {
-      title: string;
-      age: number;
-      gender?: 'man' | 'woman';
-    }
-   ```
-   > 上面三種方式當然也可以應用到 上面 1. Type face的部分，
-   > 來修正上面報錯的部分，各位可以試試看。
+   > 說穿了也沒什麼，其實跟我們上一章裡的`extends(繼承)`用法一樣。
 
 ---
-   - ### 3. 套件的 options 物件 face
-   > 和 `Object Literal` face 幾乎沒有差別
-   > 只是變成了全可選參數的物件：
+- ### `Interface(介面)` 繼承 `Class(類別)`
+   > 沒錯，前面說TS的`Interface(介面)`極度靈活，
+   > 他就是可以靈活成這樣：
    ```typescript
-    interface cubeConfig {
-      title?: string;
-      long?: number;
-      width?: number;
-      height?: number;
-      weight?: number;
+    class Member {
+      title: string = 'nobody';
+      age: number = 0;
     }
 
-      // 接受 memberConfig 做為參數，回傳 {summary: string; weight: number | null}
-    const createCube = (config: cubeConfig): { title: string, volume: number, weight: number | null } => {
-      let cube: { // 複習 物件型別 註記
-         title: string;
-         volume: number;
-         weight: number | null;
-      } = {
-         title: 'cube',
-         volume: 1000,
-         weight: null
-      };
+    interface IMember extends Member {
+      weight: number;
+    }
 
-      if (config.title) { cube.title = config.title; }
-      if (config.weight) { cube.weight = config.weight; } // 上面沒註記 這邊會出事 number 不能塞進null
+    let Opshell: IMember = { weight: 60 }
+   ```
+   ![alt](https://)
+   > 雖然這樣做很奇怪，不知道為啥要這樣弄就是了，
+   > 如果有實際的使用其情況，請大大不吝嗇留言，
+   > 感恩~
 
-      if (config.long && config.width && config.height) {
-         cube.volume = config.long * config.width * config.height;
+---
+- ### Hybrid face
+   > 又是混合模式，透過這次講OOP Class 我們來好好複習霧煞煞的混合模式，
+   > 使用`Interface(介面)`的方式來定義一個`Function(函式)`需要符合的`Shape(形狀)`：
+   ```typescript
+    interface Member {
+      (title: string, age: number | string): string;
+    }
+
+    let Opshell: Member = (title, age) => `${title} is ${age} years old.`;
+   ```
+   > 然後對她做混合：
+   ```typescript
+    interface Member {
+      (title: string, age: number | string): string; // 函式的In Out
+      weight: number; // 函式裡的屬性
+      getWeight(e: {weight: number}): void; // 函式裡的方法
+    }
+
+    function creatMember(): Member {
+       // 在這邊不能用箭頭函式表達喔
+      let member = <Member>function (title: string, age: number): string {
+         return `${title} is ${age} years old.`;
       }
 
-      return cube;
-    };
+      member.weight = 100;
+      member.getWeight = (e: {weight: number}) => { console.log(e.weight) };
 
-    const Opshell = createCube({ title: 'bigCube', long: 20, width: 20, height: 20 });
-    console.log(Opshell.title); // bigCube
-    console.log(Opshell.volume); // 8000
-    console.log(Opshell.weight); // null
-   ```
-
----
-   - ### 4. funciton `Overload(超載)` 的 `overload signatures(簽章)` face
-   > 也可以拿來當作`Overload(超載)`的`overload signatures(簽章)`
-   > 拿前面[[Day10] - funciton part 2]()超載的例子來改寫：
-   ```typescript
-    interface INSReverse {
-      (word: number): string;
-      (word: string): string;
+      return member;
     }
 
-    const nsReverse: INSReverse = (word: number | string) => {
-      if (typeof word === 'number') {
-         return word.toString().split('').reverse().join('');
-      } else if (typeof word === 'string') {
-         return word.split('').reverse().join('');
-      }
-
-      // 若不拋出錯誤的話，這裡會自動回傳 undefined 而非 never，將會不符合 interface 的定義
-      throw new Error('Invalid arguments');
-    };
-
-    console.log(nsReverse('aerg')); // grea
-    console.log(nsReverse(123)); // 321
+    let Opshell = creatMember();
+    console.log(Opshell('Opshell', 30));
+    Opshell.weight = 60;
+    console.log(Opshell.getWeight(Opshell));
    ```
+   > 過了幾個章節回來看混合模式，
+   > 有沒有更理解了? 對Ops來說 混合模式感覺像簡易版的`Class(類別)`，
+   > `Class(類別)`可以做到混合模式在做的全部事情，甚至更靈活，
+   > 所以一般有這種需求，應該都會使用`Class(類別)`實做吧，
+   > 如果有什麼`Hybrid(混合模式)`是更優解的情況，
+   > 再請大大補充，讓小弟學習= 口=
 
 ---
 ## 小結：
-   > 寫到這邊，把常見的各種`Interface(介面)`的用法都寫出來了，
-   > 足足寫了兩篇，可見`Interface(介面)`有多靈活，
-   > 還有很多奇技淫巧可以聊，但使用方式都不會差太多，
-   > 可以發現上面這兩天的例子看來看去，格式都差不多，
-   > 希望藉由這兩天大量的例子，讓大家可以體驗到`Interface(介面)` 的使用感覺。
-   > 還是看不大懂沒關係，在後面還是會有很多例子使用到他，
-   > 大家可以慢慢熟悉。
+   > 寫到這邊，`Interface(介面)`、`Class(類別)`和`Function(函式)`，
+   > 之間的關係清楚了很多，混合模式也也能得比較清楚，
+   > 可以看出來，他們之間的交互可以很自由。
+   > 要炫技可以炫到眼花= 口=
+   > 身為菜鳥的Ops稍微了解一下就好，
+   > 等等迷路。
