@@ -1,3 +1,3 @@
 function consoleAge(age: string & number) {
-    console.log(age);
-  }
+  console.log(age);
+}

@@ -1,14 +1,14 @@
-![alt](https://)
+![Day 07](https://ithelp.ithome.com.tw/upload/images/20220907/20109918KYTx5tuz9P.jpg)
 
 # 認識來自TypeScript的新朋友
    > *有型別自TypeScript來*
    > *不亦悅乎!*
-   > *───────────────────────── By Opshell*
+   > *───────────────────── By Opshell*
 
 ---
 ## 目標:認識來自TypeScript的新朋友
-   - ### 1. 型別總覽
-   #### 我們先來複習複習JS的型別：
+- ### 型別總覽
+   #### 1. 我們先來複習複習JS的型別：
    > - 原始資料型別
    >    * boolean 布林值
    >    * number 數值
@@ -20,69 +20,70 @@
    >    * object 物件
    >    * array 陣列
    >    * function 函式
-   #### 認識一點TS裡的新朋友
+   #### 2. 認識一點TS裡的新朋友
    > - 特殊型別
    >    * void (空值)
    >    * unknown (不曉得)
    >    * any (任意型別) (全世界都是我的 的可怕型別)
    >    * never (全世界都不是我的 的型別)
 
-
 ---
-   - ### 2. JS大家都這麼熟了，我們來介紹一下TS的新朋友：
-   #### - 空值 void: 沒有回傳值
+- ### JS大家都這麼熟了，我們來介紹一下TS的新朋友：
+   #### 1. 空值 void: 沒有回傳值
    > 一般 `void` 用於沒有回傳值的 funciton 中
-   > 可以用我們之前寫的consoleYear來改一下
-   > 來表示consoleYear不會回傳任何值
+   > 可以用我們之前寫的consoleAge來改一下
+   > 來表示consoleAge不會回傳任何值
    ```typescript
-    function consoleYear(year: string | number): void {
-      console.log(year);
+    function consoleAge(age: string | number): void {
+      console.log(age);
     }
    ```
    > ※　在參數括號外`: 型別`代表該 function 回傳的類型
 
-   #### - 任意 any: 不檢查型別(畢竟我誰都是)
-   > 可以想像成 let year; 的感覺，
+   #### 2. 任意 any: 不檢查型別(畢竟我誰都是)
+   > 可以想像成 let age; 的感覺，
    > 只知道有這個人，但他誰都可以是。
-   > 在TS中宣告時如果沒有指定型別，一律"推論"為any
+   > 在TS中宣告時如果沒有指定型別，一律`Inference(推論)`為`any`
    ```typescript
-    function consoleYear(year): void {
-      console.log(year); // year什麼值都可以!
+    function consoleAge(age): void {
+      console.log(age); // age什麼值都可以!
     }
    ```
-   > ※　不要濫用any型別，這樣跟沒用TypeScript一樣
+   > ※　不要濫用`any`型別，這樣跟沒用TypeScript一樣
    > 　　甚至更赤裸了...
 
-   #### - 任意 unknown: 不檢查型別(畢竟我誰都是)
-   > unknown 和 any 一樣可以接受任何型別賦值，
-   > 但 any 可以賦值給任何型別，
-   > unknown 只能賦值給 any 和自己。
+   #### 3. 任意 unknown: 不檢查型別(畢竟我誰都是)
+   > `unknown` 和 `any` 一樣可以接受任何型別賦值，
+   > 但 `any` 可以賦值給任何型別，
+   > `unknown` 只能賦值給 `any` 和自己。
 
    ```typescript
-    function consoleYear(year: unknown): void {
-        let name: string = 'Opshell';
-        name = year; // Error：類型 string 不可指派給 unknown
+    function consoleAge(age: unknown): void {
+      let name: string = 'Opshell';
+      name = age; // Error：類型 string 不可指派給 unknown
     }
    ```
----
-   #### 絕不 never: 永遠不存在值的型別
+
+   #### 4. 絕不 never: 永遠不存在值的型別
    > 這邊可以用之前的例子來舉證，
-   > 這個情況下 year 永遠不會有值，
+   > 這個情況下 `age` 永遠不會有值，
    > 所以是 `never`
 
    ```typescript
-    function consoleYear(year: string & number) {
-      console.log(year);
+    function consoleAge(age: string & number) {
+      console.log(age);
     }
    ```
-![alt](https://)
+
+   ![never](https://ithelp.ithome.com.tw/upload/images/20220907/20109918tjEeNCTTd4.png)
+
    > 或者可以是另一個情況，
    > 像這種無窮迴圈，在TS的`Inference(推論)`中會判斷回傳為 `never`，
    > 沒有人可以從無窮迴圈中出來...
    ```typescript
-    let immortal = function forever(year: number) {
+    let immortal = function forever(age: number) {
       while (true) {
-         year++;
+         age++;
       }
     }
    ```
@@ -96,7 +97,6 @@
    >    `void`函式 會完整結束只是沒有要回傳;
    >    `never`函式 無法完整跑完，無法回傳。
 
----
    > 因為`never`的特性緣故，
    > 很常用來處理錯誤。
    > `boolean`裡其實也含有`never`(`never`是所有型別的子類)
@@ -104,10 +104,10 @@
    > 有興趣的可以把: `boolean | never`寫出來觀察一下
    > TS 只會說age的回傳是 `boolean`型別
    ```typescript
-    function age(year: string | number): boolean{
-      if (typeof year === 'string') {
+    function ageIsString(age: string | number): boolean{
+      if (typeof age === 'string') {
           return true;
-      } else if (typeof year === 'number') {
+      } else if (typeof age === 'number') {
           return false;
       }
 
@@ -119,6 +119,7 @@
       throw new Error(message);
     }
    ```
+
 ---
 ## 小結：
    > 可以發現TypeScript，
