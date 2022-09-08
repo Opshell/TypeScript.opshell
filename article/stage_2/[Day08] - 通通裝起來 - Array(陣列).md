@@ -1,9 +1,9 @@
-![alt](https://)
+![Day08 Banner](https://ithelp.ithome.com.tw/upload/images/20220908/20109918wYsIu3DPi1.jpg)
 
 # 這個那個不要，剩下的通通裝起來。
 > *數到三：0、1、2、3*
 > *Array index 從 0 開始無誤*
-> *───────────────────────── By Kent Beck*
+> *───────────────────────── By Opshell*
 
 ---
 ## 目標: Array Type 法
@@ -11,10 +11,10 @@
 
 ---
 ## 過程：
-   - ### 1. Array Inference(推論)
+- ### 1. Array Inference(推論)
    > 當你宣告陣列，內容為同型別的元素時，
    > TypeScript會自動`Inference(推論)`，
-   > 將他們當 `T[]` 來推論。
+   > 將他們當 `T[]` 來`Inference(推論)`。
    > 語法：`變數 = []`(像一般JS般的宣告)
    ```typescript
     // TS "推論" team 為 string[] 型別。
@@ -49,7 +49,7 @@
 
    型別|`Array(數組)`|`Tuple(元組)`
    -------------|-------------|-------------
-   註記方式| (number | string) | [ number, string, string, number]
+   註記方式| (number l string) | [ number, string, string, number]
    限制| 只要型別一樣即可 | 順序必須和宣告的吻合，且不能多
 
    > 不過使用元組的機會非常少，至少Ops是這樣認為的，
@@ -57,7 +57,7 @@
    > 這時候使用`Object(物件)`或者是`Interfaces(介面)`不是更清楚和方便呼叫嗎@"@?
 
 ---
-   - ### 2. Array Annotation(註記)
+- ### 2. Array Annotation(註記)
    > 語法：`變數: 型別[] = []`
    ```typescript
     // string[] 表示此陣列型別只允許字串
@@ -75,31 +75,30 @@
    >    所以一般況還是會使用`Annotation(註記)`法。
 
 ---
-   - ### 3. Array Generic(泛型陣列)
+- ### 3. Array Generic(泛型陣列)
    > 語法：`變數: Array<型別> = []`
    ```typescript
     const team: Array<string> = [ 'Opshell', 'Bear', 'Egg', 'Patty' ];
    ```
-
-   > ※ `Generic(泛型)`是個比較龐大的主題，今天就先混個臉熟。
+   > `Generic(泛型)`是個比較龐大的主題，今天就先混個臉熟。
 
 ---
-   - ### 4. interface (介面)
+- ### 4. interface (介面)
    > 使用 `Interface(介面)` 來描述陣列的形狀，
    ```typescript
-    // iFaceStringArray 表示：
+    // IStringArray 表示：
     // 只要索引的型別是字串時，
     // 那麼值的型別必須是字串。
-    interface iFaceStringArray {
+    interface IStringArray {
         [index: string]: string;
     }
-    const team: iFaceStringArray = ['Opshell', 'Bear', 'Patty', 'Egg' ];
+    const team: IStringArray = ['Opshell', 'Bear', 'Patty', 'Egg' ];
    ```
-   ※　雖然 `Interface(介面)` 也可以用來描述陣列，
-      但是我們一般不會這麼做，因為這種方式比前面的方式麻煩。
-      不過有一種情況例外，用它來表示類別陣列。
+   > ※　雖然 `Interface(介面)` 也可以用來描述陣列，
+   >    但是我們一般不會這麼做，因為這種方式比前面的方式麻煩。
+   >    不過有一種情況例外，用它來表示類別陣列。
 
-   ※  `Interface(介面)` 也是個複雜的主題，混個臉熟、混個臉熟。
+   > ※  `Interface(介面)` 也是個複雜的主題，混個臉熟、混個臉熟。
 
 ---
 ## 小結：
