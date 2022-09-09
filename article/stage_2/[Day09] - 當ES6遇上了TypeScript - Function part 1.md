@@ -1,9 +1,9 @@
-![alt](https://)
+![Day9 Banner](https://ithelp.ithome.com.tw/upload/images/20220909/20109918lFRthVWEA1.jpg)
 
 # 這豈不是無敵了??
 	> *當ES6 遇上了TypeScript，*
 	> *這豈不是無敵了?!。*
-	> *───────────────────────── By Opshell*
+	> *─────────────────────── By Opshell*
 
 ---
 ## 目標: 學會Function 的Type法
@@ -16,7 +16,7 @@
 
 ---
 ## 過程：
-   - ### 1. 基本函示Type法
+- ### 1. 基本函示Type法
    ```javascript
     function add(num1, num2) {
       return num1 + num2;
@@ -59,7 +59,7 @@
    >    放最前面又不填的情況下，要給 `undefined`。
 
 ---
-   - ### 2. 匿名函式Type法
+- ### 2. 匿名函式Type法
    ```typescript
     const add = function(num1: number, num2: number): number {
       return num1 + num2;
@@ -79,7 +79,7 @@
    > ~~Opshell超愛箭頭函式的，這是我學ES6最大的動力。~~
 
 ---
-   - ### 3. rest (剩餘引數)【ES6】
+- ### 3. rest (剩餘引數)【ES6】
    > ES6 中，可以使用 ...rest 的方式獲取函式中的`Rest parameter(剩餘參數)`
    > 或稱`其餘運算子` [參考](https://ithelp.ithome.com.tw/articles/10214394)
    ```javascript
