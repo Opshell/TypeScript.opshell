@@ -1,4 +1,4 @@
-![alt](https://)
+![Day10 Banner](https://ithelp.ithome.com.tw/upload/images/20220910/20109918LiHjP7G10H.jpg)
 
 # 沒想到還可以超載起來
    > *一個function不夠?*
@@ -13,7 +13,7 @@
 
 ---
 ## 過程：
-   - ### 1. Alias(別名)
+- ### 1. Alias(別名)
    > 語法：`type 類型名稱 = (參數: 型別) => 型別`;
    ```typescript
     type tFullName = (firstname: string, lastname: string) => string;
@@ -30,10 +30,11 @@
    > 除了`Alias(別名)` 的範例以外，
    > 順便複習了 箭頭函式 + 函式`Inference(推論)`，
    > 可以在 ts 中確認兩個函式的的型別，會有更多的了解和熟悉度。
-![alt](https://)
+
+   ![參數](https://ithelp.ithome.com.tw/upload/images/20220910/201099184VlyKZpw5Y.png)
 
 ---
-   - ### 2. Interface(介面)
+- ### 2. Interface(介面)
    > 和前面的`Alias(別名)`
    > 非常的接近，在前一篇 funciton part 1 提到的，
    > 等號賦值 + `Inference(推論)` 的特性，
@@ -41,11 +42,11 @@
    > 都可以很明顯看出這個特性，
    > 不需要使用完整的型別陳述：
    ```typescript
-    interface iFaceStrChk {
+    interface IFaceStrChk {
       (paragraph: string, keyword: string): boolean;
     }
 
-    const checkKeyword: iFaceStrChk = (paragraph, keyword) => {
+    const checkKeyword: IFaceStrChk = (paragraph, keyword) => {
       // 如果再 Ts 中 查看paragraph 或 keyword 都會告訴你是string
       return paragraph.search(keyword) !== -1;
     }
@@ -54,10 +55,9 @@
     console.log(checkKeyword('Hello world !', 'llo')); // true
     console.log(checkKeyword('Hello world !', 'lle')); // false
    ```
-![alt](https://)
 
 ---
-   - ### 3. Overload (超載)
+- ### 3. Overload (超載)
    > `Overload(超載)`允許一個函式接受不同數量或型別的引數時，作出不同的處理。
    > 我們有一個反轉輸入的需求，做成一個函式 reverse，
    > 輸入數字 123 的時候，輸出反轉的數字 321，輸入字串 'hello' 的時候，輸出反轉的字串 'olleh'。
@@ -99,8 +99,8 @@
    > 成功使用函式`Overload(超載)` 之後，VSCode 的  會跳出提示來說明可用的 `function signatures`
    > ※ VSCode 的`parameter hints(鑲嵌提示)`功能，可以這樣啟用它：在settings.json中添加：
    >   "javascript.inlayHints.parameterNames.enabled": "all",
-![alt](https://)
-   > ※ 注意，TypeScript 會優先從最前面的函式定義開始匹配，所以多個函式定義如果有包含關係，需要優先把精確的定義寫在前面。
+   ![鑲嵌提示](https://ithelp.ithome.com.tw/upload/images/20220910/20109918Bsx5Tgx89e.png)
+   > > ※ 注意，TypeScript 會優先從最前面的函式定義開始匹配，所以多個函式定義如果有包含關係，需要優先把精確的定義寫在前面。
 
 ---
 ## 小結：

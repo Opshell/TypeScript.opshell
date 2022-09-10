@@ -1,22 +1,10 @@
-interface Member {
-   (title: string, age: number | string): string; // 函式的In Out
-   weight: number; // 函式裡的屬性
-   getWeight(e: {weight: number}): void; // 函式裡的方法
-}
+type tFullName = (firstname: string, lastname: string) => string;
 
-function creatMember(): Member {
-   // 在這邊不能用箭頭函式表達喔
-   let member = <Member>function (title: string, age: number): string {
-      return `${title} is ${age} years old.`;
-   }
+// 字首轉大寫
+const upWord = (word: string): string => word.charAt(0).toUpperCase() + word.slice(1);
 
-   member.weight = 100;
-   member.getWeight = (e: {weight: number}) => { console.log(e.weight) };
+const combinName: tFullName = (firstname, lastname) => {
+   return `Hello ${upWord(lastname)} ${upWord(firstname)}, Welcome to typeScript.`;
+};
 
-   return member;
-}
-
-let Opshell = creatMember();
-console.log(Opshell('Opshell', 30));
-Opshell.weight = 60;
-console.log(Opshell.getWeight(Opshell));
+console.log(combinName('Liu', 'opshell')); // Hello Opshell Liu, Welcome to typeScript.
