@@ -1,10 +1,14 @@
-type tFullName = (firstname: string, lastname: string) => string;
+type tMember = {
+   title: string;
+   age: number;
+}
+class Member implements tMember {
+   title = 'Opshell';
+   age = 30;
+}
 
-// 字首轉大寫
-const upWord = (word: string): string => word.charAt(0).toUpperCase() + word.slice(1);
-
-const combinName: tFullName = (firstname, lastname) => {
-   return `Hello ${upWord(lastname)} ${upWord(firstname)}, Welcome to typeScript.`;
-};
-
-console.log(combinName('Liu', 'opshell')); // Hello Opshell Liu, Welcome to typeScript.
+type StrNumUnion = string | number;
+class Member2 implements StrNumUnion {
+   title = 'Opshell';
+   age = 30;
+}

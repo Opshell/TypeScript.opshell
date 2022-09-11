@@ -39,7 +39,7 @@
 
     console.log(member.summary()); // Opshell：30 years old, is a man.
    ```
-   > ※ 在使用上，一般習慣在前面加上大寫的I，並使用Bl case命名法。
+   > ※ 在使用上，一般習慣在前面加上大寫的I，並使用`PascalCase(帕斯卡)`命名法。
    >    用`Interface(介面)`描述物件的`Shape(形狀)`，有甚麼好處呢?
    >    這樣我們就可以反覆使用，例如我今天要多一個成員：
    ```typescript

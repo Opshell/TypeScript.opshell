@@ -1,16 +1,17 @@
 ![alt](https://)
 
-# 這豈不是無敵了??
-	> *當ES6 裝上了TypeScript，*
-	> *這豈不是無敵了?!。*
-	> *───────────────────────── By Opshell*
+# 這就是一隻鴨子
+  > *當我看到一隻鳥像鴨子一樣走路*
+  > *像鴨子一樣游泳，像鴨子一樣嘎嘎叫時，*
+  > *我就叫那隻鳥為鴨子*
+  > *────────────────── By James Whitcomb Riley*
 
 ---
 ## 目標: 學會Object 的Type法
 
 ---
 ## 過程：
-   - ### 1. Inference(推論) 物件
+- ### 1. Inference(推論) 物件
    ```javascript
     // JavaScript Code
     let typescript = {
@@ -61,7 +62,7 @@
    > 3. 不可以新增、修改、刪除 `key(屬性)`。
 
 ---
-   - ### 2. `Annotation(註記)` 物件
+- ### 2. `Annotation(註記)` 物件
    > 就像前面funciton 一樣，上面的方式其實不是完整的宣告Type的方法。
    > 而是像這樣，落落長的`Annotation(註記)`：
    ```typescript
@@ -94,7 +95,7 @@
 ![object-2](https://)
 
 ---
-   - ### 3. 筆記小知識`String Literal(字串字面)`
+- ### 3. 筆記小知識`String Literal(字串字面)`
    > ※  這邊會注意到我的gender的型別變成了 'man' | 'woman' | 'other',
    >     其實這是一種叫做`String Literal(字串字面)`的型別，
    >     聽起來複雜，其實原理很簡單，就是約束值，
