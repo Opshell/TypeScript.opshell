@@ -7,29 +7,34 @@
 
 ---
 ## 目標:認識來自TypeScript的新朋友
-- ### 型別總覽
-   #### 1. 我們先來複習複習JS的型別：
-   > - 原始資料型別
-   >    * boolean 布林值
-   >    * number 數值
-   >    * string 字串
-   >    * null 查找不到物件
-   >    * undefined 未定義
-   >    * symbol（於 ES6 新定義）
-   > - 物件型別
-   >    * object 物件
-   >    * array 陣列
-   >    * function 函式
-   #### 2. 認識一點TS裡的新朋友
-   > - 特殊型別
-   >    * void (空值)
-   >    * unknown (不曉得)
-   >    * any (任意型別) (全世界都是我的 的可怕型別)
-   >    * never (全世界都不是我的 的型別)
+   > 當使用第三方函式庫時，我們需要參考它的宣告檔案，
+   > 才能獲得對應的程式碼自動完成、介面提示等功能。
+
+- ### 新語法索引
+   > - 宣告
+   >    * [declare var 宣告全域變數](#declare_var)
+   >    * [declare function 宣告全域方法](#declare_function)
+   >    * [declare class 宣告全域類別]()
+   >    * [declare enum 宣告全域列舉型別]()
+   >    * [declare namespace 宣告（含有子屬性的）全域物件]()
+   >    * [interface 和 type 宣告全域型別]()
+   > - 匯入、匯出
+   >    * [export 匯出變數](/#)
+   >    * [export namespace 匯出（含有子屬性的）物件]()
+   >    * [export default ES6 預設匯出]()
+   >    * [export = commonjs 匯出模組]()
+   >    * [export as namespace UMD 函式庫宣告全域變數]()
+   > - 擴充
+   >    * [declare global 擴充套件全域變數]()
+   >    * [declare module 擴充套件模組]()
+   > - 其他
+   >    * [/// <reference /> 三斜線指令]()
 
 ---
-- ### JS大家都這麼熟了，我們來介紹一下TS的新朋友：
-   #### 1. 空值 void: 沒有回傳值
+- ### 宣告
+
+<h4 id="declare_var">declare var 宣告全域變數</h4>
+
    > 一般 `void` 用於沒有回傳值的 funciton 中
    > 可以用我們之前寫的consoleAge來改一下
    > 來表示consoleAge不會回傳任何值
@@ -51,6 +56,8 @@
    ```
    > ※　不要濫用`any`型別，這樣跟沒用TypeScript一樣
    > 　　甚至更赤裸了...
+
+<h4 id="declare_function">declare function 宣告全域方法</h4>
 
    #### 3. 任意 unknown: 不檢查型別(畢竟我誰都是)
    > `unknown` 和 `any` 一樣可以接受任何型別賦值，
@@ -75,50 +82,13 @@
     }
    ```
 
-   ![never](https://ithelp.ithome.com.tw/upload/images/20220907/20109918tjEeNCTTd4.png)
+<h4 id="declare_class">declare class 宣告全域類別</h4>
 
-   > 或者可以是另一個情況，
-   > 像這種無窮迴圈，在TS的`Inference(推論)`中會判斷回傳為 `never`，
-   > 沒有人可以從無窮迴圈中出來...
-   ```typescript
-    let immortal = function forever(age: number) {
-      while (true) {
-         age++;
-      }
-    }
-   ```
-   > ※　`never`類型，只能用`never`賦值，
-   >    但是`never`可以賦值給所有型別，
-   >    也就是說，`never`是所有型別的子類，
-   > 　　可以理解為，所有物件都有錯誤的可能。
+<h4 id="declare_enum">declare enum 宣告全域列舉型別</h4>
 
-   > ※　可以發現`void`和`never`很接近，
-   > 　　最值觀的差別是會不會結束?
-   >    `void`函式 會完整結束只是沒有要回傳;
-   >    `never`函式 無法完整跑完，無法回傳。
+<h4 id="declare_var">declare namespace 宣告（含有子屬性的）全域物件</h4>
 
-   > 因為`never`的特性緣故，
-   > 很常用來處理錯誤。
-   > `boolean`裡其實也含有`never`(`never`是所有型別的子類)
-   > 所以: `boolean` 和: `boolean | never`是一樣的
-   > 有興趣的可以把: `boolean | never`寫出來觀察一下
-   > TS 只會說age的回傳是 `boolean`型別
-   ```typescript
-    function ageIsString(age: string | number): boolean{
-      if (typeof age === 'string') {
-          return true;
-      } else if (typeof age === 'number') {
-          return false;
-      }
-
-      //TS 推論此為 never 型別
-      return fail('Age cannot be expressed in this way!');
-    }
-
-    function fail(message: string): never {
-      throw new Error(message);
-    }
-   ```
+<h4 id="declare_var">interface 和 type 宣告全域型別</h4>
 
 ---
 ## 小結：
