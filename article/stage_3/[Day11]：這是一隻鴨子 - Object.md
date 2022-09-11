@@ -1,4 +1,4 @@
-![alt](https://)
+![Day11 Banner](https://ithelp.ithome.com.tw/upload/images/20220911/20109918UMfK32zePF.jpg)
 
 # 這就是一隻鴨子
   > *當我看到一隻鳥像鴨子一樣走路*
@@ -25,7 +25,8 @@
 
     console.log(member.summary());
    ```
-![object-1](https://)
+   ![object-2](https://ithelp.ithome.com.tw/upload/images/20220911/201099183qOEVmLQTg.png)
+
    > 可以發現TypeScript住海邊，管得非常寬，
    > 他不是直接跟你說 member的型別是物件，
    > 而是把物件內的型別`Inference(推論)`的清清楚楚。
@@ -92,7 +93,8 @@
    > 在之後`Interface(介面)`的介紹中就會了解到了。
 
    > 不過看看這個編譯過後的程式碼量...
-![object-2](https://)
+
+   ![object-3](https://ithelp.ithome.com.tw/upload/images/20220911/20109918NNrjX9mMXc.png)
 
 ---
 - ### 3. 筆記小知識`String Literal(字串字面)`
