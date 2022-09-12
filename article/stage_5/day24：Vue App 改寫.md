@@ -11,6 +11,9 @@
    > 安裝完成使用TypeScript需要的環境，
    > 然後開始祈禱過程不要出現奇怪的問題。
 
+封裝axios
+https://juejin.cn/post/7107047280133275678
+
 ---
 ## 過程：(安裝請點擊藍字)
 - ### 1. 系統：[Window 11](https://www.microsoft.com/zh-tw/software-download/windows11)
