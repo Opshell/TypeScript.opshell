@@ -13,68 +13,56 @@
 
 ---
 ## 過程：(安裝請點擊藍字)
-- ### 1. 系統：[Window 11](https://www.microsoft.com/zh-tw/software-download/windows11)
-- ### 2. 編輯器：[VS Code](https://code.visualstudio.com/)
-- ### 3. 終端機：[PowerShell 7](https://docs.microsoft.com/zh-tw/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2)
-   > 如果本來是PowerShell 5 要安裝7 可能會有一點點問題 [請參考](https://docs.microsoft.com/zh-tw/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.2)
-   > 查看powershell版本方式：在powershell中輸入：↓↓↓
-   ```
-    Get-Host | Select-Object Version
-   ```
-   > ※ 安裝完之後，記得把VS code的預設終端機改成PowerShell
+- ### 1. SCSS
+> 安裝SCSS
+```shell
+ yarn add sass sass-loader -D
+```
+> 設定`vite.config.ts`
+```typescript
+   css: {
+      preprocessorOptions: {
+         scss: { // 設定全域SCSS
+               additionalData: '@import "@/assets/scss/stylesheet.scss";'
+         }
+      }
+   }
+```
+> ※ 在main.js中不要再次引用stylesheet.scss文件，不然會報重複引用錯誤。
+
+- ### 2. vue router
+```shell
+ yarn add vue-router@next -D
+```
+> 在src 目錄下新建資料夾 router
+> 新增 index.ts 然後把之前寫的js 塞進來
+> 會產生一堆錯誤
 ![alt](https://)
+> 開始調整
 
----
-- ### 4. Node版本管理：[NVM](https://github.com/coreybutler/nvm-windows)
-   > 身為一個會玩前端的園丁，裝個NVM也是合情合理。
-   > ※ NVM 建議安裝在C:\
-   > 確認NVM有沒有安裝好↓↓↓
-   ```
-    nvm version
-   ```
+1. 修改main.ts
+```
+import router from './router'
 
----
-- ### 5. Node本No：[Node.js](https://nodejs.org/zh-tw/)
-   > 身為一個會玩前端的園丁，裝個Node.js應該也是很正常的一件事。
-   > ~~看了前面的環境，你不會以為我下的指令不是在Windows吧?~~
-   > 確認安裝了甚麼版本的node↓↓↓
-   ```
-    nvm list
-   ```
-   > 安裝 Node.js 16.17.0 版本↓↓↓
-   ```
-    nvm install 16.17.0
-   ```
-   > 切換到16.17.0版的Node↓↓↓
-   ```
-    nvm use 16.17.0
-   ```
+app.use(router)
+```
 
----
-- ### 6. ~~閃電俠：[yarn](https://ithelp.ithome.com.tw/articles/10191745)~~
-   > 身為...
-   > 全域安裝 yarn↓↓↓
-   ```
-    npm install -g yarn
-   ```
-   > 確認yarn 版本↓↓↓
-   ```
-    yarn -v
-   ```
-![alt](https://)
+https://www.jianshu.com/p/2d1b6c28e9ac
 
----
-- ### 7. 安裝TypeScript(全域)
-   > 終於到了我們的主角啦~
-   ```
-    npm install -g typescript
-   ```
-   > 如果你沒有遇到任何問題，應該會長這樣，
-   > 確認目前安裝的環境↓↓↓
-   ```
-    npm list -g --depath=0
-   ```
-![alt](https://)
+- ### 3. vuex
+```shell
+ yarn add vuex@next -D
+```
+> Vuex 没有为 this.$store 属性提供开箱即用的类型声明。如果你要使用 TypeScript，首先需要声明自定义的模块补充(module augmentation)。
+> 为此，需要在项目文件夹中添加一个声明文件来声明 Vue 的自定义类型
+
+当使用组合式 API 编写 Vue 组件时，您可能希望 useStore 返回类型化的 store。为了 useStore 能正确返回类型化的 store，必须执行以下步骤：
+
+定义类型化的 InjectionKey。
+将 store 安装到 Vue 应用时提供类型化的 InjectionKey 。
+将类型化的 InjectionKey 传给 useStore 方法。
+store.ts
+
 
 ---
 ## 小結：

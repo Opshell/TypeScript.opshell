@@ -52,6 +52,11 @@ https://juejin.cn/post/7124950336648773640
    ```
 
 ---
+   #### 1.1 vite.config.ts 設定
+   > 輸出路徑
+
+
+---
    #### 2. TypeScript Node type 依賴
    > 在設定路徑別名、文件讀寫等操作的時候，為了簡化路徑都會使用別名，
    > 但是直接設定的话 TypeScript 看不懂 node 相關的套件的型別聲明，
@@ -109,49 +114,24 @@ https://juejin.cn/post/7124950336648773640
    > 所以我們需要設定一下。
 
    ```javascript
-    import { defineConfig } from 'vite'
-    // ...
-
+    // vite.config.ts
     export default defineConfig({
-      // ...
-      // 开发环境服务器的配置都在 server 配置项内
+      // 以上省略...
+
+      // 代理伺服器
       server: {
-         // 指定服务器应该监听哪个 IP 地址。 如果将此设置为 0.0.0.0 或者 true 将监听所有地址，包括局域网和公网地址。
-         // 默认为 'localhost'，即仅能本机访问
-         host: '0.0.0.0',
-         // 启动端口
-         port: 8080,
-         // 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口。
-         strictPort: false,
-         // HMR 连接配置（用于 HMR websocket 必须使用不同的 http 服务器地址的情况，或者禁用 hmr 模块），一般省略
-         hmr: {
-               host: '127.0.0.1',
-               port: 8080
-         },
-         // 参数类型：boolean | string，配置启动时时候自动打开网页，是字符串时表示打开某个特定路径
-         open: true,
-         // 自定义代理规则，用来配合后端服务进行接口调用等。
-         // 默认使用 [http-proxy](https://github.com/http-party/node-http-proxy) 模块，完整配置见官方仓库
+         port: 1025,
+         strictPort: false, // Port被占用時直接退出， false會嘗試連接下一個可用Port
+         open: true, // dev時自動打開網頁，也可以給網址指定。
+         // 自訂代理規則，配合後端進行Api呼叫等。
+         // 預設使用 [http-proxy](https://github.com/http-party/node-http-proxy) 完整設定請見官方
          proxy: {
-               // 字符串简写写法
-               '/foo': 'http://localhost:4567',
-               // 选项写法
-               '/api': {
-                  target: 'http://jsonplaceholder.typicode.com',
-                  changeOrigin: true,
-                  rewrite: (path) => path.replace(/^\/api/, '')
-               },
-               // 正则表达式写法
-               '^/fallback/.*': {
-                  target: 'http://jsonplaceholder.typicode.com',
-                  changeOrigin: true,
-                  rewrite: (path) => path.replace(/^\/fallback/, '')
-               },
-               // Proxying websockets or socket.io
-               '/socket.io': {
-                  target: 'ws://localhost:3000',
-                  ws: true
-               }
+            '/api': {
+               target: "http://www.opshell/api/", // 本機串接
+               ws: true, // 代理的WebSockets
+               changeOrigin: true, // 允許websockets跨域
+               rewrite: (path) => path.replace(/^\/api/, '')
+            },
          }
       }
     })
