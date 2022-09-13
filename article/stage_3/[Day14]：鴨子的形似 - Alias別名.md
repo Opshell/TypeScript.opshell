@@ -3,7 +3,7 @@
 # 這兩隻不都是鴨子嗎?
 > *鴨子與鵝實際差在哪?*
 > *等等? 這兩隻不都是鴨子嗎?*
-> *───────────────────────── By Opshell*
+> *────────────────────── By Opshell*
 
 ---
 ## 目標: `Type Aliases(型別別名)`
@@ -60,11 +60,11 @@
 
    #### 2. 在`extends(繼承)`的區別
    ```typescript
-    interface IMember {
+    interface iMember {
       title: string;
       age: number;
     }
-    interface ISuperMember extends IMember {
+    interface iSuperMember extends iMember {
       gender: string;
     }
 
@@ -93,8 +93,8 @@
       age = 30;
     }
 
-    type StrNumUnion = string | number;
-    class Member2 implements StrNumUnion {
+    type tStrNumUnion = string | number;
+    class Member2 implements tStrNumUnion {
       title = 'Opshell';
       age = 30;
     }

@@ -9,4 +9,4 @@ declare namespace Member {
     }
 
     function getSummary(title: string, age: number): string;
-  }
+}

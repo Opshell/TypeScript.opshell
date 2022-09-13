@@ -5,7 +5,7 @@
   // ],
   "include": [ // 指定要編譯的目錄
     "ts",
-    "ts/.d.ts/*"
+    "ts/types/*"
   ],
   // "exclude": [], // 要排除編譯的目錄
   "compilerOptions": {

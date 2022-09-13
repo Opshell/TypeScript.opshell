@@ -17,14 +17,16 @@
 - ### [vite + vue3 + ts 使用总结](https://segmentfault.com/a/1190000041296321)
 
 ---
-## 過程：(安裝請點擊藍字)
-- ### 語法配置
-   >
-     #### 1. 安装 prettier
-   ```
+## 過程：
+- ### 程式碼風格、檢查設定
+   > 為了美觀、統一風格，我們一定是會安裝`Prettier`、`ESLint`，
+   > 等風格化套件，但由於是TypeScript會有億點點不一樣：
+
+   #### 1. 安装 prettier
+   ```shell
     yarn add --dev --exact prettier
    ```
-   > 設定 prettier.config.js
+   > 設定 `prettier.config.js`
    ```javascript
     // prettier.config.js
     module.exports = {
@@ -49,19 +51,17 @@
       endOfLine: 'lf' // 換行符號使用lf
     }
    ```
-
-   > 設定 .prettierignore
+   > 設定 `.prettierignore`
    ```
     node_modules
     dist
     public
    ```
 
-   #### 2. 安裝ESLint
-   > 因为 eslint 不能识别 TypeScript 语法，所以我们要添加对应的 @typescript-eslint/parser 来替换原有解析器；
-   > 并安装 @typescript-eslint/eslint-plugin 与 eslint-plugin-vue 来为 ts 等文件增加对应的语法规则。
-   > 并且为了配合 prettier 代码美化规则，还需要安装 eslint-config-prettier 和eslint-plugin-prettier 来读取 prettier 配置。
-
+   #### 2. 安裝`ESLint`
+   > 因為`ESLint`看不懂TypeScript，所以我们要安裝對應的`@typescript-eslint/parser`来擴充解析器；
+   > 再安裝`@typescript-eslint/eslint-plugin`、`eslint-plugin-vue` 來新增`.ts`等文件對應的語法。
+   > 再配合`prettier`安裝`eslint-config-prettier`、`eslint-plugin-prettier`來應用`prettier`的設定。
    ```shell
     yarn add eslint -D
     yarn add eslint-plugin-vue -D
@@ -70,8 +70,7 @@
     yarn add eslint-config-prettier -D
     yarn add eslint-plugin-prettier -D
    ```
-   > 當然你也可以 縮成一行指令，這邊只是方便看
-
+   > 當然你也可以 縮成一行指令，這邊只是方便看。
 
    #### 3. jsx
    > [JSX](https://blog.csdn.net/qq_16221009/article/details/122460305)
@@ -81,20 +80,22 @@
    ![alt](https://)
 
    > 其實Ops 沒在用Jsx的，根本不會啊
-   > 不過聽說和TypeScript 很合 然後Vite又支援
-   > 不然先裝起來  總有天會用到
+   > 不過聽說和TypeScript很合 然後Vite又支援
+   > 不然先裝起來，總有天會用到~~(才怪)~~
 
-
+---
+- ### `AutoLoad(自動載入)`
    #### 4. 自動載入
-   > 在使用 vue 3 的组合式 api 的时候，页面上通常需要些很多的 import，所以 vue 与 vite 的主要贡献者 [Anthony Fu(antfu) ]()(關注起來)
-   > 根据 unplugin 编写了几个自动引入插件，这里可以使用 [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) 和 unplugin-vue-components
+   > 在使用 vue 3 的`compostion(組合式)`api的时候，通常會用很多`import`：
+   ![alt](https://)
+   > 所以 vue 與 vite 的主要貢獻者[Anthony Fu(antfu)](https://github.com/antfu)(關注起來)大大，
+   > 根据 unplugin 做了幾個自動import套件，
+   > 这里可以使用`unplugin-auto-import`和`unplugin-vue-components`
    ```
     npm i unplugin-auto-import -D
    ```
 
-   > 因为我们使用的是 vite + ts 的环境，并使用了 eslint，所以我们需要进行一下配置
-   ```
-   ```
+   > 因為我們是用vite + ts，還使用了`ESLint`，所以我们需要設定一些東西
 
    ```typescript
     // vite.config.ts
