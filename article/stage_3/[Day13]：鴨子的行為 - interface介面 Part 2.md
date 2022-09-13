@@ -12,10 +12,10 @@
    > 昨天提到，在 TypeScript 中的`Interface(介面)`是一個非常靈活的概念，
    > 今天我們就來看一些其他的使用方式，
    > 了解它到底有多靈活。
----
 
+---
 ## 過程：
-   - ### 1. Type face
+- ### 1. Type face
    > 昨天的例子中，`Interface(介面)` 都是當作物件的形狀做使用，
    > 當然他也可以當作是一種型別：
    ```typescript
@@ -42,7 +42,7 @@
    ```
 
 ---
-   - ### 2. Object Literal face
+- ### 2. Object Literal face
    > `Interface(介面)`也可以當作參數的型別，
    > 可以讓typescript 幫你檢查參數格式對不對：
    ```typescript
@@ -102,7 +102,7 @@
    > 來修正上面報錯的部分，各位可以試試看。
 
 ---
-   - ### 3. 套件的 options 物件 face
+- ### 3. 套件的 options 物件 face
    > 和 `Object Literal` face 幾乎沒有差別
    > 只是變成了全可選參數的物件：
    ```typescript
@@ -143,7 +143,7 @@
    ```
 
 ---
-   - ### 4. funciton `Overload(超載)` 的 `overload signatures(簽章)` face
+- ### 4. funciton `Overload(超載)` 的 `overload signatures(簽章)` face
    > 也可以拿來當作`Overload(超載)`的`overload signatures(簽章)`
    > 拿前面[[Day10] - funciton part 2]()超載的例子來改寫：
    ```typescript

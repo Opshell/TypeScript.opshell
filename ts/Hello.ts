@@ -1,14 +1,12 @@
-type tMember = {
-   title: string;
-   age: number;
-}
-class Member implements tMember {
-   title = 'Opshell';
-   age = 30;
-}
+declare namespace Member {
+    interface Info {
+       title: string;
+       age: number;
+    }
 
-type StrNumUnion = string | number;
-class Member2 implements StrNumUnion {
-   title = 'Opshell';
-   age = 30;
-}
+    namespace Team {
+       function getTeam(): Array<string>;
+    }
+
+    function getSummary(title: string, age: number): string;
+  }
