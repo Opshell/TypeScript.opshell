@@ -9,14 +9,62 @@
 ## 目標:檔案宣告
    > 今天我們要蓋網站，一般來說都不會自己造輪子，
    > 但是你要用別人的輪子，TypeScript看不懂，會哀哀叫。
-   > 所以使用套件時，我們需要宣告他的型別，
+   > 所以使用套件時，我們需要宣告他的型別(說明書)，
    > 才能獲得對應的程式碼自動完成、介面提示等功能。
 
 ---
 ## 過程
+- ### 用大神的說明書
+   > 一般我們透過 `import foo from 'foo'` 匯入一個 npm 套件，這是符合 `ES6 模組`規範的。
+   > 在我們自己宣告套件型別前，可以看看需要先看看它的`宣告檔案`是否已經存在。
+   > 什麼是`宣告檔案`? 你可以想像成輪子的使用說明書，
+   > 你要把說明書給TS他才會用：
+
+   > 套件的`宣告檔案`可能存在於兩個地方：
+   > * 與該套件繫結在一起：
+   >   `package.json` 中有 types 欄位，或者有一個 `index.d.ts` 宣告檔案。
+   >   這種模式不需要額外安裝其他包，是最方便好用的。
+
+   > * 釋出到`@types`裡。我們只需要嘗試安裝一下對應的`@types`包就知道是否存在該宣告檔案。
+   >   安裝命令是：
+   ```shell
+    yarn add @types/foo -D。
+   ```
+   >   這種模式一般是由於套件的維護者沒有提供`宣告檔案`，所以由其他大神將`宣告檔案`共享到`@types`裡。
+   > ※ 當然也可以在[這邊](https://www.typescriptlang.org/dt/search?search=)搜尋看看在。
+
+   > * 當然也可以找到野生的說明書，可以直接下載來用，
+   >   但是套件一多會很亂，所以還是推薦使用`@types`來管理。
+
+---
+- ### 自己做`宣告檔案(說明書)`
+   > 如果上面兩種方式都找不到輪子，那大概就要自己做了，
+   > 由於是透過 `import` 匯入的模組，
+   > 所以宣告檔案存放的位置也有一定的規則，
+   > 一般有兩種方案：
+
+   > * 建立一個 `node_modules/@types/foo/index.d.ts` 檔案，存放 foo 模組的宣告檔案。
+   >   這種方式不需要額外的設定，但是 `node_modules` 不穩定，程式碼也沒有被儲存到儲存庫中，
+   >   無法回溯，有不小心被刪除的風險，一般只用作臨時測試。
+
+   > * 建立一個 `types` 目錄，專門用來管理自己寫的宣告檔案，將 foo 的宣告檔案放到 `types/foo.d.ts` 中。
+   >   這種方式需要設定 `tsconfig.json` 裡，
+   >   `paths` 、 `baseUrl`、`files`、`include` 和 `exclude` 等欄位。看需求：
+   ```git
+    /project
+    ├── ts
+    |  ├── index.ts
+    |  └── types
+    |       └── foo.d.ts
+    └── tsconfig.json
+   ```
+   ![tsconfig.json](https://)
+
+---
 - ### `declare(全域宣告)`
-   > 最常用到的套件大概就是`jQuery`了，
-   > 一般使用都是這樣：
+   > 先來講解做說明書會用到的大概語法，
+   > 用常用到的`jQuery`來做說明，
+   > 一般在JS使用都是這樣：
    ```javascript
     $(function(){ /** 巴拉巴拉... */});
    ```
@@ -25,7 +73,7 @@
    ![jQuery 錯誤](https://ithelp.ithome.com.tw/upload/images/20220913/20109918yZCi2KU8i0.png)
    > 這時候就可以用`declare(全域宣告)`把'$'宣告成全域變數，
    > 和一般的JavaScript一樣，只是在前面加上`declare`，
-   > 而特性也差不多`let`、`var` 是變數`const`是常數：
+   > 而特性也差不多，`let`、`var` 是變數`const`是常數：
    ```typescript
     declare const $: (selector: any) => any;
 
@@ -147,17 +195,6 @@
     └── tsconfig.json
    ```
    ![宣告檔案編譯](https://ithelp.ithome.com.tw/upload/images/20220913/20109918pp3TaemvsZ.png)
-
----
-- ### 第三方套件宣告
-   > 當然這種常用的套件，社群裡的大佬都幫我們處理好了，
-   > 當然是大神的輪子用起來，直接下載下來使用沒問題，
-   > 但是用的套件一多總是很亂，
-   > 推薦用@types 統一管理套件的宣告檔案：
-   ```shell
-    yarn add @types/jquery -D
-   ```
-   > 當然你可以在[這邊](https://www.typescriptlang.org/dt/search?search=)找找看你需要的輪子有沒有大神處理好了
 
 ---
 ## 小結：

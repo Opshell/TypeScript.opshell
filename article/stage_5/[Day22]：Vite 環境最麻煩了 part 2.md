@@ -15,7 +15,7 @@
 
 - ### [使用Vite搭建Vue3(TypeScript版本)项目](https://www.jianshu.com/p/2d1b6c28e9ac)
 - ### [vite + vue3 + ts 使用总结](https://segmentfault.com/a/1190000041296321)
-
+- ### [Vue 3 + TypeScript + Vite 搭建初始项目](https://juejin.cn/post/7051565418460217375)
 ---
 ## 過程：
 - ### 程式碼風格、檢查設定
@@ -85,7 +85,7 @@
 
 ---
 - ### `AutoLoad(自動載入)`
-   #### 4. 自動載入
+   #### 1. 自動載入套件
    > 在使用 vue 3 的`compostion(組合式)`api的时候，通常會用很多`import`：
    ![alt](https://)
    > 所以 vue 與 vite 的主要貢獻者[Anthony Fu(antfu)](https://github.com/antfu)(關注起來)大大，
@@ -94,11 +94,9 @@
    ```
     npm i unplugin-auto-import -D
    ```
-
-   > 因為我們是用vite + ts，還使用了`ESLint`，所以我们需要設定一些東西
+   > 因為我們是用vite + ts，還使用了`ESLint`，所以我们需要在`vite.config.ts`設定一些東西
 
    ```typescript
-    // vite.config.ts
     import AutoImport from 'unplugin-auto-import/vite'
 
     export default defineConfig({
@@ -108,25 +106,53 @@
     })
    ```
 
-   > 这里需要对原来的 .eslintrc.js 文件进行修改，增加 unplugin-auto-import 生成的规则文件。
-   ```
+   > 這邊需要對`.eslintrc.js`進行修改，增加`unplugin-auto-import`生成的規則文件。
+
+   ```javascript
+    module.exports = {
+      extends: [
+         './.eslintrc-auto-import.json', // `unplugin-auto-import` 生成的规则配置文件
+         // ...
+      ]
+    }
    ```
 
    ![alt](https://)
 
-   #### 5. 自動引入
-   > 这个仓库则是自动为 vue 项目按需导入组件的插件，并且可以自定义 Resolver 来配置引入规则。但是，该插件不支持 Jsx 和 Tsx 语法
-   > 该仓库内置了 Ant Design Vue Arco Design Vue Element Plus Naive UI VueUse Components 等 18 个组件库的 Resolver 方法。
+   #### 2. 自動引用組件
+   > 這個套件自動按照需求`import(載入)`組件，還可以自訂`Resolver(解析)`来設定`import(載入)`規則。
+   > 並預設了 `Ant Design Vue`、`Element Plus`、`Naive UI`、`VueUse Components`等
+   > 18個常用套件的`Resolver(解析)`方法。
+   > ※ 不支援`Jsx`和`Tsx`語法
+
    ```shell
     yarn add unplugin-vue-components -D
    ```
 
-   > 然后，在 vite.config.ts 中进行配置。
+   > 設定`vite.config.ts`：
+   ```typescript
+    import Components from 'unplugin-vue-components/vite'
+    import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
-   #### 6. dev
-   ```shell
-    npm run dev
+    export default defineConfig({
+      plugins: [
+         Components({
+            dirs: [ 'src/components' ], // 指定components位置 預設是'src/components'
+            dts: 'src/components.d.ts', // .d.ts生成位置
+            resolvers: [ NaiveUiResolver() ] // 解析規則
+         })
+      ]
+    })
    ```
+
+---
+- ### 執行看看
+   ```shell
+    yarn run dev
+   ```
+   > 沒問題的話，應該會看到這個：
+   ![alt](https://)
+
 ---
 ## 小結
 > 今天環境裝太多了設定太多了，
