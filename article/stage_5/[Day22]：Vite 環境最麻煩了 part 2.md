@@ -72,17 +72,6 @@
    ```
    > 當然你也可以 縮成一行指令，這邊只是方便看。
 
-   #### 3. jsx
-   > [JSX](https://blog.csdn.net/qq_16221009/article/details/122460305)
-   ```shell
-    import vueJsx from '@vitejs/plugin-vue-jsx'
-   ```
-   ![alt](https://)
-
-   > 其實Ops 沒在用Jsx的，根本不會啊
-   > 不過聽說和TypeScript很合 然後Vite又支援
-   > 不然先裝起來，總有天會用到~~(才怪)~~
-
 ---
 - ### `AutoLoad(自動載入)`
    #### 1. 自動載入套件
@@ -156,4 +145,4 @@
 ---
 ## 小結
 > 今天環境裝太多了設定太多了，
-> 要吐了 先這樣  先緩緩  我不行了。
+> 要吐了先這樣... 先緩緩我不行了。

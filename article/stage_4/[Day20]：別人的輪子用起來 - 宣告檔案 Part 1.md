@@ -27,9 +27,9 @@
 
    > * 釋出到`@types`裡。我們只需要嘗試安裝一下對應的`@types`包就知道是否存在該宣告檔案。
    >   安裝命令是：
-   ```shell
-    yarn add @types/foo -D。
-   ```
+   > ```shell
+   >  yarn add @types/foo -D。
+   > ```
    >   這種模式一般是由於套件的維護者沒有提供`宣告檔案`，所以由其他大神將`宣告檔案`共享到`@types`裡。
    > ※ 當然也可以在[這邊](https://www.typescriptlang.org/dt/search?search=)搜尋看看在。
 
@@ -39,30 +39,10 @@
 ---
 - ### 自己做`宣告檔案(說明書)`
    > 如果上面兩種方式都找不到輪子，那大概就要自己做了，
-   > 由於是透過 `import` 匯入的模組，
-   > 所以宣告檔案存放的位置也有一定的規則，
-   > 一般有兩種方案：
+   > 自己幫套件做型別宣告有幾種方式，
+   > 先來講解做說明書會用到的大概語法：
 
-   > * 建立一個 `node_modules/@types/foo/index.d.ts` 檔案，存放 foo 模組的宣告檔案。
-   >   這種方式不需要額外的設定，但是 `node_modules` 不穩定，程式碼也沒有被儲存到儲存庫中，
-   >   無法回溯，有不小心被刪除的風險，一般只用作臨時測試。
-
-   > * 建立一個 `types` 目錄，專門用來管理自己寫的宣告檔案，將 foo 的宣告檔案放到 `types/foo.d.ts` 中。
-   >   這種方式需要設定 `tsconfig.json` 裡，
-   >   `paths` 、 `baseUrl`、`files`、`include` 和 `exclude` 等欄位。看需求：
-   ```git
-    /project
-    ├── ts
-    |  ├── index.ts
-    |  └── types
-    |       └── foo.d.ts
-    └── tsconfig.json
-   ```
-   ![tsconfig.json](https://)
-
----
-- ### `declare(全域宣告)`
-   > 先來講解做說明書會用到的大概語法，
+   #### 1. `declare(全域宣告)`
    > 用常用到的`jQuery`來做說明，
    > 一般在JS使用都是這樣：
    ```javascript
@@ -72,8 +52,8 @@
 
    ![jQuery 錯誤](https://ithelp.ithome.com.tw/upload/images/20220913/20109918yZCi2KU8i0.png)
    > 這時候就可以用`declare(全域宣告)`把'$'宣告成全域變數，
-   > 和一般的JavaScript一樣，只是在前面加上`declare`，
-   > 而特性也差不多，`let`、`var` 是變數`const`是常數：
+   > 和一般的JavaScrip需告變數一樣，只是在前面加上`declare`，
+   > 而特性也差不多，`let`、`var`是變數`const`是常數：
    ```typescript
     declare const $: (selector: any) => any;
 
@@ -87,7 +67,7 @@
    > declare 可以用的包括 `function`、`class`、`enum`、`namespace`等。
    > 而`declare(全域宣告)`中有一些比較特別的是：
 
-   #### 1. `declare namespace`宣告(含有子屬性的)全域性物件。
+   * 1-1. `declare namespace`宣告(含有子屬性的)全域性物件。
    > 以前沒有`ES6 module`的時候 TS 提供的模組化方案，
    > 現在有了`ES6 module`後改稱為 `TS namespace(命名空間)` 來使用，
    > 由於`ES6 module`的普及，現在幾乎不使用`TS namespace(命名空間)`來做模組化，
@@ -122,10 +102,11 @@
     // 使用長這樣 namespace名稱 + 子屬性名稱
     let Opshell: Member.Info = { title: 'Opshell', age: 30 };
    ```
+
    ---
-   #### 2. interface 和 type
-   > 除了全域變數之外，可能有一些型別我們也希望能全域使用。
-   > 在型別宣告檔案中，我們可以直接使用`interface`或`type`來宣告一個全域的介面或型別：
+   * 1-2. interface 和 type
+   > 除了`declare(宣告全域)`的變數之外，可能有一些型別我們也希望能全域使用。
+   > 在型別宣告中，我們可以直接使用`interface`或`type`來宣告一個全域的介面或型別：
    ```typescript
     interface AjaxSettings {
       method?: 'GET' | 'POST'
@@ -151,7 +132,7 @@
    ```
 
    ---
-   #### 3. 宣告合併
+   * 1-3. 宣告合併
    > 當你在`declare(全域宣告)`型別時，重複的名稱並不會產生衝突，
    > 而是會合併起來：
    ```typescript
@@ -159,38 +140,35 @@
     declare namespace jQuery {
       function ajax(url: string, settings?: any): void;
     }
-   ```
-   > 這樣子宣告的話就可以：
-   ```typescript
+
     jQuery('#foo');
     jQuery.ajax('/api/get_something');
    ```
 
 ---
-- ### 宣告檔案
+   #### 2. 宣告檔案
    > 一般我們會把`宣告語句`單獨放到`.d.ts`的檔案裡面，
-   > 所以`.d.ts`就是所謂的宣告檔案：
+   > 所以`.d.ts`就是所謂的`宣告檔案`：
 
    ```typescript
-    // ts/.d.ts/jQuery.d.ts
+    // ts/types/jQuery.d.ts
     declare const $: (selector: any) => any;
     declare function jQuery(selector: string): any;
     declare namespace jQuery {
       function ajax(url: string, settings?: any): void;
     }
    ```
-   > TS 會解析專案中所有的 *.ts 檔案，當然也包含以 .d.ts 結尾的檔案。
+   > TS 會解析專案中所有的 `*.ts` 檔案，當然也包含以`.d.ts`結尾的檔案。
    > 所以將 jQuery.d.ts 放到專案裡(和.ts檔放在一起)，
-   > 所有 *.ts 檔案就都可以獲得 jQuery 的型別定義了。
-
-   > 如果無法解析，那麼可以檢查 `tsconfig.json` 裡
-    `files`、`include` 和 `exclude` 的設定，包含了 jQuery.d.ts 的位置。
-   > 像 Ops 習慣把 .d.ts 檔案塞在一起，就需要像下面這樣設定一下`tsconfig.json`。
+   > 所有`*.ts`檔案就都可以獲得 jQuery 的型別定義了。
+   > 如果無法解析，那麼可以檢查 `tsconfig.json` 裡，
+   > `files`、`include`和`exclude`的設定，是否包含了 jQuery.d.ts 的所在目錄。
+   > 像 Ops 習慣把 `.d.ts` 檔案塞在一起，就需要像下面這樣設定一下`tsconfig.json`。
    ```git
     /project
     ├── ts
     |  ├── index.ts
-    |  └── .d.ts
+    |  └── types
     |       └── jQuery.d.ts
     └── tsconfig.json
    ```
@@ -202,6 +180,6 @@
 > 這些人有什麼專長、特點，
 > 介紹的越詳細，TS遇到他的時候就注意更多細節，
 > 所以一些功能很複雜的套件，使用大老們處理好的，
-> 省事到極點，輪子還是用別人的方便省力，
-> 但走有自己做輪子的時候，
+> 省事到極點，`說明書`還是用別人的方便省力，
+> 但總有自己做`輪子(套件)`的時候，這時候要附上`說明書`，
 > 明天的Prat 2 就來學學怎麼做個輪子使用說明書~
