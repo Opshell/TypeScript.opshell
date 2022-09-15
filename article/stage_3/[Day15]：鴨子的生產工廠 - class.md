@@ -1,4 +1,4 @@
-![alt](https://)
+![Day15 Banner](https://ithelp.ithome.com.tw/upload/images/20220915/20109918LE9actwDSW.jpg)
 
 # 卡鏘~ 一隻鴨子，卡鏘~ 兩隻鴨子...
 > *一隻鴨... 兩隻鴨...*
@@ -19,7 +19,7 @@
 
 ---
 ## 過程：
-   - ### Class 基本使用 與 `Property(屬性)` 存取權
+- ### Class 基本使用 與 `Property(屬性)` 存取權
    > 讀萬卷書，一樣要行萬里路，
    > 實踐才是學會Codeing的硬道理，
    > 我們直接來個例子講解吧：
@@ -69,7 +69,7 @@
    6. `Property(屬性)` readonly 時，就不能改變，只能讀取。
 
 ---
-   - ### Class `extends(繼承)`
+- ### Class `extends(繼承)`
    > 上面說了一堆很抽象的東西，
    > 我們來實作一下：
    ```typescript
@@ -123,7 +123,7 @@
    > ※ `private(私有)`屬性 子類不能使用外，也不會`extends(繼承)`
 
 ---
-   - ### Class `abstract(抽象)`
+- ### Class `abstract(抽象)`
    > 對，我們現在是真的抽象了，
    > 甚麼意思? 比喻一下：
    > `Class(類別)`是真的設計圖,
@@ -140,7 +140,8 @@
    ```
    > 然後讓Member繼承Maya：
 
-   ![alt](https://)
+   ![class抽象](https://ithelp.ithome.com.tw/upload/images/20220915/20109918ZZgdGotJPQ.png)
+
    > 在Member 裡面補上
    ```typescript
     public getSlogan = (): string => {
