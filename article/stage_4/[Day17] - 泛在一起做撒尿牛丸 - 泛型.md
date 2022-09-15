@@ -4,10 +4,8 @@
 > *爭什麼爭！*
 > *泛在一起做撒尿牛丸阿，笨蛋*
 > *───────────────────────── By 周星馳 - 食神*
-![alt](https://)
 
 ---
-
 https://jkchao.github.io/typescript-book-chinese/typings/generices.html#%E5%8A%A8%E6%9C%BA%E5%92%8C%E7%A4%BA%E4%BE%8B
 https://pjchender.dev/ironman-2021/ironman-2021-day06/
 https://pjchender.dev/ironman-2021/ironman-2021-day02/
@@ -19,8 +17,8 @@ https://pjchender.dev/ironman-2021/ironman-2021-day02/
    > `Generics(泛型)`是指在定義 `function`、`Interfaces(介面)` 或 `Class(類別)` 的時候，
    > 不指定具體的型別，讓型別抽象化，使用的時候再指定型別的一種特性。
    > 簡單來說就是讓型別，也變成一個變數。
----
 
+---
 ## 過程：
    - ### 1. `Generics(泛型)` 基本使用
    > 做一個可以新增、剔除成員的 Class
