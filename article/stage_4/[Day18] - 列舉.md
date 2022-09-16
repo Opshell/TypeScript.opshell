@@ -35,16 +35,18 @@
         '3': 'Other'
     };
    ```
+   > 在TS中提供了Enum(列舉)
+   > enum 名稱沒有規定要純大寫(只是習慣)
    ```typescript
-    // 在TS中提供了Enum(列舉)
-    // enum 名稱沒有規定要純大寫(只是習慣)
     enum GENDER {
         man,
         woman,
         other,
     }
-    // 沒有賦值的情況下，TS會自動從0開始賦值
    ```
+   > ※ 沒有賦值的情況下，TS會自動從0開始賦值。
+
+---
 - ### 實務應用
    > `Enum(列舉、枚舉)`實務中比較常見的用法是，
    > 配合`型別檢測(Type Guard)`中的一種模式，
@@ -72,12 +74,12 @@
     }
 
     // 利用 Union 的方式產生 Union Type
-    type Resp = iFaceSuccessResp | iFaceErrorResp;
+    type tResp = iFaceSuccessResp | iFaceErrorResp;
 
     // ※　不要在函式參數的地方做物件的解構，
     // 　　不要({status, data, errorCode, message} : Resp)
     // 　　需要的話，可以在 switch case 判斷完後再來解構
-    const parseResponse = (resp: Resp) => {
+    const parseResponse = (resp: tResp) => {
         // 當然enum也可以解構來使用
         // const { OK, ERROR } = STATUS_DESCRIPTION;
         switch (resp.status) {
@@ -100,12 +102,12 @@
        throw new Error(message);
     }
    ```
-   > ※　在上面範例中enum的宣告方式，
-   > 　　編譯過後會變成 key 和 value 互相對應的 Object，
-   > 　　也就是說不管是用 key 還是 value 都可以取出對應的值，
-   > 　　原理是使用 IIFE 產生 Object 將 key 和 value 綁定到 Object，
+   > ※　在上面範例中`Enum(列舉)`的宣告方式，
+   >    編譯過後會變成 key 和 value 互相對應的 `Object`，
+   >    也就是說不管是用 key 還是 value 都可以取出對應的值，
+   >    原理是使用 IIFE 產生`Object`將 key 和 value 綁定到 Object，
    >    造成一些效能上的耗損，也會增加內存，
-   >    Enum數量一多，效能會變差。
+   >    `Enum(列舉)`數量一多，效能會變差。
 
    > ※　要解決上面這個問題，在不需要key value互相對應的情況下
    >    可以像這樣：
