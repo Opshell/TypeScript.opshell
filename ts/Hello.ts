@@ -1,6 +1,10 @@
-type tMember = {
-   title: string;
+class Member {
+   title: string = 'nobody';
+   age: number = 0;
 }
-type tMember = {
-   age: number;
+
+interface IMember extends Member {
+   weight: number;
 }
+
+let Opshell: IMember = { weight: 60 }

@@ -1,4 +1,4 @@
-![alt](https://)
+![Day16 Banner](https://ithelp.ithome.com.tw/upload/images/20220916/20109918fwYi0TCtsZ.jpg)
 
 # 大部分解開始~
 > *清槍開始、清槍蹲下*
@@ -14,12 +14,12 @@
 
 ---
 ## 過程：
-- ### `implements(實現)`
+- ### `Implements(實現)`
    > 一般來說`Class(類別)` 只會繼承另一個`Class(類別)`，
    > 但是有些時候，不同產線上的`Class(類別)`會有相同的需求，
    > 這時候就會利用`Interface(介面)`把那個功能抽象化。
    ```typescript
-    interface ISummary {
+    interface iSummary {
       getSummary(): string;
     }
 
@@ -33,7 +33,7 @@
       }
     }
 
-    class SuperMember extends Member implements ISummary{
+    class SuperMember extends Member implements iSummary{
       private weight: number;
 
       constructor(title: string, age: number, weight: number = 100) {
@@ -55,7 +55,7 @@
    > 當然 就像`extends(繼承)`一樣 `implements(實現)`也可以實現多個，
    > 用,隔開就可以了：
    ```typescript
-    class SuperMember extends Member implements ISummary, IAge{
+    class SuperMember extends Member implements iSummary, iAge{
    ```
 
 ---
@@ -64,11 +64,11 @@
    > 沒錯 之前還沒有講過 `Interface extends(介面繼承)`
    > 現在剛好補充起來：
    ```typescript
-    interface IAge {
+    interface iAge {
       convertAge(): string;
     }
 
-    interface ISummary extends IAge{
+    interface iSummary extends iAge{
       getSummary(): string;
     }
    ```
@@ -84,19 +84,20 @@
       age: number = 0;
     }
 
-    interface IMember extends Member {
+    interface iMember extends Member {
       weight: number;
     }
 
-    let Opshell: IMember = { weight: 60 }
+    let Opshell: iMember = { weight: 60 }
    ```
-   ![alt](https://)
+
+   ![face繼承class](https://ithelp.ithome.com.tw/upload/images/20220916/20109918BVennqF49k.png)
    > 雖然這樣做很奇怪，不知道為啥要這樣弄就是了，
    > 如果有實際的使用其情況，請大大不吝嗇留言，
    > 感恩~
 
 ---
-- ### Hybrid face
+- ### Hybrid face(混和模式)
    > 又是混合模式，透過這次講OOP Class 我們來好好複習霧煞煞的混合模式，
    > 使用`Interface(介面)`的方式來定義一個`Function(函式)`需要符合的`Shape(形狀)`：
    ```typescript
