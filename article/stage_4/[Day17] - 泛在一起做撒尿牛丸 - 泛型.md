@@ -5,7 +5,6 @@
 > *泛在一起做撒尿牛丸阿，笨蛋*
 > *───────────────────────── By 周星馳 - 食神*
 
----
 https://jkchao.github.io/typescript-book-chinese/typings/generices.html#%E5%8A%A8%E6%9C%BA%E5%92%8C%E7%A4%BA%E4%BE%8B
 https://pjchender.dev/ironman-2021/ironman-2021-day06/
 https://pjchender.dev/ironman-2021/ironman-2021-day02/
@@ -20,14 +19,15 @@ https://pjchender.dev/ironman-2021/ironman-2021-day02/
 
 ---
 ## 過程：
-   - ### 1. `Generics(泛型)` 基本使用
-   > 做一個可以新增、剔除成員的 Class
+- ### 1. `Generics(泛型)` 基本使用
+   > 做一個`stack(堆疊)`成員的 `Class(類別)`
    ```typescript
     class Team {
       private list: string[] = [];
 
-      push = (item: string) => this.list.push(item);
-      pop = (): string | undefined => this.list.shift();
+      push = (item: string) => this.list.push(item); // 放元素到最上層
+      pop = (): string | undefined => this.list.shift(); // 取出最上層元素
+      peek = (): string => this.list[list.length - 1]; // 取得最上層
     }
 
     const Maya = new Team();
@@ -41,15 +41,16 @@ https://pjchender.dev/ironman-2021/ironman-2021-day02/
    > 想想就傻爆了...
    > 這時候就可以用`Generics(泛型)`來處理了：
    ```typescript
-    class AryInOut<T> {
+    class Stack<T> { //
       private list: T[] = [];
 
-      push = (item: T) => this.list.push(item);
-      pop = (): T | undefined => this.list.shift();
+      push = (item: T):void => this.list.push(item); // 放元素到最上層
+      pop = (): T | undefined => this.list.shift(); // 取出最上層元素
+      peek = (): T => this.list[list.length - 1]; // 取得最上層
     }
 
-    const MayaTeam = new AryInOut<string>();
-    const TeamIDList = new AryInOut<number>();
+    const MayaTeam = new Stack<string>();
+    const TeamIDList = new Stack<number>();
 
     MayaTeam.push('Opshell');
     TeamIDList.push(1);
@@ -58,26 +59,27 @@ https://pjchender.dev/ironman-2021/ironman-2021-day02/
    > 當然，你可能會想 `<T>`是什麼天書...
    > 其實就是型別變數，既然是變數，當然可以自訂名稱，
    > `<T, U, V>`之類的都可以，當然你會注意到Ops舉例直接包在了一起
-   > 是的`Generics(泛型)`也接受你一次宣告多個。
+   > 是的，`Generics(泛型)`也接受你一次宣告多個。
 
 ---
-   - ### 2. `Generic Constraints(泛型收束)`
+- ### 2. `Generic Constraints(泛型收束)`
    > 一般`Generics(泛型)`宣告後，你想帶什麼都可以，
    > 跟`any`沒甚麼兩樣，在這種模糊的狀況下，
    > 就很容易出事，所以我們需要約束一下他可以傳入哪些型別：
    ```typescript
-    class AryInOut<T extends number | string> {
+    class Stack<T extends number | string> {
       private list: T[] = [];
 
-      push = (item: T) => this.list.push(item);
-      pop = (): T | undefined => this.list.shift();
+      push = (item: T):void => this.list.push(item); // 放元素到最上層
+      pop = (): T | undefined => this.list.shift(); // 取出最上層元素
+      peek = (): T => this.list[list.length - 1]; // 取得最上層
     }
    ```
    > 沒錯，就是利用`extends(繼承)`，和`Class(類別)`、`Interface(介面)`一樣的用法，
    > `extends(繼承)`後你放進<T>的型別，需要是符合`extends(繼承)`的型別才能用喔。
 
 ---
-   - ### 3. 常用實例：JSON Promise：
+- ### 3. 常用實例：JSON Promise：
    > 如果我們做一個接收回傳JSON 的 功能，
    > 每個回傳都單獨做一個實在是太累了，
    > 不如就泛在一起做撒尿牛丸：
