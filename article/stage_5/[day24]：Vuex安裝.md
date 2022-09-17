@@ -13,7 +13,24 @@
 
 ---
 ## 過程：
-- ### 安裝`vuex`
+- ### 1. SCSS
+   > 安裝SCSS
+   ```shell
+   yarn add sass sass-loader -D
+   ```
+   > 設定`vite.config.ts`
+   ```typescript
+      css: {
+         preprocessorOptions: {
+            scss: { // 設定全域SCSS
+                  additionalData: '@import "@/assets/scss/stylesheet.scss";'
+            }
+         }
+      }
+   ```
+   > ※ 在main.js中不要再次引用stylesheet.scss文件，不然會報重複引用錯誤。
+
+- ### 2. 安裝`vuex`
    ```shell
     yarn add vuex@next -D
    ```
@@ -142,9 +159,3 @@
 
    > 如果遇到甚麼奇怪的問題，問google大神比我有用多了，
    > 以上...
-
----
-## 坑：
-1. ### VS code看不懂英文介面，你可以安裝[中文化](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hant)
-2. ### 你的nvm指令老是無法成功，或者出現了亂碼↓↓↓
-   > 請將NVM 安裝在C:\ 下，或者使用系統管理員權限執行

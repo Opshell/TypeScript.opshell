@@ -16,24 +16,7 @@ https://juejin.cn/post/7107047280133275678
 
 ---
 ## 過程：(安裝請點擊藍字)
-- ### 1. SCSS
-   > 安裝SCSS
-   ```shell
-   yarn add sass sass-loader -D
-   ```
-   > 設定`vite.config.ts`
-   ```typescript
-      css: {
-         preprocessorOptions: {
-            scss: { // 設定全域SCSS
-                  additionalData: '@import "@/assets/scss/stylesheet.scss";'
-            }
-         }
-      }
-   ```
-   > ※ 在main.js中不要再次引用stylesheet.scss文件，不然會報重複引用錯誤。
-
-- ### 2. axios
+- ### axios
    > 為啥要裝?別鬧了`axios`捏?
    ```shell
     yarn add axios
@@ -41,22 +24,16 @@ https://juejin.cn/post/7107047280133275678
    > 由於`axios`已經自帶`.d.ts`了，
    > 所以你啥都不用做就可以直接用了。
 
-- ### 3. js-base64
-   > JWT機制，解碼用的：
-   ```shell
-    yarn add axios
-   ```
-   > 由於`js-base64`已經自帶`.d.ts`了，
-   > 所以你啥都不用做就可以直接用了。
-
-- ### 4. vue router
+- ### vue router
    ```shell
     yarn add vue-router@next -D
    ```
    > 在src 目錄下新建資料夾 router
    > 新增 index.ts 然後把之前寫的js 塞進來
    > 會產生一堆錯誤
+
    ![alt](https://)
+
    > 開始調整
 
    1. 修改main.ts
@@ -66,8 +43,9 @@ https://juejin.cn/post/7107047280133275678
     app.use(router)
    ```
 
-   https://blog.csdn.net/mzl87/article/details/118583268
+   修改 router.js
 
+   https://blog.csdn.net/mzl87/article/details/118583268
    https://www.jianshu.com/p/2d1b6c28e9ac
 
 ---

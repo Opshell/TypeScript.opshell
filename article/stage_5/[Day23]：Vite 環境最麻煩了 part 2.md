@@ -12,7 +12,6 @@
    > 安裝完成使用TypeScript需要的環境，
    > 然後開始祈禱過程不要出現奇怪的問題。
 
-
 - ### [使用Vite搭建Vue3(TypeScript版本)项目](https://www.jianshu.com/p/2d1b6c28e9ac)
 - ### [vite + vue3 + ts 使用总结](https://segmentfault.com/a/1190000041296321)
 - ### [Vue 3 + TypeScript + Vite 搭建初始项目](https://juejin.cn/post/7051565418460217375)
