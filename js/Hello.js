@@ -1,15 +1,12 @@
 "use strict";
-function creatMember() {
-    // 在這邊不能用箭頭函式表達喔
-    let member = function (title, age) {
-        return `${title} is ${age} years old.`;
-    };
-    member.weight = 100;
-    member.getWeight = (e) => { console.log(e.weight); };
-    return member;
-}
-let Opshell = creatMember();
-console.log(Opshell('Opshell', 30));
-Opshell.weight = 60;
-console.log(Opshell.getWeight(Opshell));
+var FEATURE;
+(function (FEATURE) {
+    FEATURE[FEATURE["None"] = 0] = "None";
+    FEATURE[FEATURE["O_BLOOD"] = 1] = "O_BLOOD";
+    FEATURE[FEATURE["BRUNETTE"] = 2] = "BRUNETTE";
+    FEATURE[FEATURE["BROWN_EYE"] = 4] = "BROWN_EYE";
+    FEATURE[FEATURE["EAGLE_NOSE"] = 8] = "EAGLE_NOSE";
+    FEATURE[FEATURE["UNIVERSAL_ASIA"] = 6] = "UNIVERSAL_ASIA"; // 6
+})(FEATURE || (FEATURE = {}));
+console.log(FEATURE.UNIVERSAL_ASIA);
 //# sourceMappingURL=Hello.js.map

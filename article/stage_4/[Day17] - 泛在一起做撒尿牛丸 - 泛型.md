@@ -1,21 +1,17 @@
-![alt](https://)
+![Day17 Banner](https://ithelp.ithome.com.tw/upload/images/20220917/20109918yzZgXLh0r8.jpg)
 
-# 我變 我變 我變變變
+# 泛在一起做撒尿牛丸
 > *爭什麼爭！*
 > *泛在一起做撒尿牛丸阿，笨蛋*
-> *───────────────────────── By 周星馳 - 食神*
-
-https://jkchao.github.io/typescript-book-chinese/typings/generices.html#%E5%8A%A8%E6%9C%BA%E5%92%8C%E7%A4%BA%E4%BE%8B
-https://pjchender.dev/ironman-2021/ironman-2021-day06/
-https://pjchender.dev/ironman-2021/ironman-2021-day02/
+> *────────────────────── By 周星馳 - 食神*
 
 ## 目標: `Generics(泛型)`
    > 在前面的例子中，會發現型別都會事先定義好，
    > 想使用不同的型別的參數就會需要使用很多技巧，
    > 除了前面介紹的`Union(聯集)`、`Overload(超載)`等方式，
-   > `Generics(泛型)`是指在定義 `function`、`Interfaces(介面)` 或 `Class(類別)` 的時候，
+   > `Generics(泛型)`是指在定義 `Function`、`Interfaces(介面)` 或 `Class(類別)` 的時候，
    > 不指定具體的型別，讓型別抽象化，使用的時候再指定型別的一種特性。
-   > 簡單來說就是讓型別，也變成一個變數。
+   > 簡單來說就是讓型別也變成一個變數。
 
 ---
 ## 過程：
@@ -41,7 +37,7 @@ https://pjchender.dev/ironman-2021/ironman-2021-day02/
    > 想想就傻爆了...
    > 這時候就可以用`Generics(泛型)`來處理了：
    ```typescript
-    class Stack<T> { //
+    class Stack<T> {
       private list: T[] = [];
 
       push = (item: T):void => this.list.push(item); // 放元素到最上層
@@ -57,9 +53,11 @@ https://pjchender.dev/ironman-2021/ironman-2021-day02/
    ```
 
    > 當然，你可能會想 `<T>`是什麼天書...
-   > 其實就是型別變數，既然是變數，當然可以自訂名稱，
+   > 其實就是型別的變數，既然是變數，當然可以自訂名稱，
    > `<T, U, V>`之類的都可以，當然你會注意到Ops舉例直接包在了一起
-   > 是的，`Generics(泛型)`也接受你一次宣告多個。
+   > 是的，`Generics(泛型)`也接受你一次宣告多個，
+   > 當然，當你要宣告多個，最好是有個語意化的名稱：TAge之類的
+   > 開頭T大寫，方便與`Alias(別名)`的小寫t做區隔(Ops的習慣。
 
 ---
 - ### 2. `Generic Constraints(泛型收束)`
