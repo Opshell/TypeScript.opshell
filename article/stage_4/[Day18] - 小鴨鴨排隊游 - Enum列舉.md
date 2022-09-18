@@ -1,12 +1,10 @@
-![alt](https://)
+![Day 18 Banner](https://ithelp.ithome.com.tw/upload/images/20220918/20109918LE2OXMGxeB.jpg)
 
 # 小鴨鴨排隊游
 > *2022搞笑諾貝爾物理獎：*
 > *小鴨游泳排隊跟在媽媽後面，「加速相位」*
 > *寫程式也一樣，排排隊寫起來更快。*
 > *───────────────────────── By Opshell*
-
-![alt](https://)
 
 ---
 ## 目標:`Enum(列舉)`
@@ -83,7 +81,7 @@
    ```typescript
     enum GENDER {
       MAN = 'DNA=XY',
-      WOMAN = 'DNA = XX',
+      WOMAN = 'DNA=XX',
       OTHER = 'have a different identity.'
     }
    ```
@@ -164,7 +162,7 @@
 
 ---
 ## 小結：
-   > 學習完所謂的列舉，
+   > 學習完所謂的`Enum(列舉)`，
    > 會發現原生的JavaScript Object
    > 就能簡易的實現大部分的功能，
    > `Enum(列舉)`最主要的差別就是提高了他的可讀性，
