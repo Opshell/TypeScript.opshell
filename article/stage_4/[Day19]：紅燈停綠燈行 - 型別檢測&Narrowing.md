@@ -1,12 +1,12 @@
-![alt](https://)
+![Day 19 Banner](https://ithelp.ithome.com.tw/upload/images/20220919/201099180PlOyk91m1.jpg)
 
 # 紅燈停綠燈行
 > *紅燈停、綠燈行，那黃燈呢?*
-> *就讓Type Guard(型別檢測)告訴你吧~*
+> *就讓`Type Guard(型別檢測)`告訴你吧~*
 > *─────────────────────────── By Opshell*
 
 ---
-## 目標:Type Guard(型別檢測)
+## 目標:`Type Guard(型別檢測)`
 > 在JavaScript中其實也是有型別的，
 > 只是他很善變，在不知道發生什麼事的情況下，
 > 很容易就臉盲了，套一句某客戶對我說的話：
@@ -24,16 +24,16 @@
 
 ---
 -  ### 1. typeof
-   > typeof 用來檢測未經計算的資料型別。
-   > 在使用 typeof 運算子時，有幾個型別要特別小心，
-   > 分別是原始型別的 null 以及 Array，兩者判斷後的結果都是物件。
+   > `typeof`用來檢測未經計算的資料型別。
+   > ※ 在使用 `typeof`運算子時，有幾個型別要特別小心，
+   >    分別是原始型別的`null`以及`Array`，兩者判斷後的結果都是物件。
 
    ```typescript
     // 讓我們利用"型別檢測"來修改之前的 getAgeLength function
     // 之前利用(<string>.age)的方式來處理，
     // 現在改成透過型別檢測判斷是否為字串，進行導流
     // 在某方面來說，可讀性更好。
-    function getYearLength(age: string | number): number {
+    function getAgeLength(age: string | number): number {
         let result = 0;
         if (typeof age === 'string') {
             result = age.length;
@@ -47,7 +47,7 @@
 
 ---
 - ### 2. [instanceof](https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/javascript-instanceof-operator-implementation-ee8f40f9e3b6)
-   > instanceof 是用來判斷 A是否為B的實例，比較的是原型(prototype)
+   > `instanceof`是用來判斷A是否為B的實例，比較的是原型(prototype)
    > 換句話說，就是有沒有在原型鏈上面
    ```typescript
     // 建立Member Class 設定 名稱、年紀、性別為建構子
@@ -69,7 +69,7 @@
     console.log(getName(how)); // Opshell
     console.log(getName(zoo)); // 因為 Team 不在 Member 的原型鏈上面，所以印出 Maya
    ```
-   > ※　`instanceof`只能用來判斷兩個比較對象是否屬於實例關係，無法明確指出具體屬於哪種類型。
+   > ※　`instanceof`只能判斷兩個比較對象是否屬於實例關係，無法明確指出具體屬於哪種類型。
 
 ---
 - ### 3. `ParameterName is Type(型別謂語)`:
@@ -136,5 +136,5 @@
 
 ---
 ## 延伸閱讀：
- 1. [Typescript 一些令人又愛又恨的內容 — Type Guard、Narrowing -> 延伸到泛型](https://medium.com/onedegree-tech-blog/typescript-%E4%B8%80%E4%BA%9B%E4%BB%A4%E4%BA%BA%E5%8F%88%E6%84%9B%E5%8F%88%E6%81%A8%E7%9A%84%E5%85%A7%E5%AE%B9-type-guard-narrowing-1655a9ae2a4d)
+ 1. [Typescript 一些令人又愛又恨的內容 — Type Guard、Narrowing -> 延伸到泛型](https://medium.com/onedegree-tech-blog/typescript-%E4%B8%80%E4%BA%9B%E4%BB%A4%E4%BA%BA%E5%8F%88%E6%84%9B%E5%8F%88%E6%81%A8%E7%9A%84%E5%85%A7%E5%AE%B9-type-guard-narrowing-1655a9ae2a4d) - By Andy Chen
  2. [【TS】Type Guard and Narrowing](https://pjchender.dev/typescript/ts-narrowing/) - By pjchender
