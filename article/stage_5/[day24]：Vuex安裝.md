@@ -13,10 +13,10 @@
 
 ---
 ## 過程：
-- ### 1. SCSS
+- ### SCSS
    > 安裝SCSS
    ```shell
-   yarn add sass sass-loader -D
+    yarn add sass sass-loader -D
    ```
    > 設定`vite.config.ts`
    ```typescript
@@ -30,7 +30,7 @@
    ```
    > ※ 在main.js中不要再次引用stylesheet.scss文件，不然會報重複引用錯誤。
 
-- ### 2. 安裝`vuex`
+- ### 安裝`vuex`
    ```shell
     yarn add vuex@next -D
    ```
