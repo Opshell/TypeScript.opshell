@@ -16,7 +16,7 @@
 
 ---
 ## 過程：
-- ### 1. 原先的Vuex
+- ### 原先的store
    ```javascript
     // index.js
     import { createStore } from "vuex";
@@ -36,8 +36,8 @@
 
    #### 1. user.js
    > 這段式原先的JS
-   > 我們複製一個，丟進 'src/store/'裡，
-   > 並把檔名改成 user.ts
+   > 我們複製一個，丟進 `'src/store/'`裡，
+   > 並把檔名改成`user.ts`
    > 會發現很多地方開始提醒你有問題：
    ```javascript
     import { Base64 } from "js-base64";
@@ -150,7 +150,7 @@
       }
     }
    ```
-   > 然後安裝一下：js-base64
+   > 然後安裝一下：`js-base64`
    > JWT機制，解碼用的：
    ```shell
     yarn add axios
@@ -158,7 +158,7 @@
    > 由於`js-base64`已經自帶`.d.ts`了，
    > 所以你啥都不用做就可以直接用了。
    > 剛改寫第一支JS程式，馬上就體驗到TS的好用與方便。
-   > route.js的改寫方式大同小異，這邊就省略掉了。
+   > `route.js`的改寫方式大同小異，這邊就省略掉了。
 
    #### 2. index.js
    > modules都改寫完之後，把昨天調整過的`src/store/index.js`改成這樣：

@@ -1,31 +1,27 @@
 ![alt](https://)
 
 # 環境甚麼的 最討厭了
-   > *每次開始學習新的語言或框架，*
-   > *最麻煩的不是要學習他有哪些語法、規則*
-   > *是安裝...*
-   > *嗯?  好了?!!*
-   > *───────────────────────── By Opshell*
+> *開始用Vite之後，*
+> *是個會自立自強的大人了呢!!*
+> *───────────────────────── By Opshell*
 
 ---
 ## 目標：
-   > 安裝完成使用TypeScript需要的環境，
-   > 然後開始祈禱過程不要出現奇怪的問題。
+> 開始設定一些環境，框架行為、檢查等。
 
-- ### [使用Vite搭建Vue3(TypeScript版本)项目](https://www.jianshu.com/p/2d1b6c28e9ac)
-- ### [vite + vue3 + ts 使用总结](https://segmentfault.com/a/1190000041296321)
-- ### [Vue 3 + TypeScript + Vite 搭建初始项目](https://juejin.cn/post/7051565418460217375)
 ---
 ## 過程：
 - ### 程式碼風格、檢查設定
    > 為了美觀、統一風格，我們一定是會安裝`Prettier`、`ESLint`，
-   > 等風格化套件，但由於是TypeScript會有億點點不一樣：
+   > 等風格化套件，但由於是TypeScript，會有億點點不一樣：
 
    #### 1. 安装 prettier
    ```shell
-    yarn add --dev --exact prettier
+    yarn add -D -E prettier
    ```
-   > 設定 `prettier.config.js`
+   ![alt](https://)
+
+   > 在`webadminvite`目錄下新增`prettier.config.js`然後設定他：
    ```javascript
     // prettier.config.js
     module.exports = {
@@ -50,7 +46,7 @@
       endOfLine: 'lf' // 換行符號使用lf
     }
    ```
-   > 設定 `.prettierignore`
+   > 在`webadminvite`目錄下新增`.prettierignore`並設定他：
    ```
     node_modules
     dist
@@ -70,54 +66,87 @@
     yarn add eslint-plugin-prettier -D
    ```
    > 當然你也可以 縮成一行指令，這邊只是方便看。
+   > 在`webadminvite`目錄下新增`.eslintrc.js`然後把下面的設定塞進去：
+   ```javascript
+    module.exports = {
+      // parser 解析依賴設定
+      parser: 'vue-eslint-parser',
+      parserOptions: {
+         parser: '@typescript-eslint/parser', // 設定解析器
+         ecmaVersion: 2020, // 設定ECMAScript版本
+         sourceType: 'module', // 設定原始碼類型
+         ecmaFeatures: {} // 其他語言擴展，包含jsx、全域嚴格模式等
+      },
+      // 繼承套件的規則設定
+      extends: [
+         'plugin:vue/vue3-recommended',
+         'plugin:@typescript-eslint/recommended',
+         'plugin:prettier/recommended',
+         'prettier'
+      ],
+      // 自訂規則
+      rules: {}
+    }
+   ```
+   > 然後新增忽略文件`.eslintignore`：
+   ```
+    node_modules/
+    public/
+    es/
+    lib/
+    dist/
+    docs/
+    src/assets/
+    package.json
+   ```
+   > 這樣子風格檢查環境就做好了。
 
 ---
 - ### `AutoLoad(自動載入)`
-   #### 1. 自動載入套件
-   > 在使用 vue 3 的`compostion(組合式)`api的时候，通常會用很多`import`：
-   ![alt](https://)
-   > 所以 vue 與 vite 的主要貢獻者[Anthony Fu(antfu)](https://github.com/antfu)(關注起來)大大，
-   > 根据 unplugin 做了幾個自動import套件，
-   > 这里可以使用`unplugin-auto-import`和`unplugin-vue-components`
-   ```
-    npm i unplugin-auto-import -D
-   ```
-   > 因為我們是用vite + ts，還使用了`ESLint`，所以我们需要在`vite.config.ts`設定一些東西
+   > 在使用Vue 3的`compostion(組合式)` API的时候，
+   > 稍微大點的專案，通常會用很多`import`，
+   > [Anthony Fu(antfu)](https://github.com/antfu)(Vue 與 vite 的主要貢獻者之一)大大，
+   > 根據`unplugin`做了幾個自動import的套件，
+   > 我們使用`unplugin-auto-import`和`unplugin-vue-components`：
 
+   #### 1. `unplugin-auto-import(自動載入套件)`
+   ```
+    yarn add unplugin-auto-import -D
+   ```
+   > 因為我們是用vite + ts，還使用了`ESLint`，
+   > 所以我们需要在`vite.config.ts`設定一些東西：
    ```typescript
-    import AutoImport from 'unplugin-auto-import/vite'
+    import AutoImport from 'unplugin-auto-import/vite' // 引用
 
     export default defineConfig({
       plugins: [
-         AutoImport({ /* options */ }),
+         AutoImport({ /* options */ }), // 設定
       ],
     })
    ```
-
-   > 這邊需要對`.eslintrc.js`進行修改，增加`unplugin-auto-import`生成的規則文件。
-
+   > `/* options */`設定可以看[這邊](https://github.com/antfu/unplugin-auto-import)，可以直接複製範例。
+   > 然後把`dts`的值改成：`'./types/auto-imports.d.ts'`。
+   > 然後需要修改`.eslintrc.js`，增加`unplugin-auto-import`生成的規則文件。
    ```javascript
     module.exports = {
       extends: [
-         './.eslintrc-auto-import.json', // `unplugin-auto-import` 生成的规则配置文件
+         './.eslintrc-auto-import.json', // `unplugin-auto-import` 生成的規則設定
          // ...
       ]
     }
    ```
 
-   ![alt](https://)
-
    #### 2. 自動引用組件
-   > 這個套件自動按照需求`import(載入)`組件，還可以自訂`Resolver(解析)`来設定`import(載入)`規則。
+   > 這個套件自動按照需求`import(載入)`組件，
+   > 還可以自訂`Resolver(解析)`来設定`import(載入)`規則。
    > 並預設了 `Ant Design Vue`、`Element Plus`、`Naive UI`、`VueUse Components`等
    > 18個常用套件的`Resolver(解析)`方法。
-   > ※ 不支援`Jsx`和`Tsx`語法
-
+   > ※ 不支援`Jsx`和`Tsx`語法：
    ```shell
     yarn add unplugin-vue-components -D
    ```
 
-   > 設定`vite.config.ts`：
+   > 在`vite.config.ts`裡新增下面的設定：
    ```typescript
     import Components from 'unplugin-vue-components/vite'
     import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
@@ -125,23 +154,29 @@
     export default defineConfig({
       plugins: [
          Components({
-            dirs: [ 'src/components' ], // 指定components位置 預設是'src/components'
-            dts: 'src/components.d.ts', // .d.ts生成位置
+            dirs: [ '@/components' ], // 指定components位置 預設是'src/components'
+            dts: './types/components.d.ts', // .d.ts生成位置
             resolvers: [ NaiveUiResolver() ] // 解析規則
          })
       ]
     })
    ```
+   > 然後在`webadminvite`目錄裡新增`types`資料夾，用來放之後的`宣告檔案`。
 
 ---
 - ### 執行看看
    ```shell
     yarn run dev
    ```
-   > 沒問題的話，應該會看到這個：
-   ![alt](https://)
+   > 沒問題的話，依然會看到這個：
+   ![vite 成功畫面](https://ithelp.ithome.com.tw/upload/images/20220920/20109918xKJxxoPWAV.png)
 
 ---
 ## 小結
 > 今天環境裝太多了設定太多了，
-> 要吐了先這樣... 先緩緩我不行了。
+> 要吐了，先這樣... 我不行了。
+
+
+- ### [使用Vite搭建Vue3(TypeScript版本)项目](https://www.jianshu.com/p/2d1b6c28e9ac)
+- ### [vite + vue3 + ts 使用总结](https://segmentfault.com/a/1190000041296321)
+- ### [Vue 3 + TypeScript + Vite 搭建初始项目](https://juejin.cn/post/7051565418460217375)
