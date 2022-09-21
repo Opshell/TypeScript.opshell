@@ -8,5 +8,7 @@ var FEATURE;
     FEATURE[FEATURE["EAGLE_NOSE"] = 8] = "EAGLE_NOSE";
     FEATURE[FEATURE["UNIVERSAL_ASIA"] = 6] = "UNIVERSAL_ASIA"; // 6
 })(FEATURE || (FEATURE = {}));
-console.log(FEATURE.UNIVERSAL_ASIA);
+$(function () {
+    console.log(FEATURE.UNIVERSAL_ASIA);
+});
 //# sourceMappingURL=Hello.js.map

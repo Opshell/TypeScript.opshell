@@ -7,4 +7,6 @@ enum FEATURE {
    UNIVERSAL_ASIA = BRUNETTE + BROWN_EYE // 6
 }
 
-console.log(FEATURE.UNIVERSAL_ASIA);
+$(function () {
+   console.log(FEATURE.UNIVERSAL_ASIA);
+});
