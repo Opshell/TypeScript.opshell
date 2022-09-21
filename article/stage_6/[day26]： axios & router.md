@@ -19,7 +19,7 @@ https://juejin.cn/post/7107047280133275678
 - ### axios
    > 為啥要裝?別鬧了`axios`捏?
    ```shell
-    yarn add axios
+    yarn add axios -D
    ```
    > 由於`axios`已經自帶`.d.ts`了，
    > 所以你啥都不用做就可以直接用了。
@@ -28,14 +28,6 @@ https://juejin.cn/post/7107047280133275678
    ```shell
     yarn add vue-router@next -D
    ```
-   > 在src目錄下新建資料夾router，
-   > 新增 index.ts 然後把之前寫的js 塞進來，
-   > 會產生一堆錯誤：
-
-   ![alt](https://)
-
-   > 開始調整
-
    1. 修改main.ts
    ```typescript
     import router from './router'
@@ -44,6 +36,16 @@ https://juejin.cn/post/7107047280133275678
    ```
 
    修改 router.js
+
+   > 在src目錄下新建資料夾router，
+   > 新增`index.ts`然後把之前寫的js塞進來，
+   > 會產生一堆錯誤：
+
+   ![alt](https://)
+
+   > 開始調整
+
+
 
    https://blog.csdn.net/mzl87/article/details/118583268
    https://www.jianshu.com/p/2d1b6c28e9ac
