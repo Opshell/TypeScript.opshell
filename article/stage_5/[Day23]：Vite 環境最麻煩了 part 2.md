@@ -120,12 +120,39 @@
 
     export default defineConfig({
       plugins: [
-         AutoImport({ /* options */ }), // 設定
+         AutoImport({
+            include: [
+               /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+               /\.vue$/, /\.vue\?vue/, // .vue
+               /\.md$/, // .md
+            ],
+            // global imports to register
+            imports: [ // presets
+               'vue',
+               'vue-router',
+               'vuex',
+               {// custom
+                  '@vueuse/core': [
+                     // named imports
+                     'useMouse', // import { useMouse } from '@vueuse/core',
+                     // alias
+                     ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
+                  ],
+                  'axios': [
+                     // default imports
+                     ['default', 'axios'], // import { default as axios } from 'axios',
+                  ],
+               },
+            ],
+            dirs: [],
+            dts: 'src/types/auto-imports.d.ts', // typescript 宣告檔案位置
+            vueTemplate: false,
+         }), // 設定
       ],
     })
    ```
-   > `/* options */`設定可以看[這邊](https://github.com/antfu/unplugin-auto-import)，可以直接複製範例。
-   > 然後把`dts`的值改成：`'./types/auto-imports.d.ts'`。
+   > 更多設定可以看[這邊](https://github.com/antfu/unplugin-auto-import)，可以直接複製範例。
+   > 然後把`dts`的值改成：`'src/types/auto-imports.d.ts'`。
    > 然後需要修改`.eslintrc.js`，增加`unplugin-auto-import`生成的規則文件。
    ```javascript
     module.exports = {
@@ -154,8 +181,8 @@
     export default defineConfig({
       plugins: [
          Components({
-            dirs: [ '@/components' ], // 指定components位置 預設是'src/components'
-            dts: './types/components.d.ts', // .d.ts生成位置
+            dirs: [ 'src/components' ], // 指定components位置 預設是'src/components'
+            dts: 'src/types/components.d.ts', // .d.ts生成位置
             resolvers: [ NaiveUiResolver() ] // 解析規則
          })
       ]

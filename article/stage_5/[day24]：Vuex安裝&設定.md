@@ -37,7 +37,7 @@
    > 讓我們一步一步來：
 
    * #### 1. Vue 中 $store 属性的型別宣告
-   > 在專案目錄裡新增一個`vuex.d.ts(vuex宣告檔案)`來宣告`ComponentCustomProperties(組件自訂屬性)`：
+   > 在`./src/types/`裡新增一個`vuex.d.ts(vuex宣告檔案)`來宣告`ComponentCustomProperties(組件自訂屬性)`：
    ```typescript
     // vuex.d.ts
     import { Store } from 'vuex'
@@ -84,15 +84,17 @@
       * 將`store`安裝到 Vue app時，提供型別化的`InjectionKey`。
       ```typescript
        // main.ts
-       import { createApp } from 'vue'
-       import { store, key } from './store'
+       import { createApp } from 'vue';
+       import './style.css';
+       import App from './App.vue';
+       import { store, key } from './store';
 
-       const app = createApp({ ... })
+       const app = createApp({});
 
        // 傳入 Injection key
-       app.use(store, key)
-       app.mount('#app')
-       ```
+       app.use(store, key);
+       app.mount('#app');
+      ```
 
       * 最後，型別化的`InjectionKey`傳給`useStore`。
       ```typescript

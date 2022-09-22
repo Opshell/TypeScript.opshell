@@ -150,7 +150,7 @@
    > 然後安裝一下：`js-base64`
    > JWT機制，解碼用的：
    ```shell
-    yarn add axios
+    yarn add js-base64 -D
    ```
    > 由於`js-base64`已經自帶`.d.ts`了，
    > 所以你啥都不用做就可以直接用了。
@@ -163,20 +163,28 @@
     import { InjectionKey } from 'vue'
     import { createStore, useStore as baseUseStore, Store } from 'vuex'
 
-    import route, { iRouteState } from './route'; // 登入、使用者相關
-    import user, { iUserState } from './user'; // 登入、使用者相關
-
+    import { iRouteState } from './modules/route'; // 路由相關
+    import { iUserState } from './modules/user'; // 登入、使用者相關
     export interface State {
       route: iRouteState,
       user: iUserState,
     }
 
+    // 全部模組導入
+    let modules = {}
+    const modulesFiles = import.meta.glob("./modules/*.ts", { eager: true, import: 'default' });
+    for (const path in modulesFiles) {
+        const moduleName = path.replace(/(.*\/)*([^.]+).*/gi, '$2');
+        console.log(modulesFiles);
+        modules = {
+            ...modules,
+            [moduleName]: modulesFiles[path]
+        }
+    }
+
     export const key: InjectionKey<Store<State>> = Symbol()
     export const store = createStore<State>({
-      state: {
-         route: route.state,
-         user: user.state
-      }
+      modules
     })
 
     // 定義自己的 `useStore` composition(組合式) API
@@ -192,3 +200,6 @@
 > 發現好像沒有想像中的難，
 > 有一種用實際的程式碼寫註解的既視感，
 > 好像可以繼續改寫下去，有完賽的可能性ㄟ!!
+
+
+https://juejin.cn/post/7135282172738404365

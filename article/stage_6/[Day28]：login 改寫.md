@@ -13,68 +13,83 @@
 
 ---
 ## 過程：(安裝請點擊藍字)
-- ### 1. 系統：[Window 11](https://www.microsoft.com/zh-tw/software-download/windows11)
-- ### 2. 編輯器：[VS Code](https://code.visualstudio.com/)
-- ### 3. 終端機：[PowerShell 7](https://docs.microsoft.com/zh-tw/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2)
-   > 如果本來是PowerShell 5 要安裝7 可能會有一點點問題 [請參考](https://docs.microsoft.com/zh-tw/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.2)
-   > 查看powershell版本方式：在powershell中輸入：↓↓↓
-   ```
-    Get-Host | Select-Object Version
-   ```
-   > ※ 安裝完之後，記得把VS code的預設終端機改成PowerShell
-![alt](https://)
+- ### login 改寫：
+   ```javascript
+    import { defineAsyncComponent, reactive, onMounted } from 'vue';
+    import { useStore } from "vuex";
+    import { useRouter } from "vue-router";
 
----
-- ### 4. Node版本管理：[NVM](https://github.com/coreybutler/nvm-windows)
-   > 身為一個會玩前端的園丁，裝個NVM也是合情合理。
-   > ※ NVM 建議安裝在C:\
-   > 確認NVM有沒有安裝好↓↓↓
-   ```
-    nvm version
-   ```
+    import { getData } from "../hook/getData.js"
 
----
-- ### 5. Node本No：[Node.js](https://nodejs.org/zh-tw/)
-   > 身為一個會玩前端的園丁，裝個Node.js應該也是很正常的一件事。
-   > ~~看了前面的環境，你不會以為我下的指令不是在Windows吧?~~
-   > 確認安裝了甚麼版本的node↓↓↓
-   ```
-    nvm list
-   ```
-   > 安裝 Node.js 16.17.0 版本↓↓↓
-   ```
-    nvm install 16.17.0
-   ```
-   > 切換到16.17.0版的Node↓↓↓
-   ```
-    nvm use 16.17.0
-   ```
+    import elInput from "../components/el-input.vue";
 
----
-- ### 6. ~~閃電俠：[yarn](https://ithelp.ithome.com.tw/articles/10191745)~~
-   > 身為...
-   > 全域安裝 yarn↓↓↓
-   ```
-    npm install -g yarn
-   ```
-   > 確認yarn 版本↓↓↓
-   ```
-    yarn -v
-   ```
-![alt](https://)
+    export default {
+      name: "LoginVue3",
+      components: {
+         // elImg,
+         elBtn: defineAsyncComponent(() => import("../components/el-button.vue")),
+         elInput,
+      },
+      setup() {
+         const store = useStore();
+         const router = useRouter();
 
----
-- ### 7. 安裝TypeScript(全域)
-   > 終於到了我們的主角啦~
+         //data
+         const loginForm = reactive({
+               username: '',
+               password: '',
+               verification: '',
+         });
+
+         // const vuexState = useState(['user']);
+
+         onMounted(() => {
+               loginForm.username = "Opshell";
+               loginForm.password = "pass";
+         });
+
+         // Methods
+         const handleLogin = () => {
+               const verification = "test";
+               const username = loginForm.username;
+               const password = loginForm.password;
+
+               if (username !== "" && password !== "") {
+                  // 登入成功
+                  // let store = useStore();
+                  loginForm.verification = verification;
+
+                  // this.authenticate(username, password)
+                  getData(
+                     "/api/backEnd/login", "POST",
+                     { username, password }
+                  ).then((auth) => {
+                     if (auth.status) {
+                           localStorage.setItem("token", auth.data); // 紀錄token
+
+                           store.commit("user/signIn");
+                           store.commit("user/setUser", auth.data); // 記錄使用者資料
+
+                           const redirect = store.state.redirect == "" || store.state.redirect == undefined ? "Dashboard" : store.state.redirect;
+                           router.push({ name: redirect });
+                     } else {
+                           console.log(auth);
+                     }
+                  });
+               } else {
+                  // 登入失敗
+                  alert("帳號密碼不能為空");
+               }
+         };
+
+         return {
+               // ...vuexState,
+               loginForm,
+               handleLogin
+         }
+      }
+    };
    ```
-    npm install -g typescript
-   ```
-   > 如果你沒有遇到任何問題，應該會長這樣，
-   > 確認目前安裝的環境↓↓↓
-   ```
-    npm list -g --depath=0
-   ```
-![alt](https://)
 
 ---
 ## 小結：

@@ -30,28 +30,21 @@ https://juejin.cn/post/7107047280133275678
    ```shell
     yarn add vue-router@next -D
    ```
-- #### 1. 修改`main.ts`
-   ```typescript
-    import router from './router'
-
-    app.use(router)
-   ```
    > `vue router`本身提供了`宣告檔案`，
    > 所以開箱即用~~(真是太好了)~~
 
-
-- #### 2. 改寫`router`
+- #### 1. 改寫`router`
    > 在`src`下面建立`router`目錄，
-   > 新增兩個檔案`index.ts`、`router.ts`
+   > 新增兩個檔案`index.ts`、`routes.ts`
 
-   * 2-1. `index.ts`：
+* 1-1. `index.ts`：
    > 原先JS長這樣：
    ```javascript
     import { createRouter, createWebHistory } from "vue-router";
     import axios from "axios";
     import store from "../store";
 
-    import routes from "./router.js"; // 路由列表
+    import routes from "./routes.js"; // 路由列表
 
     const router = createRouter({
       history: createWebHistory(process.env.BASE_URL),
@@ -103,6 +96,18 @@ https://juejin.cn/post/7107047280133275678
    ```
    > 恩，沒錯紅通通一片，
    > 我們把它改寫成這樣：
+
+---
+- #### 調整store引用：
+   ```typescript
+    // @/router/index.ts
+    import { store } from "@/store";
+   ```
+   > 由於`/router/index.ts`沒有`setup`也不是`components`
+   > 所以不能`inject`，要換成另一種`store`引用的方式。
+
+---
+- #### 調整環境參數：
    ```typescript
     const router = createRouter({
       // history: createWebHistory(process.env.BASE_URL),
@@ -113,12 +118,47 @@ https://juejin.cn/post/7107047280133275678
    > 是的，`Vite`並不能用`process.env.BASE_URL`，
    > 但是他另外提供了`import.meta.env`可以用，[參考](https://cn.vitejs.dev/guide/env-and-mode.html)
 
-   > 好吧，其實沒有一片，只有一點點要改而已，
-   > 沒辦法，`axios`和`vue router`都有提供`宣告檔案`，
-   > 就是這麼方便。
+---
+- #### 調整store.commit用法
+   ```typescript
+    store.commit("route/setRouteFrom", from);
+    store.commit("route/startLoading"); // 開啟遮罩
+   ```
+   > 像這樣在前面加上`namespace`。
 
 ---
-   * 2-2. `router.ts`：
+- #### 調整`store/route.ts`型別：
+   ```typescript
+    export interface iRouteState {
+      isLoading: Boolean, // 是否處於Loading狀態
+      redirect: string,
+      route: {
+         from: any,
+         to: any
+      },
+      pageData: iPageData,
+    }
+   ```
+   > 由於我們有安裝`vue-router`了，
+   > 當然馬上把any換掉：
+   ```typescript
+    import { RouteLocationNormalized } from "vue-router"; // 引用 vue-router 型別
+
+    export interface iRouteState {
+      isLoading: Boolean, // 是否處於Loading狀態
+      redirect: string,
+      route: {
+         from: any,
+         to: any
+      },
+      pageData: iPageData,
+    }
+   ```
+   ![alt](https://)
+   > 下面兩個`mutations`也別忘了。
+
+---
+* 1-2. `routes.ts`：
    > 老樣子提供原碼：
    ```javascript
     const routes = [
@@ -147,7 +187,22 @@ https://juejin.cn/post/7107047280133275678
       }
     }
 
-    const routes:iRoute[] = [];
+    const routes:iRoute[] = [
+      {
+         name: "Login",
+         path: "/login",
+         component: () => import("@/views/Login.vue"),
+         meta: { title: '登入' },
+      }
+    ];
+   ```
+
+---
+- #### 2. 修改`main.ts`
+   ```typescript
+    import router from './router'
+
+    app.use(router)
    ```
    > 恩，就這樣沒問題了，是不是很簡單?
    > 什麼? 覺得今天很空虛?
@@ -177,6 +232,7 @@ https://juejin.cn/post/7107047280133275678
                // presets
                'vue',
                'vue-router',
+               'vuex',
                // custom
                {
                   '@vueuse/core': [
@@ -185,39 +241,25 @@ https://juejin.cn/post/7107047280133275678
                      // alias
                      ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
                   ],
-                  'vuex': [
-                     'useStore', 'useState',
-                     ['default', 'vuex'],
-                  ],
-
-                  // '[package-name]': [
-                  //     '[import-names]',
-                  //     // alias
-                  //     ['[from]', '[alias]'],
-                  // ],
-                  // 整包 axios import
-                  'axios': [
-                     // default imports
+                  'axios': [ // 整包 axios import
                      ['default', 'axios'], // import { default as axios } from 'axios',
                   ],
-                  // import Base64 單一功能
-                  'js-base64': [
+                  'js-base64': [ // import Base64 單一功能
                      'Base64'
                   ],
-
                },
             ],
          // ... 省略一堆
          }),
          Components({
-            dirs: ['src/components'], // 指定组件位置，默认是src/components
+            dirs: ['src/components'], // 指定组件位置，預設是src/components
             dts: 'src/types/components.d.ts', // 配置文件生成位置
             resolvers: [NaiveUiResolver()]
          })
       ],
       // ... 省略一堆
       build: {
-         outDir: '../WebAdmin/', // 指定輸出位置(相對於 項目根目錄).
+         outDir: '../WebAdmin/', // 指定輸出位置(相對於project根目錄).
       }
    });
    ```
