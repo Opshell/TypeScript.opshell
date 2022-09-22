@@ -9,7 +9,7 @@
 https://pjchender.dev/ironman-2021/ironman-2021-day12/
 
 ---
-## 目標: 學會Function 的Type法
+## 目標: App.vue && getData
    > 作為JavaScript 中常用到的的部分，
    > 在 ES6 終於普及後有了更多花式的玩法，
    > `Arrow Funciton`、參數預設值、`...rest (其餘運算子)`，
@@ -54,7 +54,6 @@ https://pjchender.dev/ironman-2021/ironman-2021-day12/
       }
     }
    ```
-
    > 新增自動載入components 路徑
 
 
@@ -63,6 +62,12 @@ https://pjchender.dev/ironman-2021/ironman-2021-day12/
    ```typescript
 
    ```
+   > 把原來的App.vue 改成 Home.vue
+   > 把style.css 貼進去Home裡
+
+
+
+   - ### 3. getData
 
 ---
 ## 小結：

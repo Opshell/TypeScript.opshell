@@ -147,6 +147,11 @@
             dirs: [],
             dts: 'src/types/auto-imports.d.ts', // typescript 宣告檔案位置
             vueTemplate: false,
+            eslintrc: {
+               enabled: false, // Default `false`
+               filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
+               globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+            },
          }), // 設定
       ],
     })
@@ -162,6 +167,10 @@
       ]
     }
    ```
+   > 然後用`eslintrc.enabled`的值改為`true`，
+   > 可以讓她生成`eslintrc-auto-import.json`，
+   > 生成後改為`false`除非有改動再重新生，不關掉的話每次都會重新生，
+   > 有時候會導致`eslint`抓不到文件。
 
    #### 2. 自動引用組件
    > 這個套件自動按照需求`import(載入)`組件，
