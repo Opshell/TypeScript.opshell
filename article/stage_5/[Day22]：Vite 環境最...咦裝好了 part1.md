@@ -1,4 +1,4 @@
-![alt](https://)
+![Day 22 Banner](https://ithelp.ithome.com.tw/upload/images/20220922/20109918YGCjIqMohk.jpg)
 
 # Vite 環境最...咦裝好了
 > *每次開始學習新的語言或框架，*
@@ -59,7 +59,7 @@
 ---
 - #### 2. TypeScript Node types 依賴
    > 在設定路徑、文件讀寫等操作的時候，為了簡化路徑都會使用別名，
-   > 但是直接設定的话TypeScript看不懂node相關的套件的型別宣告，
+   > 但是直接設定的話，TypeScript看不懂node相關的套件的型別宣告，
    > 所以需要先設定node的types依賴。
 
    #### 2-1. 安裝指令：
@@ -127,7 +127,6 @@
          strictPort: false, // Port被占用時直接退出， false會嘗試連接下一個可用Port
          open: true, // dev時自動打開網頁，也可以給網址指定。
          // 自訂代理規則，配合後端進行Api呼叫等。
-         // 預設使用 [http-proxy](https://github.com/http-party/node-http-proxy) 完整設定請見官方
          proxy: {
             '/api': {
                target: "http://www.opshell/api/", // 本機串接
@@ -140,11 +139,12 @@
     });
    ```
    > 更多的設定可以參考[官方](https://cn.vitejs.dev/config/server-options.html)
+   > http-proxy更多設定請見[官方](https://github.com/http-party/node-http-proxy)
 
 ---
 - #### 4 都設定好了之後，試著跑跑看
    > 輸入下面的指令：
-   ```sehll
+   ```
     yarn run dev
    ```
    ![指令結果](https://ithelp.ithome.com.tw/upload/images/20220920/20109918ij5hRNZTgp.png)
@@ -160,8 +160,3 @@
 > 所以需要什麼，就一個個裝回來，
 > 這是一個漫長的過程。
 > 大家早點睡，晚安~
-
-
-- ### [](https://juejin.cn/post/7124950336648773640)
-- ### [使用Vite搭建Vue3(TypeScript版本)项目](https://www.jianshu.com/p/2d1b6c28e9ac)
-- ### [vite + vue3 + ts 使用总结](https://segmentfault.com/a/1190000041296321)
