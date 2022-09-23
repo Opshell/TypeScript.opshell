@@ -1,9 +1,9 @@
-![alt](https://)
+![Day 23 Banner](https://ithelp.ithome.com.tw/upload/images/20220923/20109918mtXeD7zxj4.jpg)
 
 # Vite 環境最麻煩了
 > *開始用Vite之後，*
 > *是個會自立自強的大人了呢!!*
-> *───────────────────────── By Opshell*
+> *────────────────────── By Opshell*
 
 ---
 ## 目標：
@@ -19,7 +19,6 @@
    ```shell
     yarn add -D -E prettier
    ```
-   ![alt](https://)
 
    > 在`webadminvite`目錄下新增`prettier.config.js`然後設定他：
    ```javascript
@@ -56,7 +55,8 @@
    #### 2. 安裝`ESLint`
    > 因為`ESLint`看不懂TypeScript，所以我们要安裝對應的`@typescript-eslint/parser`来擴充解析器；
    > 再安裝`@typescript-eslint/eslint-plugin`、`eslint-plugin-vue` 來新增`.ts`等文件對應的語法。
-   > 再配合`prettier`安裝`eslint-config-prettier`、`eslint-plugin-prettier`來應用`prettier`的設定。
+   > 再配合`prettier`安裝`eslint-config-prettier`、`eslint-plugin-prettier`
+   > 來應用`prettier`的設定。
    ```shell
     yarn add eslint -D
     yarn add eslint-plugin-vue -D
@@ -136,11 +136,11 @@
                      // named imports
                      'useMouse', // import { useMouse } from '@vueuse/core',
                      // alias
-                     ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
+                     ['useFetch', 'useMyFetch'],
                   ],
                   'axios': [
                      // default imports
-                     ['default', 'axios'], // import { default as axios } from 'axios',
+                     ['default', 'axios'],
                   ],
                },
             ],
@@ -149,8 +149,8 @@
             vueTemplate: false,
             eslintrc: {
                enabled: false, // Default `false`
-               filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
-               globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+               filepath: './.eslintrc-auto-import.json',
+               globalsPropValue: true,
             },
          }), // 設定
       ],
@@ -205,14 +205,10 @@
     yarn run dev
    ```
    > 沒問題的話，依然會看到這個：
+
    ![vite 成功畫面](https://ithelp.ithome.com.tw/upload/images/20220920/20109918xKJxxoPWAV.png)
 
 ---
 ## 小結
 > 今天環境裝太多了設定太多了，
 > 要吐了，先這樣... 我不行了。
-
-
-- ### [使用Vite搭建Vue3(TypeScript版本)项目](https://www.jianshu.com/p/2d1b6c28e9ac)
-- ### [vite + vue3 + ts 使用总结](https://segmentfault.com/a/1190000041296321)
-- ### [Vue 3 + TypeScript + Vite 搭建初始项目](https://juejin.cn/post/7051565418460217375)

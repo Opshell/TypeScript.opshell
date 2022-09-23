@@ -97,9 +97,9 @@
    ![object-3](https://ithelp.ithome.com.tw/upload/images/20220911/20109918NNrjX9mMXc.png)
 
 ---
-- ### 3. 筆記小知識`String Literal(字串字面)`
+- ### 3. 筆記小知識`String Literal(字串字面量)`
    > ※  這邊會注意到我的gender的型別變成了 'man' | 'woman' | 'other',
-   >     其實這是一種叫做`String Literal(字串字面)`的型別，
+   >     其實這是一種叫做`String Literal(字串字面量)`的型別，
    >     聽起來複雜，其實原理很簡單，就是約束值，
    >     只能從有宣告的值中選擇。
    ```typescript
