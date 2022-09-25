@@ -28,26 +28,95 @@ https://pjchender.dev/ironman-2021/ironman-2021-day12/
    ```typescript
     import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
-    createSvgIconsPlugin({
-        // 指定需要占存的Icon目錄
-        iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-        // 指定symbolId格式 ex：'icon-[dir]-[name]
-        symbolId: '[name]',
+    export default () => {
+      return {
+         plugins: [
+            createSvgIconsPlugin({
+               iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')], // 指定需要占存的Icon目錄
+               symbolId: '[name]', // 指定symbolId格式 ex：'icon-[dir]-[name]
 
-        /**
-         * 自定义插入位置
-         * @default: body-last
-         */
-        inject?: 'body-last' | 'body-first'
+               /** Dom自定插入位置
+                * @default: body-last
+                */
+               inject?: 'body-last' | 'body-first'
 
-        /**
-         * custom dom id
-         * @default: __svg__icons__dom__
-         */
-        customDomId: '__svg__icons__dom__',
-      }),
+               /** 自訂 Dom ID
+                * @default: __svg__icons__dom__
+                */
+               customDomId: '__svg__icons__dom__',
+            }),
+
+    //... 以下省略
 
    ```
+   > 在`src/main.ts`內引用：
+   ```typescript
+    // src/main.ts
+    import 'virtual:svg-icons-register';
+   ```
+
+   > 用Typescript，還需要在`tsconfig.json`内新增：
+   ```typescript
+    // tsconfig.json
+    {
+      "compilerOptions": {
+         "types": ["vite-plugin-svg-icons/client"]
+      }
+    }
+   ```
+- ### 新增`src/assets/icon`然後把svg丟進去
+
+- ### 在`src/components`裡新增 el-svgIcon.vue
+   > 這個部分不太需要改什麼，使用方式沒啥區別，
+   > 畢竟原理一樣
+   ```vue
+    <div v-if="href == ''" class="icon">
+        <svg class="svg">
+            <use :xlink:href="`#${name}`" />
+        </svg>
+        <span v-if="text != ''" class="text">{{text}}</span>
+    </div>
+   ```
+
+https://stackoverflow.com/questions/47585409/use-spread-operator-on-nodelist-in-typescript
+- ### 在`src/views`裡新增 IconList.vue
+   ```javascript
+    import { onMounted, ref } from "vue";
+    import { useStore } from "vuex";
+    import { useState } from "../hook/vuexSugar.js";
+
+    import elSvgIcon from "../components/el-svgIcon.vue";
+
+    export default {
+        components: { elSvgIcon },
+        setup() {
+            const store = useStore();
+            const states = useState(["userData"]);
+            const iconList = ref([]);
+
+            onMounted(() => {
+                iconList.value = [];
+
+                let spriteSvg = [...document.getElementById('__SVG_SPRITE_NODE__').children];
+                spriteSvg.forEach(svgDom => {
+                    iconList.value.push(svgDom.id);
+                });
+            });
+
+            store.commit('endLoading');
+
+            return {
+                ...states,
+                iconList
+            };
+        },
+    };
+   ```
+   > 改成這樣
+   https://stackoverflow.com/questions/52491832/how-to-use-document-getelementbyid-method-in-typescript
+
+
+   https://bobbyhadz.com/blog/typescript-type-object-must-have-symbol-iterator-method
 
 ---
 ## 小結：
