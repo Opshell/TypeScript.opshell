@@ -1,24 +1,18 @@
-![alt](https://)
+![Day 26 Banner](https://ithelp.ithome.com.tw/upload/images/20220926/20109918YUK1LbTjiO.jpg)
 
-# 環境甚麼的 最討厭了
-> *每次開始學習新的語言或框架，*
-> *最麻煩的不是要學習他有哪些語法、規則*
-> *是安裝它的環境...*
-> *───────────────────────── By Opshell*
-
----
-## 目標：
-   > 安裝完成使用TypeScript需要的環境，
-   > 然後開始祈禱過程不要出現奇怪的問題。
-
-封裝axios
-https://juejin.cn/post/7107047280133275678
+# Axios X Router
+> *這才不是PS5*
+> *這是Plash Speed 5*
+> *────────────────── By 장삐쭈*
 
 ---
-## 過程：(安裝請點擊藍字)
-- ### axios
+## 目標：安裝 axios + router
+
+---
+## 過程：
+- ### axios 安裝、使用
    > 為啥要裝?別鬧了`axios`捏?
-   ```shell
+   ```
     yarn add axios -D
    ```
    > 由於`axios`已經自帶`.d.ts`了，
@@ -27,7 +21,7 @@ https://juejin.cn/post/7107047280133275678
 ---
 - ### vue router
    > 安裝當起手式沒問題吧?
-   ```shell
+   ```
     yarn add vue-router@next -D
    ```
    > `vue router`本身提供了`宣告檔案`，
@@ -140,7 +134,7 @@ https://juejin.cn/post/7107047280133275678
     }
    ```
    > 由於我們有安裝`vue-router`了，
-   > 當然馬上把any換掉：
+   > 當然馬上把`any`換掉：
    ```typescript
     import { RouteLocationNormalized } from "vue-router"; // 引用 vue-router 型別
 
@@ -154,8 +148,8 @@ https://juejin.cn/post/7107047280133275678
       pageData: iPageData,
     }
    ```
-   ![alt](https://)
-   > 下面兩個`mutations`也別忘了。
+   ![改型別](https://ithelp.ithome.com.tw/upload/images/20220926/20109918ZA9uuPk7IN.png)
+   > 下面兩個`mutations`的`from`、`to`也別忘了。
 
 ---
 * 1-2. `routes.ts`：
@@ -173,7 +167,7 @@ https://juejin.cn/post/7107047280133275678
 
     export default routes;
    ```
-   > 這時候就會警告說你用any，
+   > 這時候就會警告說你用`any`，
    > 但我們知道其實我們有固定的格式，
    > 所以宣告一下：
    ```typescript
@@ -236,10 +230,8 @@ https://juejin.cn/post/7107047280133275678
                // custom
                {
                   '@vueuse/core': [
-                     // named imports
-                     'useMouse', // import { useMouse } from '@vueuse/core',
-                     // alias
-                     ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
+                     'useMouse', // named imports
+                     ['useFetch', 'useMyFetch'], // alias
                   ],
                   'axios': [ // 整包 axios import
                      ['default', 'axios'], // import { default as axios } from 'axios',
