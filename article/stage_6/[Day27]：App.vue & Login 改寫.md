@@ -1,9 +1,8 @@
-![alt](https://)
+![Day27 Banner](https://ithelp.ithome.com.tw/upload/images/20220927/20109918pI0oNjF83n.jpg)
 
-# 這豈不是無敵了??
-> *當ES6 裝上了TypeScript，*
-> *這豈不是無敵了?!。*
-> *───────────────────────── By Opshell*
+# App.vue & Login
+> *登入*
+> *─────────── By Opshell*
 
 ---
 ## 目標: App.vue && getData
@@ -62,7 +61,7 @@
       }
     };
    ```
-   > 在script 標籤加上 lang="ts"表示裡面是用TS寫的，
+   > 在script標籤加上`lang="ts"`表示裡面是用TS寫的，
    > 然後 因為App沒用到什麼特別的，
    > 只需要把`Vuex`的`state`輸出就可以了。
    > ※ 值得一提的是，可以看到轉Vite後安裝了`unplugin-auto-import`，
@@ -80,7 +79,7 @@
             dts: 'src/types/components.d.ts', // .d.ts生成位置
          }),
    ```
-   > 向上面這樣 把'src/views'加進來。
+   > 向上面這樣 把`'src/views'`加進來。
 
 ---
 - ### 2. Login.vue
@@ -162,11 +161,11 @@
     import { useStore } from '@/store';
     import { getData } from '@/hook/getData';
 
-   // ...以上相同
-   getData(
+    // ...以上相同
+    getData(
       "/api/backEnd/login", "POST",
       { username, password }
-   ).then((auth) => {
+    ).then((auth) => {
       // 前面要先判斷auth，畢竟沒js自由了，不嚴謹點TS會警告
       if (auth && auth.status) {
             localStorage.setItem("token", auth.data); // 紀錄token
@@ -180,13 +179,13 @@
       } else {
             console.log(auth);
       }
-   });
-   // ...以下相同
+    });
+    // ...以下相同
    ```
 
 ---
-- ### 2. Login.vue
-   > 接下來我們來調整`router`：
+- ### 3. routes.ts
+   > 接下來我們來調整`routes.ts`：
    ```typescript
     // src/router/routes.ts
     const routes: iRoute[] = [
