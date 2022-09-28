@@ -18,13 +18,14 @@ https://pjchender.dev/ironman-2021/ironman-2021-day12/
 
 ---
 ## 過程：
-
 - ### 安裝 & 設定
+   - #### 1. 安裝
    ```
     yarn add vite-plugin-svg-icons -D
    ```
-   > 修改`vite.comfig.ts`：
 
+   - #### 2. 設定
+   > 修改`vite.comfig.ts`：
    ```typescript
     // vite.comfig.ts
     import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
@@ -43,12 +44,15 @@ https://pjchender.dev/ironman-2021/ironman-2021-day12/
     //... 以下省略
 
    ```
+
+   - #### 3. `src/main.ts`
    > 在`src/main.ts`內引用：
    ```typescript
     // src/main.ts
     import 'virtual:svg-icons-register';
    ```
 
+   - #### 4. `tsconfig.json`
    > 用Typescript，還需要在`tsconfig.json`内新增：
    ```typescript
     // tsconfig.json
@@ -59,10 +63,12 @@ https://pjchender.dev/ironman-2021/ironman-2021-day12/
     }
    ```
 ---
-- ### 新增`src/assets/icon`然後把svg丟進去
+- ### 基本使用
+- #### 1. 新增
    > 把要用的svg都丟到`src/assets/icon`。
 
-- ### 在`src/components`裡新增 el-svgIcon.vue
+- #### 2. 使用
+   > 在`src/components`裡新增 `el-svgIcon.vue`
    > 這個部分不太需要改什麼，使用方式沒啥區別，
    > 畢竟原理一樣
    ```vue
@@ -73,8 +79,11 @@ https://pjchender.dev/ironman-2021/ironman-2021-day12/
     </div>
    ```
 
-- ### 在`src/views`裡新增 IconList.vue
-   > 做一個icon列表，圖像化的方式，之後後台使用更方便：
+---
+- ### 番外
+- #### 1. 在`src/views`裡新增 IconList.vue
+   > 做一個icon列表，圖像化的方式，
+   > 之後後台使用更方便，原碼：
    ```javascript
     // IconList.vue(Javascript)
     import { onMounted, ref } from "vue";
@@ -108,10 +117,37 @@ https://pjchender.dev/ironman-2021/ironman-2021-day12/
     };
    ```
 
-   > 改成這樣
+   > Script 標籤改成這樣`<script setup lang="ts">`
+   > 並且修改下面這些部分：
+
+   ```typescript
+    import { useStore } from '@/store';
+    import { Ref } from '@vue/reactivity'; // Ref的型別
+
+    const store = useStore();
+    const iconList: Ref<string[]> = ref([]);
+
+    onMounted(() => {
+        const spriteSvg = document.getElementById('__svg__icons__dom__');
+
+        if (spriteSvg != null) {
+            let svgList = Array.from(spriteSvg.children); // 2488
+
+            svgList.forEach((svgDom) => {
+                iconList.value.push(svgDom.id);
+            });
+        }
+    });
+
+    store.commit('route/endLoading');
+   ```
+   > 在轉換的過程中遇到了幾個問題：
+   > 型別Ref
+   > iconList在Tamplate中型別錯誤
+   > 型別檢測
+   > Array-like轉換
 
    https://stackoverflow.com/questions/52491832/how-to-use-document-getelementbyid-method-in-typescript
-
 
    https://bobbyhadz.com/blog/typescript-type-object-must-have-symbol-iterator-method
 
