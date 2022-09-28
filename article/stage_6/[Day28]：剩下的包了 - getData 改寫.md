@@ -1,10 +1,9 @@
-![alt](https://)
+![Day 28 Banner](https://ithelp.ithome.com.tw/upload/images/20220928/20109918U59y6fxLyq.jpg)
 
-# 環境甚麼的 最討厭了
-> *每次開始學習新的語言或框架，*
-> *最麻煩的不是要學習他有哪些語法、規則*
-> *是安裝它的環境...*
-> *───────────────────────── By Opshell*
+# getData
+> *這邊的這個、那個、還有這個*
+> *不要，剩下的Data包了。*
+> *───────────────────── By Opshell*
 
 ---
 ## 目標：今天來改寫getData吧
