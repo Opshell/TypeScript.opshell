@@ -70,7 +70,7 @@
     type tHttpVerbs = keyof typeof HTTP_VERBS;
    ```
    > 這上面得操作是把`Enum(列舉)`轉成`Union String Literal(聯集字串字面量)`：
-   ![alt](https://)
+   ![Enum(列舉)](https://ithelp.ithome.com.tw/upload/images/20220928/20109918Y3zQ0MfQdg.png)
 
    #### 3. 從`宣告檔案`拉型別出來用
    > 做到這邊我突然想到，`axios`其實是有提供`.d.ts(宣告檔案)`的，
@@ -111,15 +111,17 @@
    #### 4. 在Login.vue看看結果
    > 我們可以比較一下，有沒有定義輸出型別差在哪，
    > 這張是沒有定義的：
-   ![alt](https://)
+   ![沒定義](https://ithelp.ithome.com.tw/upload/images/20220928/20109918ziUFquYF1E.png)
    > 這張是有定義的：
-   ![alt](https://)
+   ![有定義](https://ithelp.ithome.com.tw/upload/images/20220928/20109918oUNyWvNnf6.png)
 
 ---
 - ### yarn run dev 試試看：
-   ![alt](https://)
-   ![alt](https://)
+   ![login](https://ithelp.ithome.com.tw/upload/images/20220928/20109918YHB2HIXoq2.png)
+
    > 看起來，路由導向啥的，也都沒問題。
+
+   ![home](https://ithelp.ithome.com.tw/upload/images/20220928/20109918Rk6HRddB7V.png)
 
 ---
 ## 小結：

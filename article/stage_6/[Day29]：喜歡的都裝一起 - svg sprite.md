@@ -1,12 +1,9 @@
 ![alt](https://)
 
-# 這豈不是無敵了??
+# 喜歡的都裝在一起
 > *當ES6 裝上了TypeScript，*
 > *這豈不是無敵了?!。*
 > *───────────────────────── By Opshell*
-
-
-https://pjchender.dev/ironman-2021/ironman-2021-day12/
 
 ---
 ## 目標: [`vite-plugin-svg-icons`](https://github.com/vbenjs/vite-plugin-svg-icons/blob/main/README.zh_CN.md)
@@ -19,12 +16,13 @@ https://pjchender.dev/ironman-2021/ironman-2021-day12/
 ---
 ## 過程：
 - ### 安裝 & 設定
-   - #### 1. 安裝
+- #### 1. 安裝
    ```
     yarn add vite-plugin-svg-icons -D
    ```
 
-   - #### 2. 設定
+---
+- #### 2. 設定
    > 修改`vite.comfig.ts`：
    ```typescript
     // vite.comfig.ts
@@ -45,14 +43,16 @@ https://pjchender.dev/ironman-2021/ironman-2021-day12/
 
    ```
 
-   - #### 3. `src/main.ts`
+---
+- #### 3. `src/main.ts`
    > 在`src/main.ts`內引用：
    ```typescript
     // src/main.ts
     import 'virtual:svg-icons-register';
    ```
 
-   - #### 4. `tsconfig.json`
+---
+- #### 4. `tsconfig.json`
    > 用Typescript，還需要在`tsconfig.json`内新增：
    ```typescript
     // tsconfig.json
@@ -141,20 +141,33 @@ https://pjchender.dev/ironman-2021/ironman-2021-day12/
 
     store.commit('route/endLoading');
    ```
-   > 在轉換的過程中遇到了幾個問題：
-   > 型別Ref
-   > iconList在Tamplate中型別錯誤
-   > 型別檢測
-   > Array-like轉換
+   > 這次的改寫過程遇到了好多問題：
+   1. Ref型別：
+   >  這個還行，看官方文件就可以解決了。
 
-   https://stackoverflow.com/questions/52491832/how-to-use-document-getelementbyid-method-in-typescript
+   2. 型別檢測：
+   >  用型別檢測做個導流。
 
-   https://bobbyhadz.com/blog/typescript-type-object-must-have-symbol-iterator-method
+   3. Array-like轉換：
+   >  錯誤代碼(TS2488)，
+   >  這個實在很奇怪，理論上來說`Array.from(spriteSvg.children)`
+   >  等價於`[...spriteSvg.children]`
+   >  但是就是會報錯，打死解不開，求有解的大大解惑。
+   ![alt](https://)
+
+   4. `iconList`在Tamplate中型別錯誤
+   >  這個錯誤也是很奇怪，各種寫法都一樣的結果，
+   >  猜測是莫名地抓不到暴露的vue，但是該有的設定都跑了，
+   >  也查不到相關的錯誤，雖然能成功執行就是了。
+   ![alt](https://)
+
+   > ※ 3和4的錯誤一直沒有其他想法，
+   >    期待有大大解惑，或者哪天我懂了再回來改文章。
 
 ---
 ## 小結：
-   > 今天會了Funciton的Type法
-   > 而且更了解了 ES6 的`其餘預算子`
-   > 對於型別的Type法也更熟練了
-   > 明天繼續學習 Funciton的 Types法，
-   > ~~這麼有料的東西怎麼可以一天水完?~~
+> 這邊遇到了好多神奇的問題，
+> 雖然大部分都沒有解開，
+> 只是找了個方法繞過去，
+> 但過程中學到了很多東西，
+> 也算是獲益良多。
