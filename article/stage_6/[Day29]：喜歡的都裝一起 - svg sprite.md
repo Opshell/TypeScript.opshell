@@ -1,9 +1,9 @@
-![alt](https://)
+![Day 28 Banner](https://ithelp.ithome.com.tw/upload/images/20220928/20109918U59y6fxLyq.jpg)
 
 # 喜歡的都裝在一起
-> *當ES6 裝上了TypeScript，*
-> *這豈不是無敵了?!。*
-> *───────────────────────── By Opshell*
+> *我才不要別人喜歡的*
+> *我要自己喜歡的*
+> *───────────────── By Opshell*
 
 ---
 ## 目標: [`vite-plugin-svg-icons`](https://github.com/vbenjs/vite-plugin-svg-icons/blob/main/README.zh_CN.md)
@@ -162,6 +162,8 @@
    ![alt](https://)
 
    > ※ 3和4的錯誤一直沒有其他想法，
+   >    不過編譯的時候根本不會報錯，
+   >    Ops甚至覺得根本是Error Len在亂叫，
    >    期待有大大解惑，或者哪天我懂了再回來改文章。
 
 ---
