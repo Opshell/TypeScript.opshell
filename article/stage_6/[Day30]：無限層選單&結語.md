@@ -1,7 +1,10 @@
 ![Day27 Banner](https://ithelp.ithome.com.tw/upload/images/20220927/20109918pI0oNjF83n.jpg)
 
-# Menu
-> *登入*
+# 無限Menu
+> *我如果你願意一層一層*
+> *一層一層... 一層一層......*
+> *做出Menu! 不願意!*
+> *遞迴可以嗎?*
 > *─────────── By Opshell*
 
 ---
@@ -62,6 +65,12 @@
    ```
    > 可以看出來，這邊只是遞迴Menu的容器
    > 順便取資料，所以改成下面這樣：
+   ```html
+    <!-- template -->
+    <nav class="sideMenu">
+        <elTreeItem :menu="list" :child_count="list.length" :depth="0" />
+    </nav>
+   ```
    ```typescript
     // typescriptlang
     import { iMenu } from '@/components/el-treeItem.vue';
@@ -88,6 +97,7 @@
    > 那iMenu是怎麼來的呢?
    > 從我們改寫的遞迴項目來的：
    ```javascript
+    // javascript Code
     import { ref, watch } from "vue";
     import elSvgIcon from "./el-svgIcon.vue";
 
@@ -168,16 +178,90 @@
    ```
    > 改成這樣`<script setup lang="ts">`：
    ```typescript
+    import { Ref } from '@vue/reactivity';
 
+    export interface iMenu {
+        id: number;
+        parent_id: number;
+        icon: string;
+        title: string;
+        link: string;
+        hide_sub: Boolean;
+        child?: iMenu[];
+    }
+
+    const props = defineProps({
+        menu: Array<iMenu>,
+        depth: Number,
+        hide_sub: Boolean,
+        child_count: Number,
+    });
+    const emit = defineEmits(['calcHeight']);
+
+    const list: Ref<iMenu[]> = ref(props.menu);
+    const boxHeight: Ref<number> = ref(0);
+    const optionHeight = 40;
+
+    // --- methods ---
+    // 開啟子層
+    const openChild = (i: number) => {
+        list.value[i].hide_sub = !list.value[i].hide_sub; // hide_sub == 1 的時候，是收闔的
+    };
+
+    /** 回拋Height
+     * @param {*} boxh  // 盒子高度
+     */
+    const calcHeight = (boxh: number) => {
+        boxHeight.value = Number(boxHeight.value) + Number(boxh);
+        if (props.depth != 0) {
+            emit("calcHeight", boxh);
+        }
+    };
+
+    // 遞迴關閉下層選單
+    const rcsCloseChild = (list: iMenu[]) => {
+        list.forEach((el) => {
+            // if (el.child != undefined) {
+            if (el.child) {
+                el.hide_sub = true;
+                rcsCloseChild(el.child);
+            }
+        });
+    }
+
+    // 監聽prop 要用函式丟
+    watch(() => props.menu, (val: iMenu[]) => {
+        list.value = val;
+    }, { deep: true });
+
+    // 上層關閉時，觸發遞進關閉下層
+    watch(() => props.hide_sub, (val: boolean) => {
+        if (val) { rcsCloseChild(list.value); }
+        // 判斷開或關
+        emit("calcHeight", (!val) ? props.child_count * optionHeight : -props.child_count * optionHeight);
+    }, { deep: true });
    ```
-
+   > 跟前面一樣，沒特別做什麼，
+   > 一樣宣告型別，`export` 型別，
+   > 前面沒看過的用法比較是`defineProps`、`defineEmits`等
+   > 配合`<script setup>`的語法糖。
 
 ---
-## 小結：
-> 可以發現今天改的東西非常的少，
-> 主要集中在調整自動載入的`import`和`componets`，
-> 可見前期環境設定還是蠻重要的，沒處理好這邊就會處處碰壁，
-> `Vite`快是真的快，要設定的東西也多，
-> 不過好處是可以對專案框架瞭如指掌。
-> 還是可以學到很多東西的。
-> `@/hook/getData`就留給明天處理吧，大家晚安。
+## 總結：
+> 在案件轉換的過程中，
+> 開始有了解TS的一些基礎用法，
+> 但是經驗太少了，很多奇怪的Bug還要在研究一下，
+> 但是可以發現就算很多Bug，TypeScript還是會包容你，
+> 幫你轉成JS讓你用，
+> 直到你跟他越來越熟，不再出現奇怪的Bug，
+> 這樣說起來，TypeScript也是蠻漸進的。
+
+---
+## 完賽結語
+過了30天，TypeScript可以磕磕絆絆的用了，
+Side Project還要繼續下去
+希望可以用Vite + TypeScript完成他的後台操作介面。
+感謝各位陪伴我完成這次鐵人賽，
+心血來潮的參加，只有30幾天準備還真的不太夠，
+寫的不是很好，再請大家見諒。
+Ops愛大家!
