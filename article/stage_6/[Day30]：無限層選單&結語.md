@@ -1,11 +1,11 @@
-![Day27 Banner](https://ithelp.ithome.com.tw/upload/images/20220927/20109918pI0oNjF83n.jpg)
+![Day 30 Banner](https://ithelp.ithome.com.tw/upload/images/20220930/20109918Wk1yo8fgWU.jpg)
 
 # 無限Menu
 > *我如果你願意一層一層*
 > *一層一層... 一層一層......*
 > *做出Menu! 不願意!*
 > *遞迴可以嗎?*
-> *─────────── By Opshell*
+> *────────────── By Opshell*
 
 ---
 ## 目標: 選單
@@ -131,7 +131,8 @@
             // --- methods ---
             // 開啟子層
             const openChild = (i) => {
-                list.value[i].hide_sub = !list.value[i].hide_sub; // hide_sub == 1 的時候，是收闔的
+                // hide_sub == 1 的時候，是收闔的
+                list.value[i].hide_sub = !list.value[i].hide_sub;
             };
             /** 回拋Height
              * @param {*} boxh  // 盒子高度
@@ -205,7 +206,8 @@
     // --- methods ---
     // 開啟子層
     const openChild = (i: number) => {
-        list.value[i].hide_sub = !list.value[i].hide_sub; // hide_sub == 1 的時候，是收闔的
+        // hide_sub == 1 的時候，是收闔的
+        list.value[i].hide_sub = !list.value[i].hide_sub;
     };
 
     /** 回拋Height
@@ -237,8 +239,10 @@
     // 上層關閉時，觸發遞進關閉下層
     watch(() => props.hide_sub, (val: boolean) => {
         if (val) { rcsCloseChild(list.value); }
-        // 判斷開或關
-        emit("calcHeight", (!val) ? props.child_count * optionHeight : -props.child_count * optionHeight);
+        if(props.child_count){
+            // 判斷開或關
+            emit("calcHeight", (!val) ? props.child_count * optionHeight : -props.child_count * optionHeight);
+        }
     }, { deep: true });
    ```
    > 跟前面一樣，沒特別做什麼，
@@ -259,9 +263,10 @@
 ---
 ## 完賽結語
 過了30天，TypeScript可以磕磕絆絆的用了，
-Side Project還要繼續下去
-希望可以用Vite + TypeScript完成他的後台操作介面。
+Opshell的Side Project還要繼續下去，
+希望可以用Vite + TypeScript完成後台操作介面。
 感謝各位陪伴我完成這次鐵人賽，
 心血來潮的參加，只有30幾天準備還真的不太夠，
+不過人生還是要有點衝動，這次參賽學到了很多!!
 寫的不是很好，再請大家見諒。
 Ops愛大家!
