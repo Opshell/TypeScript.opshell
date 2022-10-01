@@ -176,7 +176,7 @@ https://www.npmjs.com/package/vue-eslint-parser
 
 
 
-
+https://juejin.cn/post/7139720788738834468#heading-10
 
 
 
@@ -300,5 +300,57 @@ module.exports = {
 yarn add -D prettier
 yarn add -D vue-eslint-parser
 
+ yarn add eslint-config-prettier -D
+ yarn add eslint-plugin-prettier -D
+
 
 setup-compiler-macros
+
+
+
+类型“{}”上不存在属性“count”
+
+解决方案为在 main 的根目录下创建如下文件
+/**
+ * vue-file-import.d.ts 文件
+ * 添加此文件用来解决ts提示 【类型“{}”上不存在属性“count”】 的问题
+ */
+declare module"*.vue" {
+  import Vue from"vue";
+  export default Vue;
+}
+
+https://juejin.cn/post/7139720788738834468
+
+"rules": {
+    "@typescript-eslint/ban-types": [ // 關閉錯誤(error)：不要以 {} 當作一個類型
+        "error",
+        {
+            "extendDefaults": true,
+            "types": {
+            "{}": false
+            }
+        }
+    ],
+    // "@typescript-eslint/no-explicit-any": ["off"], // 關閉警告(warning)：不允許使用 any
+}
+
+
+
+Prettier
+https://ithelp.ithome.com.tw/articles/10240009
+
+
+
+安装 @type/node 依赖： pnpm add @types/node -filter @motorepo/main
+修改 tsconfig.json ，在 compilerOptions 字段中增加配置： "types": ["vite/client", "node"]
+
+
+
+
+2305
+https://vuejs.org/guide/typescript/overview.html#configuring-tsconfig-json
+
+
+
+Vuex
