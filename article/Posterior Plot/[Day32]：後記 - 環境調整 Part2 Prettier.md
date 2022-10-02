@@ -1,8 +1,8 @@
-![Day32 Banner](https://ithelp.ithome.com.tw/upload/images/20221001/20109918EjcEQcDdDz.jpg)
+![Day32 Banner](https://ithelp.ithome.com.tw/upload/images/20221002/20109918uBNxvoNmR5.jpg)
 
 # Vite環境最...咦!壞掉了...
-> *環境什麼的*
-> *果然還是最麻煩了! 哭阿!*
+> *程式碼最重要的就是整整齊齊*
+> *當然，我希望他可以自動自發*
 > *──────────────── By Opshell*
 
 ---
@@ -101,7 +101,7 @@
 
 ---
 ## ※ 補充：
-> Day 31 和 Day 32 的 ESLint和Prettier的忽略文件沒啥改，
+> Day 31 和 Day 32 的 `ESLint`和`Prettier`的忽略文件沒啥改，
 > 直接參考[[Day23]：Vite 環境最麻煩了 part 2](https://ithelp.ithome.com.tw/articles/10296947)即可。
 
 ---

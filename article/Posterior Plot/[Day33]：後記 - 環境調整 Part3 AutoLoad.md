@@ -1,7 +1,7 @@
 ![Day32 Banner](https://ithelp.ithome.com.tw/upload/images/20221001/20109918EjcEQcDdDz.jpg)
 
 # Vite環境最...咦!壞掉了...
-> *環境什麼的*
+> **
 > *果然還是最麻煩了! 哭阿!*
 > *──────────────── By Opshell*
 
