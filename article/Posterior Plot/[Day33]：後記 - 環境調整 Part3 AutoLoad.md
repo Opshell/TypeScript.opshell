@@ -12,9 +12,26 @@
 > `unplugin-auto-import`和`unplugin-vue-components`，在鬧?
 
 ---
-## 過程：新裝備給他加載上去
-- ### Prettier安裝：
-   > `prettier`裝起來：
+## 過程：
+- ### 路徑別名設定起來
+   > 安裝 @type/node
+   > 可以直接參考[[Day22]：Vite 環境最...咦裝好了 part1](https://ithelp.ithome.com.tw/articles/10296329)
+   > 唯一不同的地方是需要再`tsconfig.json`裡，
+   > `compilerOptions`增加配置：
+   ```json
+    // tsconfig.json
+    {
+      "compilerOptions": {
+         // ...以上省略
+         "types": ["vite/client", "node"]
+         // ...以下省略：
+      }
+    }
+   ```
+   > 詳請可以參閱[Vite 官方中文文檔](https://cn.vitejs.dev/guide/features.html)，
+   > 這邊就不多做解釋了= 口=
+
+
    ```
     yarn add prettier -D
    ```
@@ -26,92 +43,39 @@
     yarn add eslint-plugin-prettier -D
    ```
 
----
-- ### Prettier設定：
-   > 在根目錄下新增檔案`.prettierrc`
-   > 對，不用副檔名，檔案內容我們用`json`格式：
-   ```json
-    {
-      "printWidth": 100,
-      "tabWidth": 4,
-      "useTabs": false,
-      "semi": true,
-      "singleQuote": true,
-      "quoteProps": "as-needed",
-      "jsxSingleQuote": false,
-      "trailingComma": "all",
-      "bracketSpacing": true,
-      "bracketSameLine": false,
-      "arrowParens": "always",
-      "requirePragma": false,
-      "insertPragma": false,
-      "proseWrap": "preserve",
-      "htmlWhitespaceSensitivity": "css",
-      "vueIndentScriptAndStyle": true,
-      "endOfLine": "lf"
-    }
-   ```
-   > 當然，可以改成你習慣的格式。
-
----
-- ### 設定`.eslintrc.cjs`：
-   > 設定一下繼承順序：
+- ### AutoLoad
+   > 安裝 `unplugin-auto-import`和`unplugin-vue-components`
+   > 的方式和 [[Day23]：Vite 環境最麻煩了 part 2](https://ithelp.ithome.com.tw/articles/10296947)
+   > 基本沒有區別，注意讓`AutoImport`的`eslintrc:{enabled`
+   > 選項為`true`生成一下參照檔案，
+   > 然後把參照檔案加入`.eslintrc.cjs`裡`extends`的最前面
    ```javascript
     module.exports = {
-      // ...以上省略
       extends: [
+        './.eslintrc-auto-import.json', // `unplugin-auto-import` 生成的規則設定
         'eslint:recommended',
         'plugin:vue/vue3-essential',
         'plugin:@typescript-eslint/recommended',
         'plugin:prettier/recommended',
         'prettier',
       ],
-      // ...以下省略
     }
    ```
 
 ---
-- ### 設定`package.json` 格式化指令：
-   > 打開`package.json`，在`script`區設定：
-   ```json
-    "scripts": {
-      "format": "prettier --ignore-path .gitignore --write \"**/*.+(html|vue|ts|js|json|cjs)\""
-    },
-   ```
-   > 這樣只要在終端輸入指令：
-   ```
-    yarn run format
-   ```
-   > 就會調整你文件的格式，看起來舒服多了。
-
----
-- ### 設定 VS Code setting：
-   > 相信大家都會打開`setting.json`這個檔案，
-   > 打開之後，補上設定：
-   ```json
-    "editor.formatOnSave": true, //存檔時自動格式化
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint", // 解析規則
-    "editor.formatOnSaveMode": "file", // 格式化範圍
-   ```
-   > 這樣子只要你按`ctrl + S`就可以自動格式化該檔案，
-   > 在不用一直執行指令了。
-   > 但是指令還是有用的，當你拉一大堆檔案進來，
-   > 直接執行指令可以一次刷一排，舒服。
-
----
-## ※ 補充：
-> Day 31 和 Day 32 的 ESLint和Prettier的忽略文件沒啥改，
-> 直接參考[[Day23]：Vite 環境最麻煩了 part 2](https://ithelp.ithome.com.tw/articles/10296947)即可。
-
----
 ## 小結：
-> 一直都沒辦法好好用`Prettierr`，
-> 經過這一攤之後，終於可以正常的用，
-> 會按照我想要的方式格式化真是太好了，
-> 再來要再補很多有的沒的設定，
-> 明天繼續...
+> 往後就沒有甚麼特別的環境要裝了，
+> 把檔案都處理好後，總算可以完全正常執行了，
+> 雖然看起來好像沒做什麼，
+> 但其實Ops反覆裝了5~6次，
+> 爬了N篇文章+各種官方文件...
+> 真的要筆記起來，
+> 也希望能夠真的幫助到有問題的各位。
 
-
+# 真‧完賽總結+心得：
+這次是真的結束了，教學果然是最好的學習方式，
+推薦還在觀望的各位，有機會也來參加鐵人賽，
+大家晚安
 
 
 
@@ -298,38 +262,3 @@ https://juejin.cn/post/7139720788738834468#heading-10
 
 
 
-- ## 重新配置 Vite + TypeScript + Vue3 + ESLint + Prettier
-```
- yarn create vite eslinttest --template vue-ts
-```
-
-```
- yarn add eslint -D
-```
-
-```
- yarn eslint --init
-```
-(1) How would you like to use ESLint?
-选择：To check syntax and find problems
-
-(2) What type of modules does your project use?
-选择：JavaScript modules (import/export)
-
-(3) Which framework does your project use?
-选择：Vue.js
-
-(4) Does your project use TypeScript?
-选择：Yes
-
-(5) Where does your code run?
-选择：Browser
-
-(6) What format do you want your config file to be in?
-选择：JavaScript
-
-(7) Would you like to install them now?
-选择：Yes
-
-(8) Which package manager do you want to use?
-选择：yarn
