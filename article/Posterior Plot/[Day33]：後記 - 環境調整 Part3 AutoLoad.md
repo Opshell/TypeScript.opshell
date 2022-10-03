@@ -1,16 +1,15 @@
 ![Day32 Banner](https://ithelp.ithome.com.tw/upload/images/20221001/20109918EjcEQcDdDz.jpg)
 
-# Vite環境最...咦!壞掉了...
-> **
-> *果然還是最麻煩了! 哭阿!*
-> *──────────────── By Opshell*
+# 解放滿滿的import
+> *正事還沒做就先Import一堆*
+> *不行吧?*
+> *─────────────────── By Opshell*
 
 ---
-## 目標：成功完成一個能用的環境
-> `ESLint`裝完之後，
-> 再來就是`Prettier`了，
-> 這兩個也是很會打架，
-> 壞掉絕對有這傢伙的鍋。
+## 目標：Auto起來
+> 裝完`ESLint`、`Prettier`，
+> 看起來沒啥問題，可以乖乖用，難道是因為，
+> `unplugin-auto-import`和`unplugin-vue-components`，在鬧?
 
 ---
 ## 過程：新裝備給他加載上去
